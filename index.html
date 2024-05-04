@@ -561,7 +561,7 @@
                     </div>
                 </div>
             </div>
-            <button class="btn btn-light next-btn mx-auto d-block" onclick="showScreen('screen8')">Далее</button>
+            <button class="btn btn-light next-btn mx-auto d-block" onclick="showScreen('screen6')">Далее</button>
 
             <!-- End Screen 5 -->
 
@@ -826,7 +826,6 @@
 
 
 
-            <!-- Repeat the above screen for screens 3 to 7 -->
             <!-- Screen 8 -->
             <div class="screen" id="screen8">
                 <div class="results-container text-center">
@@ -849,6 +848,7 @@
             integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
             crossorigin="anonymous"></script>
         <script>
+
             function showScreen(id) {
                 // Скрываем все экраны
                 var screens = document.getElementsByClassName('screen');
@@ -860,42 +860,42 @@
                 screen.classList.add('active');
 
 
-                // Если это экран результатов, отобразить результаты
-                if (screenId === 'screen8') {
-                    // Получить все выбранные чекбоксы и их значения из объекта userAnswers
-                    const results = {};
-                    for (const screenId in userAnswers) {
-                        for (const blockType in userAnswers[screenId]) {
-                            const blockValues = userAnswers[screenId][blockType];
-                            if (blockValues.length > 0) {
-                                if (!results[screenId]) {
-                                    results[screenId] = {};
-                                }
-                                results[screenId][blockType] = blockValues;
-                            }
-                        }
-                    }
+                // // Если это экран результатов, отобразить результаты
+                // if (screenId === 'screen8') {
+                //     // Получить все выбранные чекбоксы и их значения из объекта userAnswers
+                //     const results = {};
+                //     for (const screenId in userAnswers) {
+                //         for (const blockType in userAnswers[screenId]) {
+                //             const blockValues = userAnswers[screenId][blockType];
+                //             if (blockValues.length > 0) {
+                //                 if (!results[screenId]) {
+                //                     results[screenId] = {};
+                //                 }
+                //                 results[screenId][blockType] = blockValues;
+                //             }
+                //         }
+                //     }
 
-                    // Создать HTML-разметку для отображения результатов
-                    let html = '';
-                    for (const screenId in results) {
-                        const screenName = getScreenName(screenId); // Функция для получения названия экрана по его идентификатору
-                        html += `<h2>${screenName}</h2>`;
-                        for (const blockType in results[screenId]) {
-                            const blockName = getBlockName(blockType); // Функция для получения названия блока по его типу
-                            html += `<h3>${blockName}</h3>`;
-                            html += '<ul>';
-                            results[screenId][blockType].forEach((value) => {
-                                html += `<li>${value}</li>`;
-                            });
-                            html += '</ul>';
-                        }
-                    }
+                //     // Создать HTML-разметку для отображения результатов
+                //     let html = '';
+                //     for (const screenId in results) {
+                //         const screenName = getScreenName(screenId); // Функция для получения названия экрана по его идентификатору
+                //         html += `<h2>${screenName}</h2>`;
+                //         for (const blockType in results[screenId]) {
+                //             const blockName = getBlockName(blockType); // Функция для получения названия блока по его типу
+                //             html += `<h3>${blockName}</h3>`;
+                //             html += '<ul>';
+                //             results[screenId][blockType].forEach((value) => {
+                //                 html += `<li>${value}</li>`;
+                //             });
+                //             html += '</ul>';
+                //         }
+                //     }
 
-                    // Отобразить результаты на экране результатов
-                    const resultsContainer = document.getElementById('results-container');
-                    resultsContainer.innerHTML = html;
-                }
+                //     // Отобразить результаты на экране результатов
+                //     const resultsContainer = document.getElementById('results-container');
+                //     resultsContainer.innerHTML = html;
+                // }
 
 
             }
