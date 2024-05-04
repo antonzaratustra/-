@@ -188,8 +188,9 @@ body {
 
 
   .bottom-center-image {
-    position: relative;
+    /* position: relative; */
     width: 30%;
+    margin: 20px;
     /* bottom: 0;
     left: 50%;
     transform: translateX(-50%);
