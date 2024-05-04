@@ -1,0 +1,36 @@
+body {
+    background-color: #212529;
+    color: #fff;
+}
+
+.screen {
+    display: none;
+    text-align: center;
+}
+
+.screen.active {
+    display: block;
+}
+
+.test-title {
+    margin-top: 50px;
+    font-size: 2.5rem;
+    font-weight: bold;
+}
+
+.test-description {
+    margin-top: 20px;
+    font-size: 1.2rem;
+}
+
+.test-image {
+    margin-top: 30px;
+    max-width: 300px;
+    height: auto;
+}
+
+.start-test-btn {
+    margin-top: 40px;
+    padding: 10px 20px;
+    font-size: 1.2rem;
+}
