@@ -585,6 +585,11 @@
                 </div>
                 <img src="/Img/spartan-peaceful-warrior-seat-QR.png" alt="Image" class="img-fluid mx-auto d-block mt-4">
             </div>
+
+
+
+
+
         </div>
         <!-- Bootstrap JS -->
         <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
@@ -596,6 +601,8 @@
         <script>
 
             function showScreen(id) {
+
+                console.log('Show screen:', id);
                 // Скрываем все экраны
                 var screens = document.getElementsByClassName('screen');
                 for (var i = 0; i < screens.length; i++) {
@@ -603,7 +610,11 @@
                 }
                 // Показываем нужный экран
                 var screen = document.getElementById(id);
-                screen.classList.add('active');
+                if (screen) {
+                    screen.classList.add('active');
+                } else {
+                    console.log('Screen not found:', id);
+                }
 
 
                 // // Если это экран результатов, отобразить результаты
