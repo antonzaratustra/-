@@ -1311,7 +1311,7 @@
 
 
 
-
+            <br>
 
 
 
@@ -1433,7 +1433,7 @@
 
                 // Выводим содержимое массива selectedAnswers в элемент div с классом results-container
                 const resultsContainer = document.querySelector('.results-container');
-                resultsContainer.innerHTML = '<ul>' + selectedAnswers.map((answer) => '<li>' + answer + '</li>').join('') + '</ul>';
+                resultsContainer.innerHTML = '<ul>' + selectedAnswers.map((answer) => '<li>' + answer + '</li>' + '<br>').join('') + '</ul>';
             });
         });
 
