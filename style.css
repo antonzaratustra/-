@@ -184,3 +184,17 @@ body {
   .form-check-label {
     font-size: small;
   }
+
+
+
+  .bottom-center-image {
+    position: relative;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 30%; /* измените ширину и высоту в соответствии с вашими нуждами */
+  }
+  
+  .button-margin-20px {
+    margin: 20px;
+  }
