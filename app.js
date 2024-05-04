@@ -90,7 +90,10 @@ getResultsBtn.addEventListener('click', function() {
 
 
 
-
+const startTestBtn = document.getElementById('start-test-btn');
+startTestBtn.addEventListener('click', function() {
+  showScreen('screen2');
+});
 
 
 
