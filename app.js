@@ -90,10 +90,6 @@ getResultsBtn.addEventListener('click', function() {
 
 
 
-const startTestBtn = document.getElementById('start-test-btn');
-startTestBtn.addEventListener('click', function() {
-  showScreen('screen2');
-});
 
 
 
@@ -153,3 +149,11 @@ function showScreen(id) {
         resultsContainer.innerHTML = html;
     }
 }
+
+
+
+
+const startTestBtn = document.getElementById('start-test-btn');
+startTestBtn.addEventListener('click', function() {
+  showScreen('screen2');
+});
