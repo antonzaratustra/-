@@ -119,3 +119,8 @@ body {
 .form-check {
     margin-bottom: 10px;
 }
+
+
+.row {
+    flex-direction: row;
+  }
