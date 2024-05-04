@@ -119,7 +119,7 @@ body {
 
 
 .description-container {
-    max-width: 600px;
+    max-width: 800px;
     margin: 0 auto;
 }
 
@@ -153,4 +153,10 @@ body {
 .row {
     flex-wrap: nowrap;
     display: flex;
+  }
+
+
+  .screen #screen8 img {
+    max-width: 100%;
+    width: 500px;
   }
