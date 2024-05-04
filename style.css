@@ -50,6 +50,13 @@ body {
     margin-right: 10px;
 }
 
+.category-box {
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    margin: 0 5px;
+}
+
 .block-container {
     background-color: #343a40;
     padding: 20px;
@@ -91,4 +98,24 @@ body {
     font-size: 1.2rem;
     line-height: 1.5;
     text-align: justify;
+}
+
+
+.block-container {
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    text-align: center;
+}
+
+.block-title {
+    margin-bottom: 10px;
+}
+
+.block-subtitle {
+    margin-bottom: 20px;
+}
+
+.form-check {
+    margin-bottom: 10px;
 }
