@@ -126,4 +126,5 @@ body {
 
 .row {
     flex-wrap: nowrap;
+    display: flex;
   }
