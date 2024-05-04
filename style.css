@@ -23,14 +23,22 @@ body {
     font-size: 1.2rem;
 }
 
-.test-image {
+.img-container {
+    position: relative;
     margin-top: 30px;
+    text-align: center;
+}
+
+.test-image {
     max-width: 300px;
     height: auto;
 }
 
 .start-test-btn {
-    margin-top: 40px;
+    position: absolute;
+    bottom: -40px;
+    left: 50%;
+    transform: translateX(-50%);
     padding: 10px 20px;
     font-size: 1.2rem;
 }
@@ -71,4 +79,16 @@ body {
     margin-top: 40px;
     padding: 10px 20px;
     font-size: 1.2rem;
+}
+
+
+.description-container {
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.test-description {
+    font-size: 1.2rem;
+    line-height: 1.5;
+    text-align: justify;
 }
