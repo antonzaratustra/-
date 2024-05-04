@@ -188,7 +188,7 @@ body {
 
 
   .bottom-center-image {
-    position: relative;
+    position: absolute;
     bottom: 0;
     left: 50%;
     transform: translateX(-50%);
@@ -197,4 +197,5 @@ body {
   
   .button-margin-20px {
     margin: 20px;
+    padding: 20px;
   }
