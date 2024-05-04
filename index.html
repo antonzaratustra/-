@@ -1408,6 +1408,44 @@
 
 
 
+// Создаем пустой массив для хранения выбранных ответов
+const selectedAnswers = [];
+
+// Находим все чекбоксы на странице
+const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+
+// Добавляем обработчик события change для каждого чекбокса
+checkboxes.forEach((checkbox) => {
+  checkbox.addEventListener('change', function() {
+    // Проверяем, отмечен ли чекбокс или нет
+    if (checkbox.checked) {
+      // Добавляем значение data-text в массив selectedAnswers
+      selectedAnswers.push(checkbox.dataset.text);
+    } else {
+      // Находим индекс значения data-text в массиве selectedAnswers
+      const index = selectedAnswers.indexOf(checkbox.dataset.text);
+      // Удаляем значение data-text из массива selectedAnswers
+      selectedAnswers.splice(index, 1);
+    }
+
+    // Выводим содержимое массива selectedAnswers в элемент div с классом results-container
+    const resultsContainer = document.querySelector('.results-container');
+    resultsContainer.innerHTML = '<ul>' + selectedAnswers.map((answer) => '<li>' + answer + '</li>').join('') + '</ul>';
+  });
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
     </script>
 </body>
 
