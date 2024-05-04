@@ -1256,10 +1256,13 @@
 
         <!-- Screen 8 -->
         <div class="screen" id="screen8">
-            <div class="results-container text-center">
+            <h1 class="test-title">Mentorist</h1>
+
+            <div class="results-container description-container text-center">
                 <!-- Здесь будут отображаться результаты -->
             </div>
-            <h1 class="test-title">Mentorist</h1>
+
+            <h1 class="test-title">Что дальше?</h1>
 
             <div class=" description-container text-center mt-4 mx-auto" style="width: 60%;">
                 <p>Используй эту информацию для проработки своих целей и задач с Mentorist в Telegram боте с
@@ -1408,31 +1411,31 @@
 
 
 
-// Создаем пустой массив для хранения выбранных ответов
-const selectedAnswers = [];
+        // Создаем пустой массив для хранения выбранных ответов
+        const selectedAnswers = [];
 
-// Находим все чекбоксы на странице
-const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+        // Находим все чекбоксы на странице
+        const checkboxes = document.querySelectorAll('input[type="checkbox"]');
 
-// Добавляем обработчик события change для каждого чекбокса
-checkboxes.forEach((checkbox) => {
-  checkbox.addEventListener('change', function() {
-    // Проверяем, отмечен ли чекбокс или нет
-    if (checkbox.checked) {
-      // Добавляем значение data-text в массив selectedAnswers
-      selectedAnswers.push(checkbox.dataset.text);
-    } else {
-      // Находим индекс значения data-text в массиве selectedAnswers
-      const index = selectedAnswers.indexOf(checkbox.dataset.text);
-      // Удаляем значение data-text из массива selectedAnswers
-      selectedAnswers.splice(index, 1);
-    }
+        // Добавляем обработчик события change для каждого чекбокса
+        checkboxes.forEach((checkbox) => {
+            checkbox.addEventListener('change', function () {
+                // Проверяем, отмечен ли чекбокс или нет
+                if (checkbox.checked) {
+                    // Добавляем значение data-text в массив selectedAnswers
+                    selectedAnswers.push(checkbox.dataset.text);
+                } else {
+                    // Находим индекс значения data-text в массиве selectedAnswers
+                    const index = selectedAnswers.indexOf(checkbox.dataset.text);
+                    // Удаляем значение data-text из массива selectedAnswers
+                    selectedAnswers.splice(index, 1);
+                }
 
-    // Выводим содержимое массива selectedAnswers в элемент div с классом results-container
-    const resultsContainer = document.querySelector('.results-container');
-    resultsContainer.innerHTML = '<ul>' + selectedAnswers.map((answer) => '<li>' + answer + '</li>').join('') + '</ul>';
-  });
-});
+                // Выводим содержимое массива selectedAnswers в элемент div с классом results-container
+                const resultsContainer = document.querySelector('.results-container');
+                resultsContainer.innerHTML = '<ul>' + selectedAnswers.map((answer) => '<li>' + answer + '</li>').join('') + '</ul>';
+            });
+        });
 
 
 

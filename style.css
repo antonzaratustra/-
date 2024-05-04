@@ -200,4 +200,10 @@ body {
     transform: translateX(-50%);
     width: 30%; измените ширину и высоту в соответствии с вашими нуждами */
   }
+
+
+  .results-container {
+    color:   #b5ffaf;
+  }
+
   
