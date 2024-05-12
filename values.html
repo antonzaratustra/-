@@ -244,6 +244,7 @@
             });
 
             const valueBlock = document.getElementById('value-block');
+            valueBlock.style.display = 'flex'; // добавляем свойство display: flex
             valueBlock.innerHTML = '';
             valuesToIncrease.forEach(value => {
                 const valueElement = document.createElement('div');
@@ -266,6 +267,9 @@
         }
 
         function showSituation() {
+            
+            document.getElementById('value-block').style.display = 'none';
+            
             const currentSituation = situations[currentSituationIndex];
 
             document.querySelector('.value-description.test-description').textContent = currentSituation["value-description"];
