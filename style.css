@@ -25,6 +25,7 @@ body {
 .test-description {
     margin-top: 20px;
     font-size: 1.2rem;
+    margin: 0 auto;
 }
 
 .img-container {
@@ -255,6 +256,7 @@ body {
     display: flex;
     justify-content: space-around;
     padding: 20px;
+    flex-direction: column;
 }
 
 
