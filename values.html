@@ -63,32 +63,26 @@
         <!-- Screen 2 -->
         <div class="screen" id="screen2">
 
-
             <h2>Ситуация</h2>
-            <p>Ты узнал, что у твоего лучшего друга рак в последней стадии, и ему осталось жить не более полугода.
-                Он просит тебя помочь ему умереть достойно и без страданий, используя эвтаназию. Он знает, что это
-                противозаконно в вашей стране, и что ты рискуешь попасть в тюрьму, но он готов принять этот риск,
-                чтобы избежать мучительной смерти. Ты знаешь, что это тяжелое решение, и что это может повлиять на
-                твою жизнь и жизнь твоих близких, но ты также знаешь, что это твой лучший друг, и что ты хочешь
-                помочь ему в этот трудный момент.</p>
+            <p class="value-description test-description"></p>
             <h3>Вопрос</h3>
+            <p class="value-question"></p>
             <div id="timer">60</div>
             <div class="answer-block">
                 <div class="answer-option left">
-                    <p>Помочь другу умереть достойно, используя эвтаназию/p>
+                    <p class="test-description"></p>
                 </div>
                 <div class="answer-option right">
-                    <p>Отказать другу в этой просьбе, сославшись на закон и риск для себя</p>
+                    <p class="test-description"></p>
                 </div>
             </div>
 
+            <div id="value-block">
 
-
-            <!-- <button class="btn btn-light next-btn mx-auto d-block" onclick="showScreen('screen3')">Далее</button>
-        <img src="Img/s1.png" alt="Left image" class="bottom-left-image"> -->
-
+            </div>
 
         </div>
+
         <!-- End Screen 2 -->
 
 
@@ -318,779 +312,6 @@
 
 
 
-        <!-- Screen 4 -->
-        <div class="screen" id="screen4">
-
-            <div class="row justify-content-center mb-4">
-                <div class="col-2">
-                    <div class="category-box text-center">
-                        Личная жизнь и отношения
-                    </div>
-                </div>
-                <div class="col-2">
-                    <div class="category-box text-center">
-                        Карьера и образование
-                    </div>
-                </div>
-                <div class="col-2">
-                    <div class="category-box-active text-center">
-                        Здоровье и физическая форма
-                    </div>
-                </div>
-                <div class="col-2">
-                    <div class="category-box text-center">
-                        Финансы и материальное благополучие
-                    </div>
-                </div>
-                <div class="col-2">
-                    <div class="category-box text-center">
-                        Самореализация и личностный рост
-                    </div>
-                </div>
-                <div class="col-2">
-                    <div class="category-box text-center">
-                        Общество и политика
-                    </div>
-                </div>
-            </div>
-
-            <div class="row justify-content-center">
-                <div class="col-4">
-                    <div class="block-container">
-                        <h3 class="block-title">Страхи</h3>
-                        <h4 class="block-subtitle">Отметь галочкой чего боишься больше всего в этой сфере жизни, чтобы
-                            осознать свои страхи и понять, какие из них являются наиболее актуальными.
-                        </h4>
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault1"
-                                data-screen-id="screen4" data-block-type="fears"
-                                data-text="Болезни: Чтобы преодолеть страх болезней, важно позаботиться о своем здоровье и иммунитете. Это можно сделать, ведя здоровый образ жизни, регулярно занимаясь физическими упражнениями, здоровым питанием и отдыхом. Также важно регулярно проходить медицинские осмотры и своевременно лечить любые заболевания."
-                                onchange="saveAnswer(this)">
-                            <label class="form-check-label" for="flexCheckDefault1">
-                                Болезни: Меня пугает мысль, что я могу заболеть и потерять здоровье. Моя неуверенность в
-                                своем иммунитете и недостаток знаний о здоровом образе жизни мешают мне чувствовать себя
-                                защищенным от болезней.
-                            </label>
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault2"
-                                data-screen-id="screen4" data-block-type="fears"
-                                data-text="Травмы: Чтобы преодолеть страх травм, важно заниматься спортом и физическими упражнениями с осторожностью и разумно. Необходимо выбирать подходящие виды спорта и упражнения, соответствующие своему уровню подготовки и физической форме. Также важно использовать защитное снаряжение и следовать правилам безопасности."
-                                onchange="saveAnswer(this)">
-                            <label class="form-check-label" for="flexCheckDefault2">
-                                Травмы: Я боюсь травм и физических повреждений, которые могут навсегда изменить мою
-                                жизнь. Моя неуверенность в своих физических способностях и недостаток опыта в спорте
-                                мешают мне чувствовать себя уверенно и безопасно.
-                            </label>
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault3"
-                                data-screen-id="screen4" data-block-type="fears"
-                                data-text="Физический упадок: Чтобы преодолеть страх физического упадка, важно регулярно заниматься физическими упражнениями и поддерживать свою физическую форму. Это поможет сохранить физическую силу и выносливость, а также предотвратить возникновение хронических заболеваний."
-                                onchange="saveAnswer(this)">
-                            <label class="form-check-label" for="flexCheckDefault3">
-                                Физический упадок: Мне страшно, что со временем мое тело будет ухудшаться, и я потеряю
-                                физическую силу и выносливость. Моя неуверенность в своих способностях поддерживать
-                                физическую форму и недостаток дисциплины в тренировках мешают мне чувствовать себя
-                                уверенно в своем будущем.
-                            </label>
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault4"
-                                data-screen-id="screen4" data-block-type="fears"
-                                data-text="Потеря привлекательности: Чтобы преодолеть страх потери привлекательности, важно позаботиться о своем здоровье и внешнем виде. Это можно сделать, ведя здоровый образ жизни, регулярно занимаясь физическими упражнениями, здоровым питанием и уходом за собой."
-                                onchange="saveAnswer(this)">
-                            <label class="form-check-label" for="flexCheckDefault4">
-                                Потеря привлекательности: Я боюсь, что со временем я потеряю свою привлекательность и
-                                стану менее привлекательным для других людей. Моя неуверенность в своей внешности и
-                                недостаток знаний о здоровом образе жизни мешают мне чувствовать себя уверенно и
-                                привлекательным.
-                            </label>
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault5"
-                                data-screen-id="screen4" data-block-type="fears"
-                                data-text="Преждевременное старение: Чтобы преодолеть страх преждевременного старения, важно позаботиться о своем здоровье и внешнем виде. Это можно сделать, ведя здоровый образ жизни, регулярно занимаясь физическими упражнениями, здоровым питанием и уходом за собой."
-                                onchange="saveAnswer(this)">
-                            <label class="form-check-label" for="flexCheckDefault5">
-                                Преждевременное старение: Мне страшно, что я быстро старею и теряю молодость. Моя
-                                неуверенность в своем здоровье и недостаток знаний о здоровом образе жизни мешают мне
-                                чувствовать себя уверенно в своем будущем.
-                            </label>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-4">
-                    <div class="block-container">
-                        <h3 class="block-title">Желания</h3>
-                        <h4 class="block-subtitle">Отметь галочкой чего больше всего хочешь добиться в этой сфере жизни,
-                            чтобы сфокусироваться на своих целях и понять, что тебе действительно важно.
-                        </h4>
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault6"
-                                data-screen-id="screen4" data-block-type="desires"
-                                data-text="Хорошее здоровье: Чтобы достичь хорошего здоровья, важно вести здоровый образ жизни, регулярно заниматься физическими упражнениями, здоровым питанием и отдыхом. Также важно регулярно проходить медицинские осмотры и своевременно лечить любые заболевания."
-                                onchange="saveAnswer(this)">
-                            <label class="form-check-label" for="flexCheckDefault6">
-                                Хорошее здоровье: Я хочу иметь хорошее здоровье и чувствовать себя сильным и здоровым.
-                                Но мои нездоровые привычки и недостаток знаний о здоровом образе жизни мешают мне
-                                достичь этого.
-                            </label>
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault7"
-                                data-screen-id="screen4" data-block-type="desires"
-                                data-text="Физическая сила и выносливость: Чтобы достичь физической силы и выносливости, важно регулярно заниматься физическими упражнениями и поддерживать свою физическую форму. Это поможет сохранить физическую силу и выносливость, а также предотвратить возникновение хронических заболеваний."
-                                onchange="saveAnswer(this)">
-                            <label class="form-check-label" for="flexCheckDefault7">
-                                Физическая сила и выносливость: Мне хочется иметь физическую силу и выносливость,
-                                которые позволят мне чувствовать себя уверенно и независимо. Но мои недостаточные
-                                физические нагрузки и недостаток дисциплины в тренировках мешают мне достичь этого.
-                            </label>
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault8"
-                                data-screen-id="screen4" data-block-type="desires"
-                                data-text="Привлекательная внешность: Чтобы достичь привлекательной внешности, важно позаботиться о своем здоровье и внешнем виде. Это можно сделать, ведя здоровый образ жизни, регулярно занимаясь физическими упражнениями, здоровым питанием и уходом за собой."
-                                onchange="saveAnswer(this)">
-                            <label class="form-check-label" for="flexCheckDefault8">
-                                Привлекательная внешность: Я хочу иметь привлекательную внешность и чувствовать себя
-                                привлекательным для других людей. Но мои нездоровые привычки и недостаток знаний о
-                                здоровом образе жизни мешают мне достичь этого.
-                            </label>
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault9"
-                                data-screen-id="screen4" data-block-type="desires"
-                                data-text="Спортивные достижения: Чтобы достичь спортивных достижений, важно заниматься спортом и физическими упражнениями с осторожностью и разумно. Необходимо выбирать подходящие виды спорта и упражнения, соответствующие своему уровню подготовки и физической форме. Также важно использовать защитное снаряжение и следовать правилам безопасности."
-                                onchange="saveAnswer(this)">
-                            <label class="form-check-label" for="flexCheckDefault9">
-                                Спортивные достижения: Мне хочется добиться спортивных достижений и чувствовать себя
-                                успешным в спорте. Но мои ограниченные физические способности и недостаток опыта в
-                                спорте мешают мне достичь этого.
-                            </label>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-4">
-                    <div class="block-container">
-                        <h3 class="block-title">Раздражает</h3>
-                        <h4 class="block-subtitle">Отметь галочкой что регулярно вызывает у тебя раздражение и стресс в
-                            этой сфере жизни, чтобы осознать свои триггеры стресса и найти способы справляться с ними.
-                        </h4>
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault10"
-                                data-screen-id="screen4" data-block-type="annoyances"
-                                data-text="Отсутствие времени на спорт и здоровый образ жизни: Чтобы преодолеть отсутствие времени на спорт и здоровый образ жизни, важно эффективно управлять своим временем и сочетать работу, учёбу и здоровый образ жизни. Это можно сделать, планируя свой день и выделяя время для занятий спортом и здоровым питанием."
-                                onchange="saveAnswer(this)">
-                            <label class="form-check-label" for="flexCheckDefault10">
-                                Отсутствие времени на спорт и здоровый образ жизни: Отсутствие времени на спорт и
-                                здоровый образ жизни раздражает меня и вызывает стресс. Я не знаю, как эффективно
-                                управлять своим временем и сочетать работу, учёбу и здоровый образ жизни.
-                            </label>
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault11"
-                                data-screen-id="screen4" data-block-type="annoyances"
-                                data-text="Плохое питание: Чтобы преодолеть плохое питание, важно эффективно управлять своим питанием и выбирать здоровую пищу. Это можно сделать, изучая основы здорового питания и планируя свое питание заранее."
-                                onchange="saveAnswer(this)">
-                            <label class="form-check-label" for="flexCheckDefault11">
-                                Плохое питание: Плохое питание и недостаток здоровой пищи раздражают меня и вызывают
-                                стресс. Я не знаю, как эффективно управлять своим питанием и выбирать здоровую пищу.
-                            </label>
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault9"
-                                data-screen-id="screen4" data-block-type="annoyances"
-                                data-text="Невозможность регулярно посещать врачей: Чтобы преодолеть невозможность регулярно посещать врачей, важно эффективно управлять своим здоровьем и предотвращать болезни. Это можно сделать, ведя здоровый образ жизни, регулярно занимаясь физическими упражнениями, здоровым питанием и отдыхом. Также важно регулярно проходить медицинские осмотры и своевременно лечить любые заболевания."
-                                onchange="saveAnswer(this)">
-                            <label class="form-check-label" for="flexCheckDefault12">
-                                Невозможность регулярно посещать врачей: Невозможность регулярно посещать врачей и
-                                проходить медицинские осмотры раздражает меня и вызывает стресс. Я не знаю, как
-                                эффективно управлять своим здоровьем и предотвращать болезни.
-                            </label>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <button class="btn btn-light next-btn mx-auto d-block" onclick="showScreen('screen5')">Далее</button>
-            <img src="Img/s3.png" alt="Left image" class="bottom-right-image">
-
-        </div>
-        <!-- End Screen 4 -->
-
-
-
-
-
-        <!-- Screen 5 -->
-        <div class="screen" id="screen5">
-            <div class="row justify-content-center mb-4">
-                <div class="col-2">
-                    <div class="category-box text-center">
-                        Личная жизнь и отношения
-                    </div>
-                </div>
-                <div class="col-2">
-                    <div class="category-box text-center">
-                        Карьера и образование
-                    </div>
-                </div>
-                <div class="col-2">
-                    <div class="category-box text-center">
-                        Здоровье и физическая форма
-                    </div>
-                </div>
-                <div class="col-2">
-                    <div class="category-box-active text-center">
-                        Финансы и материальное благополучие
-                    </div>
-                </div>
-                <div class="col-2">
-                    <div class="category-box text-center">
-                        Самореализация и личностный рост
-                    </div>
-                </div>
-                <div class="col-2">
-                    <div class="category-box text-center">
-                        Общество и политика
-                    </div>
-                </div>
-            </div>
-
-
-
-
-            <div class="row justify-content-center">
-                <div class="col-4">
-                    <div class="block-container">
-                        <h3 class="block-title">Страхи</h3>
-                        <h4 class="block-subtitle">Отметь галочкой чего боишься больше всего в этой сфере жизни, чтобы
-                            осознать свои страхи и понять, какие из них являются наиболее актуальными.
-                        </h4>
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault1"
-                                data-screen-id="screen5" data-block-type="fears"
-                                data-text="Бедность: Чтобы преодолеть страх бедности, важно планировать свой бюджет и экономить деньги. Это поможет создать финансовый резерв на случай непредвиденных расходов. Также важно развивать свои финансовые навыки и знания, чтобы эффективно управлять своими финансами."
-                                onchange="saveAnswer(this)">
-                            <label class="form-check-label" for="flexCheckDefault1">
-                                Бедность: Меня пугает мысль, что я могу оказаться в бедности и не смогу обеспечить себя
-                                и свою семью. Моя неуверенность в финансовом будущем и недостаток навыков финансового
-                                планирования мешают мне чувствовать себя спокойно и безопасно.
-                            </label>
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault2"
-                                data-screen-id="screen5" data-block-type="fears"
-                                data-text="Финансовая нестабильность: Чтобы преодолеть страх финансовой нестабильности, важно диверсифицировать свои доходы и инвестиции. Это поможет снизить риск потери дохода и увеличить финансовую стабильность."
-                                onchange="saveAnswer(this)">
-                            <label class="form-check-label" for="flexCheckDefault2">
-                                Финансовая нестабильность: Я боюсь финансовой нестабильности и непредсказуемости. Моя
-                                работа не гарантирует стабильный доход, и это вызывает стресс и беспокойство.
-                            </label>
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault3"
-                                data-screen-id="screen5" data-block-type="fears"
-                                data-text="Неспособность обеспечить себя и свою семью: Чтобы преодолеть страх неспособности обеспечить себя и свою семью, важно планировать свой бюджет и экономить деньги. Это поможет создать финансовый резерв на случай непредвиденных расходов. Также важно развивать свои профессиональные навыки и искать новые возможности для повышения дохода."
-                                onchange="saveAnswer(this)">
-                            <label class="form-check-label" for="flexCheckDefault3">
-                                Неспособность обеспечить себя и свою семью: Мне страшно думать, что я не смогу
-                                обеспечить себя и свою семью материально. Мои ограниченные финансовые ресурсы и высокие
-                                расходы мешают мне чувствовать себя финансово независимым.
-                            </label>
-                        </div>
-
-
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault4"
-                                data-screen-id="screen5" data-block-type="fears"
-                                data-text="Долги: Чтобы преодолеть страх долгов, важно эффективно управлять своими финансами и избегать ненужных расходов. Это поможет избежать займов и долгов. Также важно планировать свой бюджет и экономить деньги, чтобы иметь возможность погашать существующие долги."
-                                onchange="saveAnswer(this)">
-                            <label class="form-check-label" for="flexCheckDefault4">
-                                Долги: Я боюсь займов и долгов, которые могут стать тяжелым бременем для меня и моей
-                                семьи. Моя неспособность эффективно управлять своими финансами и недостаток дисциплины в
-                                расходах мешают мне избежать долгов.
-
-                            </label>
-                        </div>
-
-
-
-
-
-
-
-
-
-
-
-
-                    </div>
-                </div>
-                <div class="col-4">
-                    <div class="block-container">
-                        <h3 class="block-title">Желания</h3>
-                        <h4 class="block-subtitle">Отметь галочкой чего больше всего хочешь добиться в этой сфере жизни,
-                            чтобы сфокусироваться на своих целях и понять, что тебе действительно важно.
-                        </h4>
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault5"
-                                data-screen-id="screen5" data-block-type="desires"
-                                data-text="Финансовая независимость: Чтобы добиться финансовой независимости, важно эффективно управлять своими финансами и планировать свой бюджет. Это поможет создать финансовый резерв и инвестировать в будущее. Также важно развивать свои финансовые навыки и знания, чтобы эффективно управлять своими финансами."
-                                onchange="saveAnswer(this)">
-                            <label class="form-check-label" for="flexCheckDefault5">
-                                Финансовая независимость: Я хочу добиться финансовой независимости и чувствовать себя
-                                свободным и независимым от финансовых обстоятельств. Но мои ограниченные финансовые
-                                ресурсы и недостаток навыков финансового планирования мешают мне достичь этого.
-                            </label>
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault6"
-                                data-screen-id="screen5" data-block-type="desires"
-                                data-text="Стабильность: Чтобы добиться финансовой стабильности, важно диверсифицировать свои доходы и инвестиции. Это поможет снизить риск потери дохода и увеличить финансовую стабильность."
-                                onchange="saveAnswer(this)">
-                            <label class="form-check-label" for="flexCheckDefault6">
-                                Стабильность: Мне хочется финансовой стабильности и предсказуемости. Но моя работа не
-                                гарантирует стабильный доход, и это мешает моему желанию чувствовать себя финансово
-                                стабильным.
-                            </label>
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault7"
-                                data-screen-id="screen5" data-block-type="desires"
-                                data-text="Возможность путешествовать и покупать дорогое и качественное: Чтобы осуществить это желание, важно эффективно управлять своими финансами и планировать свой бюджет. Это поможет создать финансовый резерв и экономить деньги на путешествия и покупки. Также важно искать выгодные предложения и скидки, чтобы экономить деньги."
-                                onchange="saveAnswer(this)">
-                            <label class="form-check-label" for="flexCheckDefault7">
-                                Возможность путешествовать и покупать дорогое и качественное: Я хочу иметь возможность
-                                путешествовать и покупать дорогое и качественное. Но мои ограниченные финансовые ресурсы
-                                и высокие расходы мешают мне осуществить это желание.
-                            </label>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-4">
-                    <div class="block-container">
-                        <h3 class="block-title">Раздражает</h3>
-                        <h4 class="block-subtitle">Отметь галочкой что регулярно вызывает у тебя раздражение и стресс в
-                            этой сфере жизни, чтобы осознать свои триггеры стресса и найти способы справляться с ними.
-                        </h4>
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault8"
-                                data-screen-id="screen5" data-block-type="annoyances"
-                                data-text="Низкие зарплаты: Чтобы преодолеть раздражение из-за низких зарплат, важно развивать свои профессиональные навыки и искать новые возможности для повышения дохода. Это может быть связано с обучением, переквалификацией или сменой работы."
-                                onchange="saveAnswer(this)">
-                            <label class="form-check-label" for="flexCheckDefault8">
-                                Низкие зарплаты: Меня бесит, что моя зарплата не соответствует моим навыкам и усилиям. Я
-                                не знаю, как добиться повышения или найти лучшую работу, и это мешает мне чувствовать
-                                себя финансово удовлетворенным.
-                            </label>
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault9"
-                                data-screen-id="screen5" data-block-type="annoyances"
-                                data-text="Высокие цены: Чтобы преодолеть раздражение из-за высоких цен, важно эффективно управлять своими финансами и искать выгодные предложения и скидки. Это поможет экономить деньги и сократить расходы."
-                                onchange="saveAnswer(this)">
-                            <label class="form-check-label" for="flexCheckDefault9">
-                                Высокие цены: Высокие цены на товары и услуги раздражают меня и вызывают стресс. Я не
-                                знаю, как эффективно управлять своими расходами и экономить деньги, и это мешает мне
-                                чувствовать себя финансово стабильным.
-                            </label>
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault10"
-                                data-screen-id="screen5" data-block-type="annoyances"
-                                data-text="Несправедливые налоги: Чтобы преодолеть раздражение из-за несправедливых налогов, важно изучать налоговое законодательство и искать возможности для оптимизации налоговой нагрузки. Это может быть связано с использованием льгот, налоговых вычетов и других инструментов."
-                                onchange="saveAnswer(this)">
-                            <label class="form-check-label" for="flexCheckDefault10">
-                                Несправедливые налоги: Меня бесит, что налоги в моей стране несправедливы и
-                                неэффективны. Я не знаю, как изменить эту ситуацию, и это мешает мне чувствовать себя
-                                финансово защищенным.
-                            </label>
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault11"
-                                data-screen-id="screen5" data-block-type="annoyances"
-                                data-text="Невозможность сэкономить деньги: Чтобы преодолеть раздражение из-за невозможности сэкономить деньги, важно эффективно управлять своими финансами и планировать свой бюджет. Это поможет создать финансовый резерв и экономить деньги на будущее. Также важно развивать свои финансовые навыки и знания, чтобы эффективно управлять своими финансами."
-                                onchange="saveAnswer(this)">
-                            <label class="form-check-label" for="flexCheckDefault11">
-                                Невозможность сэкономить деньги: Невозможность сэкономить деньги и создать финансовый
-                                резерв раздражает меня и вызывает стресс. Мои высокие расходы и недостаток дисциплины в
-                                расходах мешают мне эффективно управлять своими финансами.
-                            </label>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <button class="btn btn-light next-btn mx-auto d-block" onclick="showScreen('screen6')">Далее</button>
-            <img src="Img/s4.png" alt="Right image" class="bottom-left-image">
-
-        </div>
-        <!-- End Screen 5 -->
-
-        <!--  -->
-
-        <!-- Screen 6 -->
-        <div class="screen" id="screen6">
-            <div class="row justify-content-center mb-4">
-                <div class="col-2">
-                    <div class="category-box text-center">
-                        Личная жизнь и отношения
-                    </div>
-                </div>
-                <div class="col-2">
-                    <div class="category-box text-center">
-                        Карьера и образование
-                    </div>
-                </div>
-                <div class="col-2">
-                    <div class="category-box text-center">
-                        Здоровье и физическая форма
-                    </div>
-                </div>
-                <div class="col-2">
-                    <div class="category-box text-center">
-                        Финансы и материальное благополучие
-                    </div>
-                </div>
-                <div class="col-2">
-                    <div class="category-box-active text-center">
-                        Самореализация и личностный рост
-                    </div>
-                </div>
-                <div class="col-2">
-                    <div class="category-box text-center">
-                        Общество и политика
-                    </div>
-                </div>
-            </div>
-
-
-            <div class="row justify-content-center">
-                <div class="col-4">
-                    <div class="block-container">
-                        <h3 class="block-title">Страхи</h3>
-                        <h4 class="block-subtitle">Отметь галочкой чего боишься больше всего в этой сфере жизни, чтобы
-                            осознать свои страхи и понять, какие из них являются наиболее актуальными.
-                        </h4>
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault1"
-                                data-screen-id="screen6" data-block-type="fears"
-                                data-text="Неспособность реализовать свои таланты и способности: Чтобы преодолеть этот страх, важно начать с малых шагов и искать возможности для самовыражения и развития своих талантов. Это может быть связано с обучением, участием в творческих проектах или волонтерством. Важно также развивать свои навыки и знания, чтобы чувствовать себя уверенно в своих способностях."
-                                onchange="saveAnswer(this)">
-                            <label class="form-check-label" for="flexCheckDefault1">
-                                Неспособность реализовать свои таланты и способности: Меня пугает мысль, что я не смогу
-                                реализовать свои таланты и способности и проживу жизнь впустую. Моя неуверенность в себе
-                                и недостаток опыта мешают мне чувствовать себя уверенно в своих способностях.
-                            </label>
-                        </div>
-
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault2"
-                                data-screen-id="screen6" data-block-type="fears"
-                                data-text="Неуверенность в себе: Чтобы преодолеть неуверенность в себе, важно работать над своим самооценкой и самоуважением. Это может быть связано с психологическим консультированием, самоанализом и развитием навыков самомотивации. Важно также искать поддержки у близких людей и окружать себя положительными эмоциями."
-                                onchange="saveAnswer(this)">
-                            <label class="form-check-label" for="flexCheckDefault2">
-                                Неуверенность в себе: Мне страшно, что я не смогу добиться успеха и стану неудачником.
-                                Моя неуверенность в себе и недостаток опыта мешают мне чувствовать себя уверенно в своих
-                                способностях.
-                            </label>
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault3"
-                                data-screen-id="screen6" data-block-type="fears"
-                                data-text="Страх риска и изменений: Чтобы преодолеть страх риска и изменений, важно развивать свою гибкость и способность адаптироваться к новым условиям. Это может быть связано с обучением новым навыкам, путешествиями и исследованием новых культур. Важно также работать над своим самоконтролем и способностью принимать риски, исходя из собственных ценностей и целей."
-                                onchange="saveAnswer(this)">
-                            <label class="form-check-label" for="flexCheckDefault3">
-                                Страх риска и изменений: Я боюсь рисковать и менять свою жизнь, потому что не знаю, что
-                                мне принесет будущее. Моя неуверенность в себе и страх неудачи мешают мне двигаться
-                                вперед и принимать риски.
-                            </label>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-4">
-                    <div class="block-container">
-                        <h3 class="block-title">Желания</h3>
-                        <h4 class="block-subtitle">Отметь галочкой чего больше всего хочешь добиться в этой сфере жизни,
-                            чтобы сфокусироваться на своих целях и понять, что тебе действительно важно.
-                        </h4>
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault4"
-                                data-screen-id="screen6" data-block-type="desires"
-                                data-text="Самореализация: Чтобы добиться самореализации, важно искать свое призвание и цель в жизни. Это может быть связано с обучением, самоанализом и поиском своего места в жизни. Важно также развивать свои таланты и способности, искать возможности для самовыражения и реализации своих идей."
-                                onchange="saveAnswer(this)">
-                            <label class="form-check-label" for="flexCheckDefault4">
-                                Самореализация: Я хочу добиться самореализации и чувствовать себя реализованным и
-                                удовлетворенным своей жизнью. Но мои ограниченные возможности для самовыражения и
-                                недостаток опыта мешают мне достичь этого.
-                            </label>
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault5"
-                                data-screen-id="screen6" data-block-type="desires"
-                                data-text="Личный рост: Чтобы добиться личного роста, важно развивать свои навыки и знания, искать новые возможности для обучения и саморазвития. Это может быть связано с обучением, чтением, участием в тренингах и семинарах. Важно также работать над своими личными качествами, такими как самодисциплина, самомотивация и самоконтроль."
-                                onchange="saveAnswer(this)">
-                            <label class="form-check-label" for="flexCheckDefault5">
-                                Личный рост: Мне хочется развиваться и расти личностно, обретать новые навыки и умения.
-                                Но мои ограниченные возможности для обучения и недостаток опыта мешают мне развиваться и
-                                расти.
-                            </label>
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault6"
-                                data-screen-id="screen6" data-block-type="desires"
-                                data-text="Признание своих достижений: Чтобы добиться признания своих достижений, важно искать возможности для самовыражения и демонстрации своих талантов и способностей. Это может быть связано с участием в конкурсах, выставках, публикациями в СМИ. Важно также развивать свои навыки коммуникации и презентации, чтобы эффективно представлять свои достижения другим людям."
-                                onchange="saveAnswer(this)">
-                            <label class="form-check-label" for="flexCheckDefault6">
-                                Признание своих достижений: Я хочу, чтобы мои достижения были признаны и оценены другими
-                                людьми. Но мои ограниченные возможности для самовыражения и недостаток опыта мешают мне
-                                добиться этого.
-                            </label>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-4">
-                    <div class="block-container">
-                        <h3 class="block-title">Раздражает</h3>
-                        <h4 class="block-subtitle">Отметь галочкой что регулярно вызывает у тебя раздражение и стресс в
-                            этой сфере жизни, чтобы осознать свои триггеры стресса и найти способы справляться с ними.
-                        </h4>
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault7"
-                                data-screen-id="screen6" data-block-type="annoyances"
-                                data-text="Отсутствие возможностей для самореализации: Чтобы преодолеть это раздражение, важно искать новые возможности для самовыражения и реализации своих идей. Это может быть связано с обучением, участием в творческих проектах или волонтерством. Важно также развивать свои навыки и знания, чтобы чувствовать себя уверенно в своих способностях."
-                                onchange="saveAnswer(this)">
-                            <label class="form-check-label" for="flexCheckDefault7">
-                                Отсутствие возможностей для самореализации: Отсутствие возможностей для самореализации и
-                                самовыражения раздражает меня и вызывает стресс. Я не знаю, как найти свое место в жизни
-                                и реализовать свои таланты и способности.
-                            </label>
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault8"
-                                data-screen-id="screen6" data-block-type="annoyances"
-                                data-text="Ограничения со стороны общества и семьи: Чтобы преодолеть эти ограничения, важно искать поддержки у близких людей и окружать себя положительными эмоциями. Это может быть связано с обсуждением своих проблем с психологом, участием в группах взаимопомощи или самостоятельным самоанализом. Важно также развивать свои навыки коммуникации и уметь защищать свои интересы."
-                                onchange="saveAnswer(this)">
-                            <label class="form-check-label" for="flexCheckDefault8">
-                                Ограничения со стороны общества и семьи: Ограничения со стороны общества и семьи
-                                раздражают меня и вызывают стресс. Я не знаю, как преодолеть эти ограничения и жить
-                                своей жизнью, не подчиняясь чужим ожиданиям.
-                            </label>
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault9"
-                                data-screen-id="screen6" data-block-type="annoyances"
-                                data-text="Невозможность изменить свою жизнь: Чтобы преодолеть эту проблему, важно работать над своими страхами и ограничениями, искать новые возможности для развития и самореализации. Это может быть связано с обучением, участием в тренингах и семинарах, самоанализом и развитием навыков самомотивации. Важно также искать поддержки у близких людей и окружать себя положительными эмоциями."
-                                onchange="saveAnswer(this)">
-                            <label class="form-check-label" for="flexCheckDefault9">
-                                Невозможность изменить свою жизнь: Невозможность изменить свою жизнь и стать тем, кем я
-                                хочу быть, раздражает меня и вызывает стресс. Я не знаю, как преодолеть свои страхи и
-                                ограничения и изменить свою жизнь к лучшему.
-                            </label>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <button class="btn btn-light next-btn mx-auto d-block" onclick="showScreen('screen7')">Далее</button>
-            <img src="Img/s5.png" alt="Left image" class="bottom-left-image">
-
-        </div>
-
-
-        <!--End of Screen 6 -->
-        <div class="screen" id="screen7">
-
-
-            <div class="row justify-content-center mb-4">
-                <div class="col-2">
-                    <div class="category-box text-center">
-                        Личная жизнь и отношения
-                    </div>
-                </div>
-                <div class="col-2">
-                    <div class="category-box text-center">
-                        Карьера и образование
-                    </div>
-                </div>
-                <div class="col-2">
-                    <div class="category-box text-center">
-                        Здоровье и физическая форма
-                    </div>
-                </div>
-                <div class="col-2">
-                    <div class="category-box text-center">
-                        Финансы и материальное благополучие
-                    </div>
-                </div>
-                <div class="col-2">
-                    <div class="category-box text-center">
-                        Самореализация и личностный рост
-                    </div>
-                </div>
-                <div class="col-2">
-                    <div class="category-box-active text-center">
-                        Общество и политика
-                    </div>
-                </div>
-            </div>
-
-
-            <div class="row justify-content-center">
-                <div class="col-4">
-                    <div class="block-container">
-                        <h3 class="block-title">Страхи</h3>
-                        <h4 class="block-subtitle">Отметь галочкой чего боишься больше всего в этой сфере жизни, чтобы
-                            осознать свои страхи и понять, какие из них являются наиболее актуальными.
-                        </h4>
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault1"
-                                data-screen-id="screen7" data-block-type="fears"
-                                data-text="Нестабильность в стране: Чтобы преодолеть этот страх, важно быть информированным о текущих событиях в стране и мире, участвовать в политических процессах и поддерживать стабильность и безопасность в своем регионе. Также важно развивать навыки адаптации к изменяющимся условиям и быть готовым к чрезвычайным ситуациям."
-                                onchange="saveAnswer(this)">
-                            <label class="form-check-label" for="flexCheckDefault1">
-                                Нестабильность в стране: Меня пугает мысль, что моя страна может стать нестабильной и
-                                небезопасной для жизни. Моя неуверенность в будущем и недостаток знаний о политике
-                                мешают мне чувствовать себя защищенным и безопасным.
-                            </label>
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault2"
-                                data-screen-id="screen7" data-block-type="fears"
-                                data-text="Коррупция: Чтобы преодолеть этот страх, важно участвовать в борьбе с коррупцией, поддерживать прозрачность и ответственность властей, а также развивать навыки критического мышления и анализа информации. Важно также избегать участия в коррупционных схемах и поддерживать честные и этичные нормы поведения."
-                                onchange="saveAnswer(this)">
-                            <label class="form-check-label" for="flexCheckDefault2">
-                                Коррупция: Я боюсь коррупции и несправедливости, которые могут навредить моей жизни и
-                                жизни моей семьи. Моя неуверенность в честности властей и недостаток знаний о политике
-                                мешают мне чувствовать себя защищенным и безопасным.
-                            </label>
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault3"
-                                data-screen-id="screen7" data-block-type="fears"
-                                data-text="Несправедливость: Чтобы преодолеть этот страх, важно участвовать в борьбе за справедливость, поддерживать равенство и защиту прав человека, а также развивать навыки коммуникации и уметь защищать свои права и интересы. Важно также избегать дискриминации и предрассудков, и поддерживать толерантность и уважение к разнообразию."
-                                onchange="saveAnswer(this)">
-                            <label class="form-check-label" for="flexCheckDefault3">
-                                Несправедливость: Мне страшно, что я могу стать жертвой несправедливости и
-                                дискриминации. Моя неуверенность в законе и недостаток знаний о политике мешают мне
-                                чувствовать себя защищенным и безопасным.
-                            </label>
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault4"
-                                data-screen-id="screen7" data-block-type="fears"
-                                data-text="Война и терроризм: Чтобы преодолеть этот страх, важно быть информированным о текущих событиях в мире, участвовать в мирных инициативах и поддерживать стабильность и безопасность в своем регионе. Также важно развивать навыки адаптации к изменяющимся условиям и быть готовым к чрезвычайным ситуациям."
-                                onchange="saveAnswer(this)">
-                            <label class="form-check-label" for="flexCheckDefault4">
-                                Война и терроризм: Я боюсь войны и терроризма, которые могут навредить моей жизни и
-                                жизни моей семьи. Моя неуверенность в безопасности страны и недостаток знаний о политике
-                                мешают мне чувствовать себя защищенным и безопасным.
-                            </label>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-4">
-                    <div class="block-container">
-                        <h3 class="block-title">Желания</h3>
-                        <h4 class="block-subtitle">Отметь галочкой чего больше всего хочешь добиться в этой сфере жизни,
-                            чтобы сфокусироваться на своих целях и понять, что тебе действительно важно.
-                        </h4>
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault5"
-                                data-screen-id="screen7" data-block-type="desires"
-                                data-text="Мир и стабильность: Чтобы добиться мира и стабильности, важно участвовать в политических процессах, поддерживать стабильность и безопасность в своем регионе, а также развивать навыки адаптации к изменяющимся условиям. Важно также поддерживать мирные инициативы и укреплять международное сотрудничество."
-                                onchange="saveAnswer(this)">
-                            <label class="form-check-label" for="flexCheckDefault5">
-                                Мир и стабильность: Я хочу жить в мире и стабильности, где я могу чувствовать себя
-                                защищенным и безопасным. Но мои ограниченные возможности для участия в политике и
-                                недостаток знаний о политике мешают мне достичь этого.
-                            </label>
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault6"
-                                data-screen-id="screen7" data-block-type="desires"
-                                data-text="Честные и эффективные власти: Чтобы добиться честных и эффективных властей, важно участвовать в политических процессах, поддерживать прозрачность и ответственность властей, а также развивать навыки критического мышления и анализа информации. Важно также поддерживать честные и этичные нормы поведения и избегать участия в коррупционных схемах."
-                                onchange="saveAnswer(this)">
-                            <label class="form-check-label" for="flexCheckDefault6">
-                                Честные и эффективные власти: Мне хочется, чтобы власти были честными и эффективными,
-                                чтобы я мог чувствовать себя защищенным и безопасным. Но мои ограниченные возможности
-                                для участия в политике и недостаток знаний о политике мешают мне достичь этого.
-                            </label>
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault7"
-                                data-screen-id="screen7" data-block-type="desires"
-                                data-text="Возможность влиять на политические процессы: Чтобы иметь возможность влиять на политические процессы, важно участвовать в политических дискуссиях и инициативах, развивать навыки коммуникации и уметь защищать свои права и интересы. Важно также изучать политические процессы и искать возможности для участия в них."
-                                onchange="saveAnswer(this)">
-                            <label class="form-check-label" for="flexCheckDefault7">
-                                Возможность влиять на политические процессы: Я хочу иметь возможность влиять на
-                                политические процессы и принимать участие в формировании будущего моей страны. Но мои
-                                ограниченные возможности для участия в политике и недостаток знаний о политике мешают
-                                мне достичь этого.
-                            </label>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-4">
-                    <div class="block-container">
-                        <h3 class="block-title">Раздражает</h3>
-                        <h4 class="block-subtitle">Отметь галочкой что регулярно вызывает у тебя раздражение и стресс в
-                            этой сфере жизни, чтобы осознать свои триггеры стресса и найти способы справляться с ними.
-                        </h4>
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault8"
-                                data-screen-id="screen7" data-block-type="annoyances"
-                                data-text="Коррупция: Чтобы бороться с коррупцией, важно участвовать в борьбе за прозрачность и ответственность властей, поддерживать честные и этичные нормы поведения, и избегать участия в коррупционных схемах. Важно также развивать навыки критического мышления и анализа информации, и поддерживать независимые СМИ."
-                                onchange="saveAnswer(this)">
-                            <label class="form-check-label" for="flexCheckDefault8">
-                                Коррупция: Коррупция и несправедливость раздражают меня и вызывают стресс. Я не знаю,
-                                как бороться с коррупцией и добиваться справедливости.
-                            </label>
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault9"
-                                data-screen-id="screen7" data-block-type="annoyances"
-                                data-text="Беззаконие: Чтобы бороться с беззаконием, важно участвовать в борьбе за соблюдение закона, поддерживать равенство и защиту прав человека, и развивать навыки коммуникации и уметь защищать свои права и интересы. Важно также поддерживать независимые суды и правоохранительные органы."
-                                onchange="saveAnswer(this)">
-                            <label class="form-check-label" for="flexCheckDefault9">
-                                Беззаконие: Беззаконие и неуважение к закону раздражают меня и вызывают стресс. Я не
-                                знаю, как бороться с беззаконием и добиваться соблюдения закона.
-                            </label>
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault10"
-                                data-screen-id="screen7" data-block-type="annoyances"
-                                data-text="Некомпетентность властей: Чтобы добиться эффективной работы властей, важно участвовать в политических процессах, поддерживать прозрачность и ответственность властей, и развивать навыки критического мышления и анализа информации. Важно также поддерживать независимые СМИ и искать возможности для участия в политических инициативах."
-                                onchange="saveAnswer(this)">
-                            <label class="form-check-label" for="flexCheckDefault10">
-                                Некомпетентность властей: Некомпетентность властей и неспособность решать проблемы
-                                страны раздражают меня и вызывают стресс. Я не знаю, как добиться эффективной работы
-                                властей и улучшения жизни в стране.
-                            </label>
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault11"
-                                data-screen-id="screen7" data-block-type="annoyances"
-                                data-text="Отсутствие перспектив развития страны: Чтобы добиться развития страны, важно участвовать в политических процессах, поддерживать стабильность и безопасность в своем регионе, и развивать навыки адаптации к изменяющимся условиям. Важно также поддерживать мирные инициативы и укреплять международное сотрудничество, а также искать возможности для развития экономики и общества."
-                                onchange="saveAnswer(this)">
-                            <label class="form-check-label" for="flexCheckDefault11">
-                                Отсутствие перспектив развития страны: Отсутствие перспектив развития страны и
-                                неспособность решать проблемы экономики и общества раздражают меня и вызывают стресс. Я
-                                не знаю, как добиться развития страны и улучшения жизни людей.
-                            </label>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <button class="btn btn-light next-btn mx-auto d-block" onclick="showScreen('screen8')">Смотреть
-                результат</button>
-            <img src="Img/s6.png" alt="Right image" class="bottom-right-image">
-
-        </div>
-
-
-
 
 
 
@@ -1191,8 +412,75 @@
 
 
 
-        function showScreen(id) {
 
+
+
+
+
+
+
+
+
+
+        const situations = [
+            {
+                "value-description": "Ты узнал, что у твоего лучшего друга рак в последней стадии, и ему осталось жить не более полугода. Он просит тебя помочь ему умереть достойно и без страданий, используя эвтаназию. Он знает, что это противозаконно в вашей стране, и что ты рискуешь попасть в тюрьму, но он готов принять этот риск, чтобы избежать мучительной смерти. Ты знаешь, что это тяжелое решение, и что это может повлиять на твою жизнь и жизнь твоих близких, но ты также знаешь, что это твой лучший друг, и что ты хочешь помочь ему в этот трудный момент.",
+                "value-question": "Что ты выберешь: помочь своему другу умереть достойно, используя эвтаназию, или отказать ему в этой просьбе, сославшись на закон и риск для себя?",
+                "answer-option-left": {
+                    "test-description": "Помочь другу умереть достойно, используя эвтаназию",
+                    "values": ["лояльность", "сострадание", "свобода выбора", "достоинство"]
+                },
+                "answer-option-right": {
+                    "test-description": "Отказать другу в этой просьбе, сославшись на закон и риск для себя",
+                    "values": ["законность", "ответственность", "самосохранение", "уважение к жизни"]
+                }
+            },
+            {
+                "value-description": "Ты увидел, как твой начальник присвоил себе твою идею и получил за нее повышение. Ты знаешь, что это несправедливо, но боишься, что если ты об этом расскажешь, то можешь потерять работу. Ты также знаешь, что если ничего не предпринимать, то это может продолжаться и в будущем.",
+                "value-question": "Что ты выберешь: сохранить работу и молчать, или постоять за справедливость и рискнуть потерять работу?",
+                "answer-option-left": {
+                    "test-description": "Сохранить работу и молчать",
+                    "values": ["безопасность", "лояльность", "самосохранение", "уважение к власти"]
+                },
+                "answer-option-right": {
+                    "test-description": "Постоять за справедливость и рискнуть потерять работу",
+                    "values": ["справедливость", "честность", "ответственность", "мужество"]
+                }
+            },
+            {
+                "value-description": "Ты узнал, что твой друг регулярно бьет свою жену. Он просит тебя не говорить никому об этом, так как боится, что его арестуют и он потеряет работу. Ты знаешь, что это неправильно, но боишься, что если ты расскажешь об этом властям, то можешь потерять дружбу и подвергнуть опасности себя и свою семью.",
+                "value-question": "Что ты выберешь: сохранить дружбу и молчать, или постоять за права женщины и рискнуть потерять дружбу?",
+                "answer-option-left": {
+                    "test-description": "Сохранить дружбу и молчать",
+                    "values": ["лояльность", "дружба", "самосохранение", "уважение к личному пространству"]
+                },
+                "answer-option-right": {
+                    "test-description": "Постоять за права женщины и рискнуть потерять дружбу",
+                    "values": ["справедливость", "защита прав человека", "ответственность", "мужество"]
+                }
+            },
+            {
+                "value-description": "Ты работаешь в компании, которая загрязняет окружающую среду. Ты знаешь, что это вредно для природы и здоровья людей, но боишься, что если ты об этом расскажешь, то можешь потерять работу и подвергнуть опасности себя и свою семью. Ты также знаешь, что если ничего не предпринимать, то это может продолжаться и в будущем.",
+                "value-question": "Что ты выберешь: сохранить работу и молчать, или постоять за защиту окружающей среды и рискнуть потерять работу?",
+                "answer-option-left": {
+                    "test-description": "Сохранить работу и молчать",
+                    "values": ["безопасность", "лояльность", "самосохранение", "уважение к власти"]
+                },
+                "answer-option-right": {
+                    "test-description": "Постоять за защиту окружающей среды и рискнуть потерять работу",
+                    "values": ["экологичность", "ответственность", "мужество", "защита будущих поколений"]
+                }
+            }
+
+
+            // добавьте другие ситуации
+        ];
+
+        const values = {}; // объект, в котором будем хранить значения ценностей
+
+        let currentSituationIndex = 0; // индекс текущей ситуации
+
+        function showScreen(id) {
             console.log('Show screen:', id);
             // Скрываем все экраны
             var screens = document.getElementsByClassName('screen');
@@ -1202,231 +490,86 @@
             // Показываем нужный экран
             var screen = document.getElementById(id);
             if (screen) {
-                screen.classList.add('active');
+                screen.classList.add('answer-block');
             } else {
                 console.log('Screen not found:', id);
             }
+        }
 
-            // Если это экран результатов, отобразить результаты
-            if (id === 'screen8') {
-                // Получить все выбранные чекбоксы и их значения из объекта userAnswers
-                console.log('User answers:', userAnswers);
-                const results = {};
-                for (const screenId in userAnswers) {
-                    for (const blockType in userAnswers[screenId]) {
-                        const blockValues = userAnswers[screenId][blockType];
-                        if (blockValues.length > 0) {
-                            if (!results[screenId]) {
-                                results[screenId] = {};
-                            }
-                            results[screenId][blockType] = blockValues;
-                        }
-                    }
+        function selectAnswer(valuesToIncrease) {
+            const answerOptionLeft = document.querySelector('.answer-option.left');
+            const answerOptionRight = document.querySelector('.answer-option.right');
+
+            answerOptionLeft.classList.add('disabled');
+            answerOptionRight.classList.add('disabled');
+
+            clearInterval(timerInterval);
+
+            valuesToIncrease.forEach(valueName => {
+                if (!values[valueName]) {
+                    values[valueName] = 0;
                 }
+                values[valueName]++;
+            });
 
-                // Создать HTML-разметку для отображения результатов
-                let html = '';
-                for (const screenId in results) {
-                    const screenName = getScreenName(screenId); // Функция для получения названия экрана по его идентификатору
-                    html += `<h2>${screenName}</h2>`;
-                    for (const blockType in results[screenId]) {
-                        const blockName = getBlockName(blockType); // Функция для получения названия блока по его типу
-                        html += `<h3>${blockName}</h3>`;
-                        html += '<ul>';
-                        results[screenId][blockType].forEach((value) => {
-                            html += `<li>${value}</li>`;
-                        });
-                        html += '</ul>';
-                    }
-                }
+            const valueBlock = document.getElementById('value-block');
+            valueBlock.innerHTML = ''; // очищаем блок перед добавлением новых ценностей
 
-                // Отобразить результаты на экране результатов
-                const resultsContainer = document.getElementById('results-container');
-                resultsContainer.innerHTML = html;
+            valuesToIncrease.forEach(valueName => {
+                const valueElement = document.createElement('div');
+                valueElement.textContent = valueName;
+                valueElement.classList.add('clickable-value');
+                valueElement.addEventListener('click', () => {
+                    values[valueName]++;
+                    valueElement.classList.remove('clickable-value');
+                });
+                valueBlock.appendChild(valueElement);
+            });
+
+            currentSituationIndex++;
+            if (currentSituationIndex < situations.length) {
+                showSituation();
+            } else {
+                showScreen('screen8');
             }
         }
 
+        function showSituation() {
+            const currentSituation = situations[currentSituationIndex];
 
+            document.querySelector('.value-description.test-description').textContent = currentSituation["value-description"];
+            document.querySelector('.value-question').textContent = currentSituation["value-question"];
+            document.querySelector('.answer-option.left .test-description').textContent = currentSituation["answer-option-left"]["test-description"];
+            document.querySelector('.answer-option.right .test-description').textContent = currentSituation["answer-option-right"]["test-description"];
 
+            const answerOptionLeft = document.querySelector('.answer-option.left');
+            const answerOptionRight = document.querySelector('.answer-option.right');
 
+            answerOptionLeft.classList.remove('disabled');
+            answerOptionRight.classList.remove('disabled');
 
-
-        // Создаем пустой массив для хранения выбранных ответов
-        const selectedAnswers = [];
-
-        // Находим все чекбоксы на странице
-        const checkboxes = document.querySelectorAll('input[type="checkbox"]');
-
-        // Добавляем обработчик события change для каждого чекбокса
-        checkboxes.forEach((checkbox) => {
-            checkbox.addEventListener('change', function () {
-                // Проверяем, отмечен ли чекбокс или нет
-                if (checkbox.checked) {
-                    // Добавляем значение data-text в массив selectedAnswers
-                    selectedAnswers.push(checkbox.dataset.text);
-                } else {
-                    // Находим индекс значения data-text в массиве selectedAnswers
-                    const index = selectedAnswers.indexOf(checkbox.dataset.text);
-                    // Удаляем значение data-text из массива selectedAnswers
-                    selectedAnswers.splice(index, 1);
-                }
-
-                // Выводим содержимое массива selectedAnswers в элемент div с классом results-container
-                const resultsContainer = document.querySelector('.results-container');
-                resultsContainer.innerHTML = '<ul>' + selectedAnswers.map((answer) => '<li>' + answer + '</li>' + '<br>').join('') + '</ul>';
+            answerOptionLeft.addEventListener('click', () => {
+                selectAnswer(currentSituation["answer-option-left"]["values"]);
             });
-        });
 
+            answerOptionRight.addEventListener('click', () => {
+                selectAnswer(currentSituation["answer-option-right"]["values"]);
+            });
 
+            let timeLeft = 60;
+            const timerInterval = setInterval(() => {
+                timeLeft--;
+                document.getElementById('timer').textContent = timeLeft;
 
+                if (timeLeft <= 0) {
+                    clearInterval(timerInterval);
+                    selectAnswer(currentSituation["answer-option-left"]["values"]); // выбираем левый вариант ответа, если время истекло
+                }
+            }, 1000);
+        }
 
-
-
-
-
-
-
-        $(document).ready(function () {
-            var entries = [
-                { label: 'Авантюризм', url: '', target: '_top' },
-                { label: 'Активность', url: '', target: '_top' },
-                { label: 'Безмятежность', url: '', target: '_top' },
-                { label: 'Веселье', url: '', target: '_top' },
-                { label: 'Внимательность', url: '', target: '_top' },
-                { label: 'Выдержка', url: '', target: '_top' },
-                { label: 'Гармония', url: '', target: '_top' },
-                { label: 'Жизнестойкость', url: '', target: '_top' },
-                { label: 'Любопытство', url: '', target: '_top' },
-                { label: 'Мечта', url: '', target: '_top' },
-                { label: 'Мудрость', url: '', target: '_top' },
-                { label: 'Обаяние', url: '', target: '_top' },
-                { label: 'Оптимизм', url: '', target: '_top' },
-                { label: 'Покой', url: '', target: '_top' },
-                { label: 'Простота', url: '', target: '_top' },
-                { label: 'Саморазвитие', url: '', target: '_top' },
-                { label: 'Сила', url: '', target: '_top' },
-                { label: 'Сила воли', url: '', target: '_top' },
-                { label: 'Скромность', url: '', target: '_top' },
-                { label: 'Уверенность в себе', url: '', target: '_top' },
-                { label: 'Увлеченность', url: '', target: '_top' },
-                { label: 'Устойчивость', url: '', target: '_top' },
-                { label: 'Целеустремленность', url: '', target: '_top' },
-                { label: 'Честность', url: '', target: '_top' },
-                { label: 'Честь', url: '', target: '_top' },
-                { label: 'Энтузиазм', url: '', target: '_top' },
-                { label: 'Эстетика', url: '', target: '_top' },
-                { label: 'Эффективность', url: '', target: '_top' },
-                { label: 'Юмор', url: '', target: '_top' },
-                { label: 'Ясность', url: '', target: '_top' },
-                { label: 'Благодарность', url: '', target: '_top' },
-                { label: 'Благотворительность', url: '', target: '_top' },
-                { label: 'Великодушие', url: '', target: '_top' },
-                { label: 'Доверие', url: '', target: '_top' },
-                { label: 'Забота', url: '', target: '_top' },
-                { label: 'Лояльность', url: '', target: '_top' },
-                { label: 'Любовь', url: '', target: '_top' },
-                { label: 'Объективность', url: '', target: '_top' },
-                { label: 'Открытость', url: '', target: '_top' },
-                { label: 'Отношения', url: '', target: '_top' },
-                { label: 'Понимание', url: '', target: '_top' },
-                { label: 'Прощение', url: '', target: '_top' },
-                { label: 'Сострадание', url: '', target: '_top' },
-                { label: 'Совершенство', url: '', target: '_top' },
-                { label: 'Терпимость', url: '', target: '_top' },
-                { label: 'Товарищество', url: '', target: '_top' },
-                { label: 'Уважение', url: '', target: '_top' },
-                { label: 'Уважение к жизни', url: '', target: '_top' },
-                { label: 'Эмпатия', url: '', target: '_top' },
-                { label: 'Беспристрастие', url: '', target: '_top' },
-                { label: 'Безопасность', url: '', target: '_top' },
-                { label: 'Честность', url: '', target: '_top' },
-                { label: 'Независимость', url: '', target: '_top' },
-                { label: 'Объективность', url: '', target: '_top' },
-                { label: 'Ответственность', url: '', target: '_top' },
-                { label: 'Прямота', url: '', target: '_top' },
-                { label: 'Реализм', url: '', target: '_top' },
-                { label: 'Справедливость', url: '', target: '_top' },
-                { label: 'Терпение', url: '', target: '_top' },
-                { label: 'Законность', url: '', target: '_top' },
-                { label: 'Духовность', url: '', target: '_top' },
-                { label: 'Благочестие', url: '', target: '_top' },
-                { label: 'Смирение', url: '', target: '_top' },
-                { label: 'Милосердие', url: '', target: '_top' },
-                { label: 'Авторитет', url: '', target: '_top' },
-                { label: 'Братство', url: '', target: '_top' },
-                { label: 'Взаимопомощь', url: '', target: '_top' },
-                { label: 'Гордость', url: '', target: '_top' },
-                { label: 'Красота', url: '', target: '_top' },
-                { label: 'Патриотизм', url: '', target: '_top' },
-                { label: 'Послушание', url: '', target: '_top' },
-                { label: 'Равенство', url: '', target: '_top' },
-                { label: 'Родство', url: '', target: '_top' },
-                { label: 'Семейные ценности', url: '', target: '_top' },
-                { label: 'Тактичность', url: '', target: '_top' },
-                { label: 'Традиции', url: '', target: '_top' },
-                { label: 'Человечность', url: '', target: '_top' },
-                { label: 'Широта взглядов', url: '', target: '_top' },
-                { label: 'Достоинство', url: '', target: '_top' },
-                { label: 'Инновационность', url: '', target: '_top' },
-                { label: 'Интуиция', url: '', target: '_top' },
-                { label: 'Креативность', url: '', target: '_top' },
-                { label: 'Оригинальность', url: '', target: '_top' },
-                { label: 'Прогресс', url: '', target: '_top' },
-                { label: 'Реализм', url: '', target: '_top' },
-                { label: 'Экологичность', url: '', target: '_top' },
-                { label: 'Натурализм', url: '', target: '_top' },
-                { label: 'Здоровье', url: '', target: '_top' },
-                { label: 'Физическая форма', url: '', target: '_top' },
-                { label: 'Свобода', url: '', target: '_top' },
-                { label: 'Свобода выбора', url: '', target: '_top' },
-                { label: 'Гибкость', url: '', target: '_top' },
-                { label: 'Вызов', url: '', target: '_top' },
-                { label: 'Стабильность', url: '', target: '_top' },
-                { label: 'Упорство', url: '', target: '_top' },
-                { label: 'Флексибильность', url: '', target: '_top' },
-                { label: 'Целомудрие', url: '', target: '_top' },
-                { label: 'Самосохранение', url: '', target: '_top' },
-                { label: 'Баланс', url: '', target: '_top' },
-                { label: 'Достаток', url: '', target: '_top' },
-                { label: 'Превосходство', url: '', target: '_top' },
-                { label: 'Престиж', url: '', target: '_top' },
-                { label: 'Процветание', url: '', target: '_top' },
-                { label: 'Успех', url: '', target: '_top' }
-            ];
-            var settings = {
-                entries: entries,
-                width: 1920,
-                height: 1080,
-                radius: '65%',
-                radiusMin: 75,
-                bgDraw: true,
-                bgColor: '#111',
-                opacityOver: 1.00,
-                opacityOut: 0.05,
-                opacitySpeed: 6,
-                fov: 800,
-                speed: 0.3,
-                fontFamily: 'Oswald, Arial, sans-serif',
-                fontSize: '15',
-                fontColor: '#fff',
-                fontWeight: 'normal',//bold
-                fontStyle: 'normal',//italic 
-                fontStretch: 'normal',//wider, narrower, ultra-condensed, extra-condensed, condensed, semi-condensed, semi-expanded, expanded, extra-expanded, ultra-expanded
-                fontToUpperCase: true
-            };
-            //var svg3DTagCloud = new SVG3DTagCloud( document.getElementById( 'holder'  ), settings );
-            $('#tag-cloud').svg3DTagCloud(settings);
-        });
-
-
-
-
-
-
-
-
-
-
+        showScreen('screen2');
+        showSituation();
 
 
 
