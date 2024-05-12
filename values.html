@@ -62,27 +62,24 @@
 
         <!-- Screen 2 -->
         <div class="screen" id="screen2">
-
             <h2>Ситуация</h2>
             <p class="value-description test-description"></p>
             <h3>Вопрос</h3>
             <p class="value-question"></p>
             <div id="timer">60</div>
             <div class="answer-block">
-                <div class="answer-option left">
+                <div class="answer-option left"
+                    onclick="selectAnswer(currentSituation['answer-option-left']['values'])">
                     <p class="test-description"></p>
                 </div>
-                <div class="answer-option right">
+                <div class="answer-option right"
+                    onclick="selectAnswer(currentSituation['answer-option-right']['values'])">
                     <p class="test-description"></p>
                 </div>
             </div>
-
             <div id="value-block">
-
             </div>
-
         </div>
-
         <!-- End Screen 2 -->
 
 
@@ -96,220 +93,6 @@
 
 
 
-        <!-- Screen 3 -->
-        <div class="screen" id="screen3">
-
-            <div class="row justify-content-center mb-4">
-                <div class="col-2">
-                    <div class="category-box text-center">
-                        Личная жизнь и отношения
-                    </div>
-                </div>
-                <div class="col-2">
-                    <div class="category-box-active text-center">
-                        Карьера и образование
-                    </div>
-                </div>
-                <div class="col-2">
-                    <div class="category-box text-center">
-                        Здоровье и физическая форма
-                    </div>
-                </div>
-                <div class="col-2">
-                    <div class="category-box text-center">
-                        Финансы и материальное благополучие
-                    </div>
-                </div>
-                <div class="col-2">
-                    <div class="category-box text-center">
-                        Самореализация и личностный рост
-                    </div>
-                </div>
-                <div class="col-2">
-                    <div class="category-box text-center">
-                        Общество и политика
-                    </div>
-                </div>
-            </div>
-
-            <div class="row justify-content-center">
-                <div class="col-4">
-                    <div class="block-container">
-                        <h3 class="block-title">Страхи</h3>
-                        <h4 class="block-subtitle">Отметь галочкой чего боишься больше всего в этой сфере жизни, чтобы
-                            осознать свои страхи и понять, какие из них являются наиболее актуальными.
-                        </h4>
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault1"
-                                data-screen-id="screen3" data-block-type="fears"
-                                data-text="Неуверенность в выборе профессии: Этот страх может быть связан с недостатком информации о различных профессиях и неуверенностью в своих способностях. Чтобы преодолеть этот страх, можно начать с изучения различных профессий, их перспектив и требований. Также можно пройти тестирование на профессиональные интересы и способности, чтобы лучше понять свои сильные стороны и склонности."
-                                onchange="saveAnswer(this)">
-                            <label class="form-check-label" for="flexCheckDefault1">
-                                Неуверенность в выборе профессии: Меня пугает мысль, что я выбрал не ту профессию, и
-                                теперь мне придется тратить годы своей жизни на то, что мне не нравится. Моя
-                                неуверенность в своих способностях и интересах мешает мне сделать правильный выбор.
-
-                            </label>
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault2"
-                                data-screen-id="screen3" data-block-type="fears"
-                                data-text="Страх потери работы: Этот страх может быть связан с неуверенностью в своих профессиональных навыках и недостатком опыта. Чтобы преодолеть этот страх, можно начать с повышения квалификации и обучения новым навыкам. Также можно расширить свою профессиональную сеть и поддерживать связи с потенциальными работодателями."
-                                onchange="saveAnswer(this)">
-                            <label class="form-check-label" for="flexCheckDefault2">
-                                Страх потери работы: Мне страшно потерять работу и остаться без средств к существованию.
-                                Моя неуверенность в своих профессиональных навыках и недостаток опыта мешают мне
-                                чувствовать себя уверенно на рынке труда.
-
-                            </label>
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault3"
-                                data-screen-id="screen3" data-block-type="fears"
-                                data-text="Неспособность развиваться профессионально: Этот страх может быть связан с ограниченными возможностями для обучения и отсутствием поддержки со стороны работодателя. Чтобы преодолеть этот страх, можно начать с самостоятельного обучения и поиска новых возможностей для профессионального роста. Также можно искать поддержки у коллег и менторов, которые готовы поделиться своим опытом и знаниями."
-                                onchange="saveAnswer(this)">
-                            <label class="form-check-label" for="flexCheckDefault3">
-                                Неспособность развиваться профессионально: Я боюсь, что не смогу развиваться
-                                профессионально и добиться успеха в своей области. Мои ограниченные возможности для
-                                обучения и отсутствие поддержки со стороны работодателя мешают мне развиваться и расти
-                                профессионально.
-                            </label>
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault4"
-                                data-screen-id="screen3" data-block-type="fears"
-                                data-text="Недостаточный доход: Этот страх может быть связан с неуверенностью в своих профессиональных навыках и ограниченными возможностями для карьерного роста. Чтобы преодолеть этот страх, можно начать с повышения квалификации и обучения новым навыкам, которые могут увеличить конкурентоспособность на рынке труда. Также можно искать новые возможности для заработка, такие как фриланс или бизнес."
-                                onchange="saveAnswer(this)">
-                            <label class="form-check-label" for="flexCheckDefault4">
-                                Недостаточный доход: Мне страшно, что мой доход не будет достаточным, чтобы обеспечить
-                                себя и свою семью. Моя неуверенность в своих профессиональных навыках и ограниченные
-                                возможности для карьерного роста мешают мне добиться финансовой стабильности.
-
-                            </label>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-4">
-                    <div class="block-container">
-                        <h3 class="block-title">Желания</h3>
-                        <h4 class="block-subtitle"> Отметь галочкой чего больше всего хочешь добиться в этой сфере
-                            жизни, чтобы сфокусироваться на своих целях и понять, что тебе действительно важно.
-
-                        </h4>
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault5"
-                                data-screen-id="screen3" data-block-type="desires"
-                                data-text="Успешная карьера: Чтобы добиться успеха в карьере, важно стремиться к постоянному профессиональному росту и развитию. Можно начать с повышения квалификации и обучения новым навыкам, которые могут увеличить конкурентоспособность на рынке труда. Также важно искать новые возможности для профессионального роста и развития, такие как повышение или переход на новую работу."
-                                onchange="saveAnswer(this)">
-                            <label class="form-check-label" for="flexCheckDefault5">
-                                Успешная карьера: Я хочу добиться успеха в своей карьере и стать признанным специалистом
-                                в своей области. Но мои ограниченные возможности для обучения и отсутствие опыта мешают
-                                мне достичь этого.
-
-                            </label>
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault6"
-                                data-screen-id="screen3" data-block-type="desires"
-                                data-text="Стабильный доход: Чтобы добиться стабильного дохода, важно развивать свои профессиональные навыки и стремиться к постоянному профессиональному росту. Можно начать с повышения квалификации и обучения новым навыкам, которые могут увеличить конкурентоспособность на рынке труда. Также важно искать новые возможности для заработка, такие как фриланс или бизнес."
-                                onchange="saveAnswer(this)">
-                            <label class="form-check-label" for="flexCheckDefault6">
-                                Стабильный доход: Мне хочется иметь стабильный доход, который позволит мне чувствовать
-                                себя финансово независимым. Но моя неуверенность в своих профессиональных навыках и
-                                ограниченные возможности для карьерного роста мешают мне добиться этого.
-
-                            </label>
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault7"
-                                data-screen-id="screen3" data-block-type="desires"
-                                data-text="Профессиональный рост: Чтобы добиться профессионального роста, важно стремиться к постоянному обучению и развитию. Можно начать с самостоятельного обучения и поиска новых возможностей для профессионального роста. Также можно искать поддержки у коллег и менторов, которые готовы поделиться своим опытом и знаниями."
-                                onchange="saveAnswer(this)">
-                            <label class="form-check-label" for="flexCheckDefault7">
-                                Профессиональный рост: Я стремлюсь к профессиональному росту и развитию, но мои
-                                ограниченные возможности для обучения и отсутствие поддержки со стороны работодателя
-                                мешают мне двигаться вперед.
-
-                            </label>
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault8"
-                                data-screen-id="screen3" data-block-type="desires"
-                                data-text="Признание в своей области: Чтобы добиться признания в своей области, важно стремиться к профессиональному росту и развитию, а также делиться своими знаниями и опытом с другими. Можно начать с участия в профессиональных сообществах и конференциях, а также публикации своих работ и исследований."
-                                onchange="saveAnswer(this)">
-                            <label class="form-check-label" for="flexCheckDefault8">
-                                Признание в своей области: Мне хочется быть признанным и уважаемым в своей области, но
-                                мои ограниченные возможности для обучения и отсутствие опыта мешают мне достичь этого.
-
-                            </label>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-4">
-                    <div class="block-container">
-                        <h3 class="block-title">Раздражает</h3>
-                        <h4 class="block-subtitle">Отметь галочкой что регулярно вызывает у тебя раздражение и стресс в
-                            этой сфере жизни, чтобы осознать свои триггеры стресса и найти способы справляться с ними.
-                        </h4>
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault9"
-                                data-screen-id="screen3" data-block-type="annoyances"
-                                data-text="Несправедливость на работе: Чтобы преодолеть несправедливость на работе, важно стремиться к честному и прозрачному общению с работодателем и коллегами. Можно начать с обсуждения проблемы с непосредственным начальником и поиска компромисса. Также можно обратиться в профсоюз или другие организации, которые могут помочь в решении проблемы."
-                                onchange="saveAnswer(this)">
-                            <label class="form-check-label" for="flexCheckDefault9">
-                                Несправедливость на работе: Меня бесит несправедливость на работе, когда более способные
-                                и талантливые люди не получают должного признания и вознаграждения. Я не знаю, как
-                                изменить эту ситуацию, и это мешает мне чувствовать себя удовлетворенным своей работой.
-
-                            </label>
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault10"
-                                data-screen-id="screen3" data-block-type="annoyances"
-                                data-text="Плохие условия труда: Чтобы улучшить условия труда, важно стремиться к диалогу с работодателем и коллегами. Можно начать с обсуждения проблемы с непосредственным начальником и поиска решения. Также можно искать поддержки у профсоюза или других организаций, которые могут помочь в решении проблемы."
-                                onchange="saveAnswer(this)">
-                            <label class="form-check-label" for="flexCheckDefault10">
-                                Плохие условия труда: Плохие условия труда и недостаток возможностей для
-                                профессионального роста раздражают меня и вызывают стресс. Я не знаю, как улучшить эту
-                                ситуацию, и это мешает мне чувствовать себя комфортно на работе.
-
-                            </label>
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault11"
-                                data-screen-id="screen3" data-block-type="annoyances"
-                                data-text="Низкая заработная плата: Чтобы добиться повышения заработной платы, важно стремиться к повышению квалификации и обучению новым навыкам, которые могут увеличить конкурентоспособность на рынке труда. Также важно вести честные переговоры с работодателем и искать новые возможности для заработка."
-                                onchange="saveAnswer(this)">
-                            <label class="form-check-label" for="flexCheckDefault11">
-                                Низкая заработная плата: Низкая заработная плата и отсутствие перспектив карьерного
-                                роста раздражают меня и вызывают стресс. Я не знаю, как добиться повышения или найти
-                                лучшую работу, и это мешает мне чувствовать себя финансово удовлетворенным.
-
-                            </label>
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault12"
-                                data-screen-id="screen3" data-block-type="annoyances"
-                                data-text="Отсутствие перспектив развития: Чтобы преодолеть отсутствие перспектив развития, важно стремиться к самостоятельному обучению и поиску новых возможностей для профессионального роста. Можно начать с самостоятельного обучения и поиска новых возможностей для профессионального роста. Также можно искать поддержки у коллег и менторов, которые готовы поделиться своим опытом и знаниями."
-                                onchange="saveAnswer(this)">
-                            <label class="form-check-label" for="flexCheckDefault12">
-                                Отсутствие перспектив развития: Отсутствие перспектив развития и профессионального роста
-                                раздражает меня и вызывает стресс. Моя работа не предоставляет мне возможностей для
-                                обучения и развития, и это мешает мне двигаться вперед.
-
-                            </label>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <button class="btn btn-light next-btn mx-auto d-block" onclick="showScreen('screen4')">Далее</button>
-            <img src="Img/s2.png" alt="Right image" class="bottom-left-image">
-
-        </div>
-        <!-- End Screen 3 -->
-
-
-
 
 
 
@@ -317,62 +100,8 @@
 
         <!-- Screen 8 -->
         <div class="screen" id="screen8">
-            <h1 class="test-title">Mentorist</h1>
 
-            <div class="results-container description-container text-center">
-                <!-- Здесь будут отображаться результаты -->
-            </div>
-
-            <h1 class="test-title">Что дальше?</h1>
-
-            <div class=" description-container text-center mt-4 mx-auto" style="width: 60%;">
-                <p>Используй эту информацию для проработки своих целей и задач с Mentorist в Telegram боте с
-                    искусственным интеллектом.</p>
-
-                <p>Представь, что у тебя возможность задать вопрос Дейлу Карнеги, Тони Роббинсу, Стивену Кови, Пабло
-                    Коэльо, Ошо, Далай-ламе XIV, Тих Нхат Ханху, Экхарту Толле, Эндрю Тейту, Наполеону Хиллу, Карлосу
-                    Кастанеде и Садхгуру - всем сразу. Они обдумают твой вопрос и дадут на него ответ.</p>
-
-                <p>Mentorist - твой личный консультативный совет, созданный на основе мудрости выдающихся личностей,
-                    фундаментальных курсов и материалов по ключевым областям жизни. Этот совет выступает в роли твоего
-                    ментора, критика, психотерапевта, вдохновителя, друга, партнера и наставника.</p>
-
-                <p>Итеративный фреймворк созданный специально для того, чтобы создать условия для практических озарений
-                    и роста. Он не просто дает ответы, а вовлекает вас в диалог, который ведет к самопознанию и
-                    личностному развитию. Он поможет сориентироваться в сложных жизненных ситуациях, опираясь на советы
-                    тех, кто уже прошел этот путь.</p>
-
-                <p>Твой жизненный путь уникален, как и проблемы, с которыми ты сталкиваешься. Теперь ты не одинок. У
-                    тебя есть доступ к огромному количеству мудрости, готовой направить тебя в любой момент, когда тебе
-                    это понадобится. Это не просто инструмент, это спутник на всю жизнь, который стремится к твоему
-                    росту и успеху.</p>
-
-            </div>
-
-
-
-
-
-
-
-
-            <div class="img-container">
-                <img src="Img/spartan-peaceful-warrior-seat-QR.png" alt="Right image" class="bottom-center-image">
-
-                <button class="btn btn-light start-test-btn mx-auto d-block button-margin-20px"
-                    onclick="window.open('https://t.me/Mentorist_bot', '_blank')">Перейти в бот</button>
-            </div>
-
-            <div class=" description-container text-center mt-4 mx-auto" style="width: 60%; padding: 50px;">
-                <p>Воспользуйся силой коллективной мудрости. Твое путешествие к самопознанию и личностному росту
-                    начинается здесь.</p>
-            </div>
-
-
-
-
-
-            <br>
+            <h2>"Экран результатов"</h2>
 
 
 
@@ -478,7 +207,8 @@
 
         const values = {}; // объект, в котором будем хранить значения ценностей
 
-        let currentSituationIndex = 0; // индекс текущей ситуации
+        let currentSituationIndex = 0;
+        let currentSituation = situations[currentSituationIndex];
 
         function showScreen(id) {
             console.log('Show screen:', id);
@@ -497,42 +227,40 @@
         }
 
         function selectAnswer(valuesToIncrease) {
-            const answerOptionLeft = document.querySelector('.answer-option.left');
-            const answerOptionRight = document.querySelector('.answer-option.right');
+            const answerOptions = document.querySelectorAll('.answer-option');
+            answerOptions.forEach(option => {
+                option.onclick = null;
+            });
 
-            answerOptionLeft.classList.add('disabled');
-            answerOptionRight.classList.add('disabled');
-
-            clearInterval(timerInterval);
-
-            valuesToIncrease.forEach(valueName => {
-                if (!values[valueName]) {
-                    values[valueName] = 0;
+            valuesToIncrease.forEach(value => {
+                if (values[value]) {
+                    values[value] += 100 / valuesToIncrease.length;
+                } else {
+                    values[value] = 100 / valuesToIncrease.length;
                 }
-                values[valueName]++;
             });
 
             const valueBlock = document.getElementById('value-block');
-            valueBlock.innerHTML = ''; // очищаем блок перед добавлением новых ценностей
-
-            valuesToIncrease.forEach(valueName => {
+            valueBlock.innerHTML = '';
+            valuesToIncrease.forEach(value => {
                 const valueElement = document.createElement('div');
-                valueElement.textContent = valueName;
-                valueElement.classList.add('clickable-value');
-                valueElement.addEventListener('click', () => {
-                    values[valueName]++;
-                    valueElement.classList.remove('clickable-value');
-                });
+                valueElement.textContent = value;
+                valueElement.onclick = function () {
+                    values[value] += 100;
+                    this.onclick = null;
+                };
                 valueBlock.appendChild(valueElement);
             });
 
             currentSituationIndex++;
             if (currentSituationIndex < situations.length) {
-                showSituation();
+                currentSituation = situations[currentSituationIndex];
+                showScreen('screen2');
             } else {
                 showScreen('screen8');
             }
         }
+
 
         function showSituation() {
             const currentSituation = situations[currentSituationIndex];
@@ -568,17 +296,8 @@
             }, 1000);
         }
 
-        showScreen('screen2');
+        // showScreen('screen2');
         showSituation();
-
-
-
-
-
-
-
-
-
 
 
     </script>
