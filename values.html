@@ -77,7 +77,9 @@
                     <p class="test-description"></p>
                 </div>
             </div>
-            <div id="value-block">
+            <div id="value-block" class="d-none">
+                <h3>Почему вы ответили именно так? Выберите самую важную ценность:</h3>
+                <div id="value-items"></div>
             </div>
         </div>
         <!-- End Screen 2 -->
@@ -220,81 +222,82 @@
             // Показываем нужный экран
             var screen = document.getElementById(id);
             if (screen) {
-                screen.classList.add('answer-block');
+                screen.classList.add('active');
             } else {
                 console.log('Screen not found:', id);
             }
+            // Скрываем блок с ценностями, если переходим на экран 2
+            if (id === 'screen2') {
+                document.getElementById('value-block').classList.add('d-none');
+            }
         }
 
-        function selectAnswer(valuesToIncrease) {
-            $('.answer-option').addClass('disabled');
+        function selectAnswer(event, answer) {
+        event.target.classList.add('disabled');
+        document.querySelector('.answer-option:not(.disabled)').classList.add('disabled');
 
-            valuesToIncrease.forEach(value => {
+        // Отображаем ценности, соответствующие выбранному ответу
+        const valueItems = document.getElementById('value-items');
+        valueItems.innerHTML = '';
+        answer.values.forEach(value => {
+            const valueItem = document.createElement('div');
+            valueItem.classList.add('value-item', 'p-2', 'm-1', 'border', 'rounded');
+            valueItem.textContent = value;
+            valueItems.appendChild(valueItem);
+            // Добавляем обработчик клика на ценность
+            valueItem.addEventListener('click', function () {
+                // Скрываем блок с ценностями
+                document.getElementById('value-block').classList.add('d-none');
+                // Увеличиваем значение выбранной ценности
                 if (values[value]) {
                     values[value]++;
                 } else {
                     values[value] = 1;
                 }
-            });
-
-            const valueBlock = document.getElementById('value-block');
-            valueBlock.innerHTML = '';
-            valuesToIncrease.forEach(value => {
-                const valueElement = document.createElement('div');
-                valueElement.textContent = value;
-                valueElement.classList.add('value-item');
-                valueElement.addEventListener('click', function () {
-                    values[value]++;
-                    $(this).removeClass('value-item');
-                    $('.answer-option').removeClass('disabled');
-                    currentSituationIndex++;
-                    if (currentSituationIndex < situations.length) {
-                        currentSituation = situations[currentSituationIndex];
-                        showSituation();
-                    } else {
-                        showScreen('screen8');
-                    }
-                });
-                valueBlock.appendChild(valueElement);
-            });
-        }
-
-        function showSituation() {
-            const currentSituation = situations[currentSituationIndex];
-
-            document.querySelector('.value-description.test-description').textContent = currentSituation["value-description"];
-            document.querySelector('.value-question').textContent = currentSituation["value-question"];
-            document.querySelector('.answer-option.left .test-description').textContent = currentSituation["answer-option-left"]["test-description"];
-            document.querySelector('.answer-option.right .test-description').textContent = currentSituation["answer-option-right"]["test-description"];
-
-            const answerOptionLeft = document.querySelector('.answer-option.left');
-            const answerOptionRight = document.querySelector('.answer-option.right');
-
-            answerOptionLeft.classList.remove('disabled');
-            answerOptionRight.classList.remove('disabled');
-
-            answerOptionLeft.addEventListener('click', () => {
-                selectAnswer(currentSituation["answer-option-left"]["values"]);
-            });
-
-            answerOptionRight.addEventListener('click', () => {
-                selectAnswer(currentSituation["answer-option-right"]["values"]);
-            });
-
-            let timeLeft = 60;
-            const timerInterval = setInterval(() => {
-                timeLeft--;
-                document.getElementById('timer').textContent = timeLeft;
-
-                if (timeLeft <= 0) {
-                    clearInterval(timerInterval);
-                    selectAnswer(currentSituation["answer-option-left"]["values"]); // выбираем левый вариант ответа, если время истекло
+                // Переходим на следующую ситуацию
+                currentSituationIndex++;
+                if (currentSituationIndex < situations.length) {
+                    currentSituation = situations[currentSituationIndex];
+                    showScreen('screen2');
+                } else {
+                    showScreen('screen8');
                 }
-            }, 1000);
-        }
+            });
+        });
 
-        // showScreen('screen2');
-        showSituation();
+        // Отображаем блок с ценностями
+        document.getElementById('value-block').classList.remove('d-none');
+    }
+
+    function showSituation() {
+        document.querySelector('.value-description.test-description').textContent = currentSituation["value-description"];
+        document.querySelector('.value-question').textContent = currentSituation["value-question"];
+        document.querySelector('.answer-option.left .test-description').textContent = currentSituation.answer1["test-description"];
+        document.querySelector('.answer-option.right .test-description').textContent = currentSituation.answer2["test-description"];
+        document.querySelector('.answer-option.left').classList.remove('disabled');
+        document.querySelector('.answer-option.right').classList.remove('disabled');
+
+        // Запускаем таймер
+        let timeLeft = 60;
+        const timerInterval = setInterval(() => {
+            timeLeft--;
+            document.getElementById('timer').textContent = timeLeft;
+
+            if (timeLeft <= 0) {
+                clearInterval(timerInterval);
+                // Выбираем левый вариант ответа, если время истекло
+                // selectAnswer(null, currentSituation.answer1);
+            }
+        }, 1000);
+    }
+
+    // let values = {};
+
+    showSituation();
+
+
+
+
 
 
     </script>
