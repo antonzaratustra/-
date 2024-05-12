@@ -103,10 +103,10 @@
         <!-- Screen 8 -->
         <div class="screen" id="screen8">
 
-            <h2>"Экран результатов"</h2>
+            <h2>"Ваши ценности:"</h2>
 
-
-
+            <div class="value-results" id="value-results">
+            </div>
 
         </div>
 
@@ -209,6 +209,36 @@
 
         const values = {}; // объект, в котором будем хранить значения ценностей
 
+
+
+
+
+        function showResults() {
+            // Получаем все ценности и сортируем их по убыванию значения value
+            const valuesArray = Object.entries(values).sort((a, b) => b[1] - a[1]);
+
+            // Ограничиваем количество ценностей до 10
+            const topValues = valuesArray.slice(0, 10);
+
+            // Получаем div с классом value-results
+            const valueResults = document.querySelector('.value-results');
+
+            // Очищаем содержимое value-results
+            valueResults.innerHTML = '';
+
+            // Выводим каждую ценность в value-results
+            topValues.forEach(([value, count], index) => {
+                const valueElement = document.createElement('div');
+                valueElement.textContent = value;
+                valueElement.style.opacity = 1 - index / 10; // Задаем прозрачность в диапазоне от 1 до 0
+                valueResults.appendChild(valueElement);
+            });
+        }
+
+
+
+
+
         let currentSituationIndex = 0;
         let currentSituation = situations[currentSituationIndex];
 
@@ -230,6 +260,12 @@
             if (id === 'screen2') {
                 document.getElementById('value-block').classList.add('d-none');
             }
+
+            if (id === 'screen8') {
+                showResults();
+            }
+
+
         }
 
         function selectAnswer(valuesToIncrease) {
@@ -267,9 +303,9 @@
         }
 
         function showSituation() {
-            
+
             document.getElementById('value-block').style.display = 'none';
-            
+
             const currentSituation = situations[currentSituationIndex];
 
             document.querySelector('.value-description.test-description').textContent = currentSituation["value-description"];
