@@ -265,3 +265,8 @@ body {
 .value-item {
     cursor: pointer;
 }
+
+.answer-option:hover,
+.value-item:hover {
+  color: lightgreen;
+}
