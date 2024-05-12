@@ -211,3 +211,9 @@ body {
     width: 100%;
     height: 500px;
   } */
+
+
+  .answer-block { display: flex; justify-content: space-between; margin-top: 20px; } 
+  .answer-option { width: 48%; padding: 20px; box-sizing: border-box; border: 1px solid #000; text-align: center; } 
+  .left { float: left; } 
+  .right { float: right; }
