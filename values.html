@@ -524,21 +524,32 @@
             const oldText = element.textContent;
             const newText = element.dataset.translation;
             let index = 0;
-
-            const timeout = (index === 0) ? 1000 : 50; // первый таймаут длится 1 секунду, остальные - 50 миллисекунд
-            const delay = timeout / (oldText.length - index + 1); // вычисляем задержку между изменением символов
+            let newTextIndex = 0;
+            const oldTextLength = oldText.length;
+            const newTextLength = newText.length;
 
             const interval = setInterval(() => {
-                if (index >= oldText.length) {
-                    clearInterval(interval);
-                    element.textContent = newText;
-                    return;
+                let text = '';
+                for (let i = 0; i < oldTextLength; i++) {
+                    if (i === index) {
+                        if (newTextIndex < newTextLength) {
+                            text += newText[newTextIndex];
+                            newTextIndex++;
+                        } else {
+                            text += randomChar();
+                        }
+                        index++;
+                    } else {
+                        text += oldText[i];
+                    }
                 }
 
-                const char = (index < newText.length) ? newText[index] : randomChar();
-                element.textContent = oldText.substring(0, index) + char + oldText.substring(index + 1);
-                index++;
-            }, delay);
+                element.textContent = text;
+
+                if (index >= oldTextLength) {
+                    clearInterval(interval);
+                }
+            }, 50);
         }
 
         const title = document.querySelector('.test-title');
