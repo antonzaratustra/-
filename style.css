@@ -286,6 +286,12 @@ body {
 
   #tag-cloud .tag-cloud-item {
     cursor: default;
+    
+  }
+
+  
+  #tag-cloud {
+    cursor: default;
     position: absolute;
     opacity: 0.2;
     z-index: -1;
