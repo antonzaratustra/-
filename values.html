@@ -422,6 +422,146 @@
 
         }
 
+        // function selectAnswer(valuesToIncrease) {
+        //     $('.answer-option').addClass('disabled');
+
+        //     valuesToIncrease.forEach(value => {
+        //         if (values[value]) {
+        //             values[value]++;
+        //         } else {
+        //             values[value] = 1;
+        //         }
+        //     });
+
+        //     const valueBlock = document.getElementById('value-block');
+        //     valueBlock.style.display = 'flex'; // добавляем свойство display: flex
+        //     valueBlock.innerHTML = '';
+
+        //     // Добавляем заголовок
+        //     const header = document.createElement('h3');
+        //     header.textContent = 'Почему ты ответил именно так? Выбери самую важную ценность:';
+        //     valueBlock.appendChild(header);
+
+        //     valuesToIncrease.forEach(value => {
+        //         const valueElement = document.createElement('div');
+        //         valueElement.textContent = value;
+        //         valueElement.classList.add('value-item');
+        //         valueElement.addEventListener('click', function () {
+        //             values[value]++;
+        //             $(this).removeClass('value-item');
+        //             $('.answer-option').removeClass('disabled');
+        //             currentSituationIndex++;
+        //             if (currentSituationIndex < situations.length) {
+        //                 currentSituation = situations[currentSituationIndex];
+        //                 showSituation();
+        //             } else {
+        //                 showScreen('screen8');
+        //             }
+        //         });
+        //         valueBlock.appendChild(valueElement);
+        //     });
+        // }
+
+
+        // function showSituation() {
+
+        //     document.getElementById('value-block').style.display = 'none';
+
+        //     const currentSituation = situations[currentSituationIndex];
+
+        //     document.querySelector('.value-description.test-description').textContent = currentSituation["value-description"];
+        //     document.querySelector('.value-question').textContent = currentSituation["value-question"];
+        //     document.querySelector('.answer-option.left .test-description').textContent = currentSituation["answer-option-left"]["test-description"];
+        //     document.querySelector('.answer-option.right .test-description').textContent = currentSituation["answer-option-right"]["test-description"];
+
+        //     const answerOptionLeft = document.querySelector('.answer-option.left');
+        //     const answerOptionRight = document.querySelector('.answer-option.right');
+
+        //     answerOptionLeft.classList.remove('disabled');
+        //     answerOptionRight.classList.remove('disabled');
+
+        //     answerOptionLeft.addEventListener('click', () => {
+        //         selectAnswer(currentSituation["answer-option-left"]["values"]);
+        //     });
+
+        //     answerOptionRight.addEventListener('click', () => {
+        //         selectAnswer(currentSituation["answer-option-right"]["values"]);
+        //     });
+
+        //     let timeLeft = 60;
+        //     const timerInterval = setInterval(() => {
+        //         timeLeft--;
+        //         document.getElementById('timer').textContent = timeLeft;
+
+        //         if (timeLeft <= 0) {
+        //             clearInterval(timerInterval);
+        //             selectAnswer(currentSituation["answer-option-left"]["values"]); // выбираем левый вариант ответа, если время истекло
+        //         }
+        //     }, 1000);
+        // }
+
+
+
+
+
+
+        function showSituation() {
+            document.getElementById('value-block').style.display = 'none';
+
+            // Проверяем, есть ли еще неотвеченные ситуации
+            if (answeredSituations.length === situations.length) {
+                showScreen('screen8');
+                return;
+            }
+
+            // Находим следующую неотвеченную ситуацию
+            let currentSituation;
+            do {
+                currentSituationIndex = (currentSituationIndex + 1) % situations.length;
+                currentSituation = situations[currentSituationIndex];
+            } while (answeredSituations.includes(currentSituation));
+
+            // Отображаем текущую ситуацию
+            document.querySelector('.value-description.test-description').textContent = currentSituation["value-description"];
+            document.querySelector('.value-question').textContent = currentSituation["value-question"];
+            document.querySelector('.answer-option.left .test-description').textContent = currentSituation["answer-option-left"]["test-description"];
+            document.querySelector('.answer-option.right .test-description').textContent = currentSituation["answer-option-right"]["test-description"];
+
+            const answerOptionLeft = document.querySelector('.answer-option.left');
+            const answerOptionRight = document.querySelector('.answer-option.right');
+
+            answerOptionLeft.classList.remove('disabled');
+            answerOptionRight.classList.remove('disabled');
+
+            answerOptionLeft.addEventListener('click', () => {
+                selectAnswer(currentSituation["answer-option-left"]["values"]);
+                answeredSituations.push(currentSituation);
+                showSituation();
+            });
+
+            answerOptionRight.addEventListener('click', () => {
+                selectAnswer(currentSituation["answer-option-right"]["values"]);
+                answeredSituations.push(currentSituation);
+                showSituation();
+            });
+
+            let timeLeft = 60;
+            const timerInterval = setInterval(() => {
+                timeLeft--;
+                document.getElementById('timer').textContent = timeLeft;
+
+                if (timeLeft <= 15) {
+                    document.getElementById('timer').style.color = 'red';
+                }
+
+                if (timeLeft <= 0) {
+                    clearInterval(timerInterval);
+                    // Показываем текущую ситуацию снова
+                    showSituation();
+                }
+            }, 1000);
+        }
+
         function selectAnswer(valuesToIncrease) {
             $('.answer-option').addClass('disabled');
 
@@ -463,42 +603,13 @@
         }
 
 
-        function showSituation() {
 
-            document.getElementById('value-block').style.display = 'none';
 
-            const currentSituation = situations[currentSituationIndex];
 
-            document.querySelector('.value-description.test-description').textContent = currentSituation["value-description"];
-            document.querySelector('.value-question').textContent = currentSituation["value-question"];
-            document.querySelector('.answer-option.left .test-description').textContent = currentSituation["answer-option-left"]["test-description"];
-            document.querySelector('.answer-option.right .test-description').textContent = currentSituation["answer-option-right"]["test-description"];
 
-            const answerOptionLeft = document.querySelector('.answer-option.left');
-            const answerOptionRight = document.querySelector('.answer-option.right');
 
-            answerOptionLeft.classList.remove('disabled');
-            answerOptionRight.classList.remove('disabled');
 
-            answerOptionLeft.addEventListener('click', () => {
-                selectAnswer(currentSituation["answer-option-left"]["values"]);
-            });
 
-            answerOptionRight.addEventListener('click', () => {
-                selectAnswer(currentSituation["answer-option-right"]["values"]);
-            });
-
-            let timeLeft = 60;
-            const timerInterval = setInterval(() => {
-                timeLeft--;
-                document.getElementById('timer').textContent = timeLeft;
-
-                if (timeLeft <= 0) {
-                    clearInterval(timerInterval);
-                    selectAnswer(currentSituation["answer-option-left"]["values"]); // выбираем левый вариант ответа, если время истекло
-                }
-            }, 1000);
-        }
 
         // showScreen('screen2');
         showSituation();
