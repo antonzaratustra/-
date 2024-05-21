@@ -434,6 +434,13 @@
                 }
             });
 
+
+            console.log("Текущий список ценностей с баллами value:");
+            for (let value in values) {
+                console.log(value + ": " + values[value]);
+            }
+
+
             const valueBlock = document.getElementById('value-block');
             valueBlock.style.display = 'flex'; // добавляем свойство display: flex
             valueBlock.innerHTML = '';
