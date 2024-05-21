@@ -282,3 +282,8 @@ body {
   .test-title:hover {
     /* стили при наведении курсора */
   }
+
+
+  #tag-cloud .tag-cloud-item {
+    cursor: default;
+  }
