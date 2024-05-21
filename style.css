@@ -274,6 +274,10 @@ body {
   color: lightgreen;
 }
 
+.answer-block {
+    margin-left: 20px;
+    margin-right: 20px;
+}
 
 
 .test-title {
