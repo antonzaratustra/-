@@ -296,3 +296,27 @@ body {
     opacity: 0.2;
     z-index: -1;
   }
+
+
+
+  .question-description {
+    margin-top: 20px;
+    font-size: 1.2rem;
+    margin: 0 auto;
+    width: 70%;
+  }
+
+  .value-question {
+    margin-top: 20px;
+    font-size: 1.2rem;
+    margin: 0 auto;
+    width: 70%;
+
+  }
+
+  .option {
+    margin-top: 20px;
+    font-size: 1.2rem;
+    margin: 0 auto;
+    width: 70%;
+  }

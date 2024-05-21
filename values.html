@@ -78,21 +78,21 @@
         <!-- Screen 2 -->
         <div class="screen" id="screen2">
             <h2>Ситуация</h2>
-            <p class="value-description test-description"></p>
-            <h3>Вопрос</h3>
+            <p class=" question-description value-description test-description"></p>
+            <h2>Вопрос</h2>
             <p class="value-question"></p>
             <div id="timer">60</div>
             <div class="answer-block">
                 <div class="answer-option left"
                     onclick="selectAnswer(currentSituation['answer-option-left']['values'])">
-                    <p class="test-description"></p>
+                    <p class="test-description option"></p>
                 </div>
                 <div class="answer-option right"
                     onclick="selectAnswer(currentSituation['answer-option-right']['values'])">
-                    <p class="test-description"></p>
+                    <p class="test-description option"></p>
                 </div>
             </div>
-            <div id="value-block" class="d-none">
+            <div id="value-block" class="d-none option">
                 <div id="value-items"></div>
             </div>
         </div>
