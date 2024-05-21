@@ -272,3 +272,13 @@ body {
 .value-item:hover {
   color: lightgreen;
 }
+
+
+
+.test-title {
+    /* стили по умолчанию */
+  }
+  
+  .test-title:hover {
+    /* стили при наведении курсора */
+  }

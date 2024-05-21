@@ -41,7 +41,8 @@
 
             <div id='tag-cloud'></div>
 
-            <h1 class="test-title">Un monstre gai vaut mieux qu'un sentimental ennuyeux</h1>
+            <h1 class="test-title" data-translation="Лучше веселое чудовище, чем сентиментальный зануда">Un monstre gai
+                vaut mieux qu'un sentimental ennuyeux</h1>
             <div class="description-container">
                 <p class="test-description">За изображением рычажных весов Фемиды, символа справедливости и равновесия,
                     скрывается тест самопознания, который может помочь тебе определить свои ключевые ценности и
@@ -268,7 +269,8 @@
                 opacitySpeed: 6,
                 fov: 800,
                 speed: 0.3,
-                fontFamily: 'Oswald, Arial, sans-serif',
+                fontFamily: 'Poppins, Arial, sans-serif',
+
                 fontSize: '15',
                 fontColor: '#fff',
                 fontWeight: 'normal',//bold
@@ -513,6 +515,36 @@
 
 
 
+        function randomChar() {
+            const chars = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZабвгдеёжзиййкллмнонпрстоууфхццччшщщъыыьээюяЮАБВГДЕЁЖЗИЙЙКЛЛМНОПРСТОУУФХЦЦЧЧШЩЩЪЫЫЬЭЭЮЯ';
+            return chars[Math.floor(Math.random() * chars.length)];
+        }
+
+        function translateText(element) {
+            const oldText = element.textContent;
+            const newText = element.dataset.translation;
+            let index = 0;
+
+            const timeout = (index === 0) ? 1000 : 50; // первый таймаут длится 1 секунду, остальные - 50 миллисекунд
+            const delay = timeout / (oldText.length - index + 1); // вычисляем задержку между изменением символов
+
+            const interval = setInterval(() => {
+                if (index >= oldText.length) {
+                    clearInterval(interval);
+                    element.textContent = newText;
+                    return;
+                }
+
+                const char = (index < newText.length) ? newText[index] : randomChar();
+                element.textContent = oldText.substring(0, index) + char + oldText.substring(index + 1);
+                index++;
+            }, delay);
+        }
+
+        const title = document.querySelector('.test-title');
+        title.addEventListener('mouseover', () => {
+            translateText(title);
+        });
 
 
 
