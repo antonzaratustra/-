@@ -515,41 +515,17 @@
 
 
 
-        function randomChar() {
-            const chars = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZабвгдеёжзиййкллмнонпрстоууфхццччшщщъыыьээюяЮАБВГДЕЁЖЗИЙЙКЛЛМНОПРСТОУУФХЦЦЧЧШЩЩЪЫЫЬЭЭЮЯ';
-            return chars[Math.floor(Math.random() * chars.length)];
-        }
-
         function translateText(element) {
             const oldText = element.textContent;
             const newText = element.dataset.translation;
-            let index = 0;
-            let newTextIndex = 0;
-            const oldTextLength = oldText.length;
-            const newTextLength = newText.length;
 
-            const interval = setInterval(() => {
-                let text = '';
-                for (let i = 0; i < oldTextLength; i++) {
-                    if (i === index) {
-                        if (newTextIndex < newTextLength) {
-                            text += newText[newTextIndex];
-                            newTextIndex++;
-                        } else {
-                            text += randomChar();
-                        }
-                        index++;
-                    } else {
-                        text += oldText[i];
-                    }
-                }
+            element.textContent = newText;
 
-                element.textContent = text;
+            const resetText = () => {
+                element.textContent = oldText;
+            };
 
-                if (index >= oldTextLength) {
-                    clearInterval(interval);
-                }
-            }, 50);
+            element.addEventListener('mouseleave', resetText);
         }
 
         const title = document.querySelector('.test-title');
