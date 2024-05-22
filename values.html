@@ -599,23 +599,16 @@
 
             answerOptionLeft.addEventListener('click', () => {
                 selectAnswer(currentSituation["answer-option-left"]["values"]);
+                $(this).addClass('selected');
             });
 
             answerOptionRight.addEventListener('click', () => {
                 selectAnswer(currentSituation["answer-option-right"]["values"]);
+                $(this).addClass('selected');
             });
 
-            // let timeLeft = 60;
-            // const timerInterval = setInterval(() => {
-            //     timeLeft--;
-            //     document.getElementById('timer').textContent = timeLeft;
-
-            //     if (timeLeft <= 0) {
-            //         clearInterval(timerInterval);
-            //         selectAnswer(currentSituation["answer-option-left"]["values"]); // выбираем левый вариант ответа, если время истекло
-            //     }
-            // }, 1000);
         }
+
 
 
 
