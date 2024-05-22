@@ -466,7 +466,6 @@ body {
   
   .hover-target {
     position: relative;
-    font-size: 0.5rem;
     opacity: 0.5;
   }
   
@@ -506,16 +505,16 @@ body {
     font-weight: 700;
   }
   
-    /* This is the triangle/arrow */
+    This is the triangle/arrow */
 
-  /* .hover-popup::before {
+   .hover-popup::before {
     content: '';
         border-left: 10px solid transparent;
     border-right: 10px solid transparent;
     border-bottom: 10px solid #1d1d1d;
     top: -10px;
 
-  } */
+  }
   
   .hover-popup::after {
     /* This is merely here to expand the hoverable area, as a buffer between the "Hover me" text and the popup. */
