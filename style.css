@@ -377,3 +377,59 @@ body {
     }
   }
   
+
+  .answer-option.selected {
+    background-color: #ccc;
+  }
+  
+  .answer-option.selected .test-description {
+    color: rgba(0, 128, 0, 0.5);
+  }function selectAnswer(valuesToIncrease) {
+    $('.answer-option').addClass('disabled');
+  
+    $('.answer-option.selected').removeClass('selected'); // удаляем класс selected у предыдущего выбранного варианта ответа
+    $(this).addClass('selected'); // добавляем класс selected текущему выбранному варианту ответа
+    $('.answer-option.selected .test-description').css('color', 'rgba(0, 128, 0, 0.5)'); // изменяем цвет текста выбранного варианта ответа на зеленый с прозрачностью 0.5
+  
+    valuesToIncrease.forEach(value => {
+      if (values[value]) {
+        values[value]++;
+      } else {
+        values[value] = 1;
+      }
+    });
+  
+    console.log("Текущий список ценностей с баллами value:");
+    for (let value in values) {
+      console.log(value + ": " + values[value]);
+    }
+  
+    const valueBlock = document.getElementById('value-block');
+    valueBlock.style.display = 'flex'; // добавляем свойство display: flex
+    valueBlock.innerHTML = '';
+  
+    // Добавляем заголовок
+    const header = document.createElement('h3');
+    header.textContent = 'Почему ты ответил именно так? Выбери самую важную ценность:';
+    valueBlock.appendChild(header);
+  
+    valuesToIncrease.forEach(value => {
+      const valueElement = document.createElement('div');
+      valueElement.textContent = value;
+      valueElement.classList.add('value-item');
+      valueElement.addEventListener('click', function () {
+        values[value]++;
+        $(this).removeClass('value-item');
+        $('.answer-option').removeClass('disabled');
+        currentSituationIndex++;
+        if (currentSituationIndex < situations.length) {
+          currentSituation = situations[currentSituationIndex];
+          showSituation();
+        } else {
+          showScreen('screen8');
+        }
+      });
+      valueBlock.appendChild(valueElement);
+    });
+  }
+  
