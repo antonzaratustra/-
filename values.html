@@ -636,11 +636,8 @@
             setTimeout(() => {
                 overlay.style.opacity = 1;
 
-                // Скрываем блок с ценностями
-                document.getElementById('value-block').style.display = 'none';
-
+                // Обновляем данные на экране
                 const currentSituation = situations[currentSituationIndex];
-
                 document.querySelector('.value-description.test-description').textContent = currentSituation["value-description"];
                 document.querySelector('.value-question').textContent = currentSituation["value-question"];
                 document.querySelector('.answer-option.left .test-description').textContent = currentSituation["answer-option-left"]["test-description"];
@@ -662,6 +659,9 @@
                     $(this).addClass('selected');
                 });
 
+                // Скрываем блок с ценностями
+                document.getElementById('value-block').style.display = 'none';
+
                 // Плавно меняем прозрачность элемента затемнения от 1 до 0
                 setTimeout(() => {
                     overlay.style.opacity = 0;
@@ -671,10 +671,6 @@
                 }, 1000);
             }, 10);
         }
-
-
-
-
 
 
 
