@@ -524,16 +524,13 @@
                 if (values[value]) {
                     values[value]++;
                 } else {
-                    values[value] = {
-                        count: 1,
-                        description: valueDescriptions[value]
-                    };
+                    values[value] = 1;
                 }
             });
 
             console.log("Текущий список ценностей с баллами value:");
             for (let value in values) {
-                console.log(value + ": " + values[value].count);
+                console.log(value + ": " + values[value]);
             }
 
             const valueBlock = document.getElementById('value-block');
@@ -549,11 +546,10 @@
                 const valueElement = document.createElement('div');
                 valueElement.textContent = value;
                 valueElement.classList.add('value-item');
-                valueElement.setAttribute('data-description', values[value].description);
                 valueElement.addEventListener('click', function () {
                     $('.value-item.selected').removeClass('selected');
                     $(this).addClass('selected');
-                    values[value].count++;
+                    values[value]++;
                     $(this).removeClass('value-item');
                     $('.answer-option').removeClass('disabled');
                     currentSituationIndex++;
@@ -566,25 +562,7 @@
                 });
                 valueBlock.appendChild(valueElement);
             });
-
-            // Добавляем обработчик события mouseover для отображения popup
-            valueBlock.addEventListener('mouseover', function (event) {
-                const target = event.target;
-                if (target.classList.contains('value-item')) {
-                    const description = target.getAttribute('data-description');
-                    const popup = document.createElement('div');
-                    popup.classList.add('popup');
-                    popup.textContent = description;
-                    popup.style.left = event.pageX + 'px';
-                    popup.style.top = event.pageY + 'px';
-                    document.body.appendChild(popup);
-                    setTimeout(() => {
-                        document.body.removeChild(popup);
-                    }, 1000);
-                }
-            });
         }
-
 
 
         function showSituation() {
