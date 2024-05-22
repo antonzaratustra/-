@@ -493,13 +493,10 @@
             });
         }
 
-
-
-
-
         let currentSituationIndex = 0;
         let currentSituation = situations[currentSituationIndex];
         let answeredSituations = [];
+        let selectedValue = null;
 
         function showScreen(id) {
             console.log('Show screen:', id);
@@ -528,7 +525,6 @@
                 showResults();
             }
         }
-
 
         function selectAnswer(valuesToIncrease) {
             $('.answer-option').addClass('disabled');
@@ -562,25 +558,13 @@
                 valueElement.addEventListener('click', function () {
                     $('.value-item.selected').removeClass('selected');
                     $(this).addClass('selected');
-                    values[value]++;
-                    $(this).removeClass('value-item');
+                    selectedValue = value;
                     $('.answer-option').removeClass('disabled');
-                    currentSituationIndex++;
-                    if (currentSituationIndex < situations.length) {
-                        currentSituation = situations[currentSituationIndex];
-                        showSituation();
-                    } else {
-                        showScreen('screen8');
-                    }
-                    // Добавляем зеленый цвет фона с прозрачностью 0.5 для выбранного варианта ответа
-                    $(this).closest('.answer-option').css('background-color', 'rgba(0, 255, 0, 0.5)');
+                    $(this).closest('.answer-option').addClass('selected'); // добавляем класс selected к родительскому элементу answer-option
                 });
                 valueBlock.appendChild(valueElement);
             });
         }
-
-
-
 
         function showSituation() {
 
@@ -601,15 +585,36 @@
 
             answerOptionLeft.addEventListener('click', () => {
                 selectAnswer(currentSituation["answer-option-left"]["values"]);
-                $(this).addClass('selected');
+                if (selectedValue) {
+                    values[selectedValue]++;
+                    selectedValue = null;
+                }
+                currentSituationIndex++;
+                if (currentSituationIndex < situations.length) {
+                    currentSituation = situations[currentSituationIndex];
+                    showSituation();
+                } else {
+                    showScreen('screen8');
+                }
             });
 
             answerOptionRight.addEventListener('click', () => {
                 selectAnswer(currentSituation["answer-option-right"]["values"]);
-                $(this).addClass('selected');
+                if (selectedValue) {
+                    values[selectedValue]++;
+                    selectedValue = null;
+                }
+                currentSituationIndex++;
+                if (currentSituationIndex < situations.length) {
+                    currentSituation = situations[currentSituationIndex];
+                    showSituation();
+                } else {
+                    showScreen('screen8');
+                }
             });
 
         }
+
 
 
 
