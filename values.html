@@ -541,21 +541,21 @@
                 valueResults.appendChild(valueElement);
             });
 
-            // Добавляем обработчик события mouseover к valueResults
-            valueResults.addEventListener('mouseover', function (event) {
-                if (event.target.tagName === 'DIV') {
-                    const value = event.target.textContent;
-                    if (values[value]) {
-                        console.log("Ценность: " + value);
-                        console.log("Категория: " + values[value].category);
-                        console.log("Spiral Dynamics: " + values[value].spiralDynamics);
-                        console.log("Архетип: " + values[value].archetype);
-                        console.log("Мотивация: " + values[value].motivation);
-                        console.log("Описание: " + values[value].description);
-                        console.log("Примеры: " + values[value].examples.join(", "));
-                    }
-                }
-            });
+            // // Добавляем обработчик события mouseover к valueResults
+            // valueResults.addEventListener('mouseover', function (event) {
+            //     if (event.target.tagName === 'DIV') {
+            //         const value = event.target.textContent;
+            //         if (values[value]) {
+            //             console.log("Ценность: " + value);
+            //             console.log("Категория: " + values[value].category);
+            //             console.log("Spiral Dynamics: " + values[value].spiralDynamics);
+            //             console.log("Архетип: " + values[value].archetype);
+            //             console.log("Мотивация: " + values[value].motivation);
+            //             console.log("Описание: " + values[value].description);
+            //             console.log("Примеры: " + values[value].examples.join(", "));
+            //         }
+            //     }
+            // });
         }
 
 
