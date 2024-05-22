@@ -379,14 +379,15 @@ body {
   }
   
 
-  .answer-option.selected {
-    background-color: #ccc;
-  }
+ 
   
   .answer-option.selected .test-description {
     color: rgba(0, 128, 0, 0.5);
   }
-
+  .answer-option.selected {
+    background-color: rgba(0, 128, 0, 0.5);
+  }
+  
 
   .value-item.selected {
     color: rgba(0, 128, 0, 0.5);
@@ -436,3 +437,9 @@ body {
   #value-results {
     font-size: 30px;
   }
+
+
+
+
+
+

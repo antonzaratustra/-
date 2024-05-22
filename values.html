@@ -565,6 +565,7 @@
                     values[value]++;
                     $(this).removeClass('value-item');
                     $('.answer-option').removeClass('disabled');
+                    $(this).closest('.answer-option').addClass('selected'); // добавляем класс selected к родительскому элементу answer-option
                     currentSituationIndex++;
                     if (currentSituationIndex < situations.length) {
                         currentSituation = situations[currentSituationIndex];
@@ -576,6 +577,7 @@
                 valueBlock.appendChild(valueElement);
             });
         }
+
 
 
         function showSituation() {
