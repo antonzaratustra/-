@@ -58,8 +58,8 @@ body {
 
 .start-test-btn {
     position: absolute;
-    bottom: -40px;
-    left: 50%;
+    /* bottom: -40px;
+    left: 50%; */
     transform: translateX(-50%);
     padding: 10px 20px;
     font-size: 1.2rem;
@@ -506,15 +506,16 @@ body {
     font-weight: 700;
   }
   
-  .hover-popup::before {
-  /* This is the triangle/arrow */
+    /* This is the triangle/arrow */
+
+  /* .hover-popup::before {
     content: '';
         border-left: 10px solid transparent;
     border-right: 10px solid transparent;
     border-bottom: 10px solid #1d1d1d;
     top: -10px;
 
-  }
+  } */
   
   .hover-popup::after {
     /* This is merely here to expand the hoverable area, as a buffer between the "Hover me" text and the popup. */
@@ -553,6 +554,11 @@ body {
   pointer-events: none;
 }
 
+.pointer-events-all {
+  pointer-events: all;
+}
+
 .btn {
-  margin: 15px;
+  /* margin: 15px; */
+  pointer-events: all;
 }
