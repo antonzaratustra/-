@@ -522,15 +522,18 @@
 
             valuesToIncrease.forEach(value => {
                 if (values[value]) {
-                    values[value]++;
+                    values[value].count++;
                 } else {
-                    values[value] = 1;
+                    values[value] = {
+                        count: 1,
+                        description: valueDescriptions[value]
+                    };
                 }
             });
 
             console.log("Текущий список ценностей с баллами value:");
             for (let value in values) {
-                console.log(value + ": " + values[value]);
+                console.log(value + ": " + values[value].count);
             }
 
             const valueBlock = document.getElementById('value-block');
@@ -546,10 +549,14 @@
                 const valueElement = document.createElement('div');
                 valueElement.textContent = value;
                 valueElement.classList.add('value-item');
+
+                // Добавляем атрибут title с описанием ценности
+                valueElement.setAttribute('title', values[value].description);
+
                 valueElement.addEventListener('click', function () {
                     $('.value-item.selected').removeClass('selected');
                     $(this).addClass('selected');
-                    values[value]++;
+                    values[value].count++;
                     $(this).removeClass('value-item');
                     $('.answer-option').removeClass('disabled');
                     currentSituationIndex++;
@@ -560,9 +567,31 @@
                         showScreen('screen8');
                     }
                 });
+
+                // Добавляем обработчик события mouseenter для показа pop-up
+                valueElement.addEventListener('mouseenter', function (event) {
+                    // Создаем элемент pop-up
+                    const popup = document.createElement('div');
+                    popup.classList.add('value-popup');
+                    popup.textContent = values[value].description;
+
+                    // Позиционируем pop-up относительно курсора
+                    popup.style.left = event.pageX + 10 + 'px';
+                    popup.style.top = event.pageY + 10 + 'px';
+
+                    // Добавляем pop-up в тело документа
+                    document.body.appendChild(popup);
+
+                    // Удаляем pop-up через небольшую задержку, чтобы он успел отобразиться
+                    setTimeout(() => {
+                        document.body.removeChild(popup);
+                    }, 50);
+                });
+
                 valueBlock.appendChild(valueElement);
             });
         }
+
 
 
         function showSituation() {
@@ -750,7 +779,24 @@
 
 
 
+        valueBlock.addEventListener('mouseover', function (event) {
+            if (event.target.classList.contains('value-item')) { // проверяем, что событие произошло на элементе ценности
+                const description = event.target.getAttribute('data-description'); // получаем описание из атрибута data-description
+                const popup = document.createElement('div'); // создаем элемент popup
+                popup.textContent = description; // добавляем текст описания
+                popup.classList.add('popup'); // добавляем класс для стилизации
+                valueBlock.appendChild(popup); // добавляем popup в valueBlock
+                popup.style.left = event.pageX + 'px'; // устанавливаем позицию popup по горизонтали
+                popup.style.top = event.pageY + 'px'; // устанавливаем позицию popup по вертикали
+            }
+        });
 
+        valueBlock.addEventListener('mouseout', function (event) {
+            if (event.target.classList.contains('value-item')) { // проверяем, что событие произошло на элементе ценности
+                const popup = document.querySelector('.popup'); // получаем элемент popup
+                valueBlock.removeChild(popup); // удаляем popup из valueBlock
+            }
+        });
 
 
 

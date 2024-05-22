@@ -390,3 +390,12 @@ body {
   .value-item.selected {
     color: rgba(0, 128, 0, 0.5);
   }
+
+  .popup {
+    position: absolute;
+    background-color: rgba(0, 0, 0, 0.8);
+    color: white;
+    padding: 10px;
+    border-radius: 5px;
+    z-index: 1000;
+  }
