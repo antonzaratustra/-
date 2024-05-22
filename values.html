@@ -497,7 +497,24 @@
             // добавьте другие ситуации
         ];
 
-        const values = {}; // объект, в котором будем хранить значения ценностей
+        const values = {
+            "лояльность": {
+                value: 0,
+                category: "Личные качества и настроения",
+                spiralDynamics: "Племенное сознание",
+                archetype: "Анима",
+                motivation: "социальная доминантность",
+                description: "Лояльность - это верность, преданность кому-либо или чему-либо. Это качество характера проявляется в том, что человек старается сохранить верность данному слову, обязательствам, друзьям, родственникам, организации, стране.",
+                examples: [
+                    "Остаться с другом в трудную минуту",
+                    "Не предавать интересы своей команды ради личной выгоды",
+                    "Сохранять верность данному слову"
+                ]
+            }
+
+
+
+        }; // объект, в котором будем хранить значения ценностей
 
 
 
@@ -505,7 +522,7 @@
 
         function showResults() {
             // Получаем все ценности и сортируем их по убыванию значения value
-            const valuesArray = Object.entries(values).sort((a, b) => b[1] - a[1]);
+            const valuesArray = Object.entries(values).sort((a, b) => b[1].value - a[1].value);
 
             // Ограничиваем количество ценностей до 10
             const topValues = valuesArray.slice(0, 10);
@@ -517,13 +534,23 @@
             valueResults.innerHTML = '';
 
             // Выводим каждую ценность в value-results
-            topValues.forEach(([value, count], index) => {
+            topValues.forEach(([value, count]) => {
                 const valueElement = document.createElement('div');
                 valueElement.textContent = value;
-                valueElement.style.opacity = 1 - index / 10; // Задаем прозрачность в диапазоне от 1 до 0
+                valueElement.style.opacity = 1 - count.value / 10; // Задаем прозрачность в диапазоне от 1 до 0
+                valueElement.addEventListener("mouseover", function () {
+                    console.log("Ценность: " + value);
+                    console.log("Категория: " + values[value].category);
+                    console.log("Spiral Dynamics: " + values[value].spiralDynamics);
+                    console.log("Архетип: " + values[value].archetype);
+                    console.log("Мотивация: " + values[value].motivation);
+                    console.log("Описание: " + values[value].description);
+                    console.log("Примеры: " + values[value].examples);
+                });
                 valueResults.appendChild(valueElement);
             });
         }
+
 
 
 
