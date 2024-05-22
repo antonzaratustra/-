@@ -485,8 +485,9 @@ body {
     transition: transform 200ms ease;
     transform-origin: 8% -10px;
     /* color: black; */
-  position: sticky;
-  margin: 0 auto;
+    position: absolute;
+    margin-left: 33%;
+    margin-top: -10%;
   }
   
   .hover-target:hover + .hover-popup,
@@ -497,8 +498,9 @@ body {
   
   .hover-popup :not(:first-child) {
     margin-top: 1rem;
-    position: sticky;
-
+    position: absolute;
+    margin-left: 33%;
+    margin-top: -10%;  
   }
   
   .hover-popup span {
@@ -509,10 +511,12 @@ body {
   .hover-popup::before {
   /* This is the triangle/arrow */
     content: '';
-    position: sticky;
-    border-left: 10px solid transparent;
+    position: absolute;
+    margin-left: 33%;
+    margin-top: -10%;  
+        border-left: 10px solid transparent;
     border-right: 10px solid transparent;
-    border-bottom: 10px solid #fff;
+    border-bottom: 10px solid #1d1d1d;
     top: -10px;
 
   }
@@ -520,7 +524,9 @@ body {
   .hover-popup::after {
     /* This is merely here to expand the hoverable area, as a buffer between the "Hover me" text and the popup. */
     content: '';
-    position: sticky;
+    position: absolute;
+    margin-left: 33%;
+    margin-top: -10%;    
     top: -1rem;
     right: 0;
     bottom: 0;
