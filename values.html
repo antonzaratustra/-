@@ -581,7 +581,19 @@
 
 
         function showSituation() {
+            // Создаем элемент затемнения
+            const overlay = document.createElement('div');
+            overlay.classList.add('overlay');
+            document.body.appendChild(overlay);
 
+            // Плавно показываем элемент затемнения
+            overlay.style.opacity = 0;
+            overlay.style.transition = 'opacity 1s ease-out';
+            setTimeout(() => {
+                overlay.style.opacity = 1;
+            }, 10);
+
+            // Скрываем блок с ценностями
             document.getElementById('value-block').style.display = 'none';
 
             const currentSituation = situations[currentSituationIndex];
@@ -597,17 +609,62 @@
             answerOptionLeft.classList.remove('disabled');
             answerOptionRight.classList.remove('disabled');
 
+            // Обработчик клика для левого варианта ответа
             answerOptionLeft.addEventListener('click', () => {
                 selectAnswer(currentSituation["answer-option-left"]["values"]);
                 $(this).addClass('selected');
+
+                // Плавно скрываем элемент затемнения
+                overlay.style.transition = 'opacity 1s ease-out';
+                setTimeout(() => {
+                    overlay.style.opacity = 0;
+                }, 10);
+                setTimeout(() => {
+                    overlay.remove();
+                }, 1000);
             });
 
+            // Обработчик клика для правого варианта ответа
             answerOptionRight.addEventListener('click', () => {
                 selectAnswer(currentSituation["answer-option-right"]["values"]);
                 $(this).addClass('selected');
+
+                // Плавно скрываем элемент затемнения
+                overlay.style.transition = 'opacity 1s ease-out';
+                setTimeout(() => {
+                    overlay.style.opacity = 0;
+                }, 10);
+                setTimeout(() => {
+                    overlay.remove();
+                }, 1000);
             });
 
+            // Плавно показываем элемент затемнения
+            setTimeout(() => {
+                // Скрываем блок с вопросом
+                const questionBlock = document.querySelector('.question-block');
+                questionBlock.style.opacity = 0;
+                questionBlock.style.transition = 'opacity 1s ease-out';
+
+                // Плавно показываем блок с вопросом
+                setTimeout(() => {
+                    questionBlock.style.opacity = 1;
+                    questionBlock.style.transition = 'opacity 1s ease-out';
+
+                    // Плавно скрываем элемент затемнения
+                    setTimeout(() => {
+                        overlay.style.transition = 'opacity 1s ease-out';
+                        setTimeout(() => {
+                            overlay.style.opacity = 0;
+                        }, 10);
+                        setTimeout(() => {
+                            overlay.remove();
+                        }, 1000);
+                    }, 1000);
+                }, 10);
+            }, 1000);
         }
+
 
 
 
