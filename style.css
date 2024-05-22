@@ -547,10 +547,7 @@ body {
     margin: 0 auto;
 }
 
-.img-container {
-  pointer-events: none;
-}
 
-.test-description {
+.pointer-events-none {
   pointer-events: none;
 }
