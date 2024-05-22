@@ -586,9 +586,9 @@
             overlay.classList.add('overlay');
             document.body.appendChild(overlay);
 
-            // Плавно показываем элемент затемнения
+            // Плавно меняем прозрачность элемента затемнения от 0 до 1
             overlay.style.opacity = 0;
-            overlay.style.transition = 'opacity 1s ease-out';
+            overlay.style.transition = 'opacity 1s';
             setTimeout(() => {
                 overlay.style.opacity = 1;
             }, 10);
@@ -609,61 +609,44 @@
             answerOptionLeft.classList.remove('disabled');
             answerOptionRight.classList.remove('disabled');
 
-            // Обработчик клика для левого варианта ответа
             answerOptionLeft.addEventListener('click', () => {
                 selectAnswer(currentSituation["answer-option-left"]["values"]);
                 $(this).addClass('selected');
-
-                // Плавно скрываем элемент затемнения
-                overlay.style.transition = 'opacity 1s ease-out';
-                setTimeout(() => {
-                    overlay.style.opacity = 0;
-                }, 10);
-                setTimeout(() => {
-                    overlay.remove();
-                }, 1000);
             });
 
-            // Обработчик клика для правого варианта ответа
             answerOptionRight.addEventListener('click', () => {
                 selectAnswer(currentSituation["answer-option-right"]["values"]);
                 $(this).addClass('selected');
+            });
 
-                // Плавно скрываем элемент затемнения
-                overlay.style.transition = 'opacity 1s ease-out';
-                setTimeout(() => {
-                    overlay.style.opacity = 0;
-                }, 10);
+            // Плавно меняем прозрачность элемента затемнения от 1 до 0
+            setTimeout(() => {
+                overlay.style.opacity = 0;
                 setTimeout(() => {
                     overlay.remove();
                 }, 1000);
-            });
-
-            // Плавно показываем элемент затемнения
-            setTimeout(() => {
-                // Скрываем блок с вопросом
-                const questionBlock = document.querySelector('.question-block');
-                questionBlock.style.opacity = 0;
-                questionBlock.style.transition = 'opacity 1s ease-out';
-
-                // Плавно показываем блок с вопросом
-                setTimeout(() => {
-                    questionBlock.style.opacity = 1;
-                    questionBlock.style.transition = 'opacity 1s ease-out';
-
-                    // Плавно скрываем элемент затемнения
-                    setTimeout(() => {
-                        overlay.style.transition = 'opacity 1s ease-out';
-                        setTimeout(() => {
-                            overlay.style.opacity = 0;
-                        }, 10);
-                        setTimeout(() => {
-                            overlay.remove();
-                        }, 1000);
-                    }, 1000);
-                }, 10);
             }, 1000);
         }
+
+        // Добавляем обработчик события click для элементов value-item
+        document.querySelectorAll('.value-item').forEach(item => {
+            item.addEventListener('click', () => {
+                // Создаем элемент затемнения
+                const overlay = document.createElement('div');
+                overlay.classList.add('overlay');
+                document.body.appendChild(overlay);
+
+                // Плавно меняем прозрачность элемента затемнения от 0 до 1
+                overlay.style.opacity = 0;
+                overlay.style.transition = 'opacity 1s';
+                setTimeout(() => {
+                    overlay.style.opacity = 1;
+                }, 10);
+
+                // Вызываем функцию showSituation через 1 секунду
+                setTimeout(showSituation, 1000);
+            });
+        });
 
 
 
