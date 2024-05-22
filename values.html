@@ -559,16 +559,20 @@
 
 
         function selectAnswer(event) {
-  // Находим выбранный answer-option
-  const selectedOption = event.target.closest('.answer-option');
-  selectedOption.classList.add('selected-option');
+  const target = event.target;
+  const answerOption = target.closest('.answer-option');
 
-  // Добавляем класс disabled всем answer-option
-  const answerOptions = document.querySelectorAll('.answer-option');
-  answerOptions.forEach(option => option.classList.add('disabled'));
+  // Добавляем класс selected-option к выбранной answer-option
+  answerOption.classList.add('selected-option');
 
-  // Получаем значения ценностей для выбранного answer-option
-  const valuesToIncrease = selectedOption.dataset.values.split(',');
+  // Убираем класс selected-option у всех value-option
+  const valueOptions = document.querySelectorAll('.value-option');
+  valueOptions.forEach(option => {
+    option.classList.remove('selected-option');
+  });
+
+  // Получаем массив ценностей, которые нужно увеличить
+  const valuesToIncrease = answerOption.dataset.values.split(',');
 
   // Увеличиваем значения ценностей
   valuesToIncrease.forEach(value => {
@@ -584,7 +588,7 @@
     console.log(value + ": " + values[value]);
   }
 
-  // Отображаем блок с ценностями
+  // Показываем блок с ценностями
   const valueBlock = document.getElementById('value-block');
   valueBlock.style.display = 'flex';
   valueBlock.innerHTML = '';
@@ -594,34 +598,34 @@
   header.textContent = 'Почему ты ответил именно так? Выбери самую важную ценность:';
   valueBlock.appendChild(header);
 
-  // Добавляем ценности в блок
+  // Добавляем кликабельные ценности value-item
   valuesToIncrease.forEach(value => {
     const valueElement = document.createElement('div');
     valueElement.textContent = value;
     valueElement.classList.add('value-item');
     valueElement.addEventListener('click', function () {
-      // Удаляем класс selected у всех value-item
-      const selectedItems = document.querySelectorAll('.value-item.selected');
-      selectedItems.forEach(item => item.classList.remove('selected'));
+      // Убираем класс selected у всех value-item
+      const selectedValue = document.querySelector('.value-item.selected');
+      if (selectedValue) {
+        selectedValue.classList.remove('selected');
+      }
 
       // Добавляем класс selected к выбранному value-item
       this.classList.add('selected');
 
-      // Увеличиваем значение ценности
-      values[value]++;
+      // Добавляем класс selected-option к выбранной value-option
+      const valueOption = document.querySelector(`.value-option[data-value="${value}"]`);
+      if (valueOption) {
+        valueOption.classList.add('selected-option');
+      }
 
-      // Удаляем класс selected-option у всех answer-option
-      const selectedOptions = document.querySelectorAll('.answer-option.selected-option');
-      selectedOptions.forEach(option => option.classList.remove('selected-option'));
+      // Убираем класс disabled у всех answer-option
+      const answerOptions = document.querySelectorAll('.answer-option');
+      answerOptions.forEach(option => {
+        option.classList.remove('disabled');
+      });
 
-      // Удаляем класс disabled у всех answer-option
-      const disabledOptions = document.querySelectorAll('.answer-option.disabled');
-      disabledOptions.forEach(option => option.classList.remove('disabled'));
-
-      // Добавляем класс selected-option к выбранному answer-option
-      selectedOption.classList.add('selected-option');
-
-      // Переходим к следующей ситуации или показываем результаты
+      // Переходим к следующей ситуации
       currentSituationIndex++;
       if (currentSituationIndex < situations.length) {
         currentSituation = situations[currentSituationIndex];
