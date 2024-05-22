@@ -625,80 +625,70 @@
 
 
         function showSituation() {
-            // Создаем элемент затемнения
-            const overlay = document.createElement('div');
-            overlay.classList.add('overlay');
-            document.body.appendChild(overlay);
+  // Затемняем экран
+  fadeOutScreen(() => {
+    // Скрываем блок с ценностями
+    document.getElementById('value-block').style.display = 'none';
 
-            // Плавно меняем прозрачность элемента затемнения от 0 до 1
-            overlay.style.opacity = 0;
-            overlay.style.transition = 'opacity 1s';
-            setTimeout(() => {
-                overlay.style.opacity = 1;
+    const currentSituation = situations[currentSituationIndex];
 
-                // Обновляем данные на экране
-                const currentSituation = situations[currentSituationIndex];
-                document.querySelector('.value-description.test-description').textContent = currentSituation["value-description"];
-                document.querySelector('.value-question').textContent = currentSituation["value-question"];
-                document.querySelector('.answer-option.left .test-description').textContent = currentSituation["answer-option-left"]["test-description"];
-                document.querySelector('.answer-option.right .test-description').textContent = currentSituation["answer-option-right"]["test-description"];
+    document.querySelector('.value-description.test-description').textContent = currentSituation["value-description"];
+    document.querySelector('.value-question').textContent = currentSituation["value-question"];
+    document.querySelector('.answer-option.left .test-description').textContent = currentSituation["answer-option-left"]["test-description"];
+    document.querySelector('.answer-option.right .test-description').textContent = currentSituation["answer-option-right"]["test-description"];
 
-                const answerOptionLeft = document.querySelector('.answer-option.left');
-                const answerOptionRight = document.querySelector('.answer-option.right');
+    const answerOptionLeft = document.querySelector('.answer-option.left');
+    const answerOptionRight = document.querySelector('.answer-option.right');
 
-                answerOptionLeft.classList.remove('disabled');
-                answerOptionRight.classList.remove('disabled');
+    answerOptionLeft.classList.remove('disabled');
+    answerOptionRight.classList.remove('disabled');
 
-                answerOptionLeft.addEventListener('click', event => {
-                    selectAnswer(event, currentSituation["answer-option-left"]["values"]);
-                    $(this).addClass('selected-option');
+    answerOptionLeft.addEventListener('click', event => {
+        selectAnswer(event, currentSituation["answer-option-left"]["values"]);
+        $(this).addClass('selected');
+    });
 
-                    // Скрываем блок с ценностями
-                    document.getElementById('value-block').style.display = 'none';
+    answerOptionRight.addEventListener('click', event => {
+        selectAnswer(event, currentSituation["answer-option-right"]["values"]);
+        $(this).addClass('selected');
+    });
 
-                    // Плавно меняем прозрачность элемента затемнения от 1 до 0
-                    setTimeout(() => {
-                        overlay.style.opacity = 0;
-                        setTimeout(() => {
-                            overlay.remove();
+    // Выцветаем экран обратно
+    fadeInScreen();
+  });
+}
 
-                            // Обновляем экран
-                            currentSituationIndex++;
-                            if (currentSituationIndex < situations.length) {
-                                showSituation();
-                            } else {
-                                showResults();
-                            }
-                        }, 1000);
-                    }, 1000);
-                });
+function fadeOutScreen(callback) {
+  // Создаем элемент затемнения
+  const overlay = document.createElement('div');
+  overlay.classList.add('overlay');
+  document.body.appendChild(overlay);
 
-                answerOptionRight.addEventListener('click', event => {
-                    selectAnswer(event, currentSituation["answer-option-right"]["values"]);
-                    $(this).addClass('selected-option');
+  // Плавно меняем прозрачность элемента затемнения от 0 до 1
+  overlay.style.opacity = 0;
+  overlay.style.transition = 'opacity 1s';
+  setTimeout(() => {
+    overlay.style.opacity = 1;
 
-                    // Скрываем блок с ценностями
-                    document.getElementById('value-block').style.display = 'none';
+    // Вызываем коллбэк, когда экран полностью затемнен
+    if (callback) {
+      callback();
+    }
+  }, 10);
+}
 
-                    // Плавно меняем прозрачность элемента затемнения от 1 до 0
-                    setTimeout(() => {
-                        overlay.style.opacity = 0;
-                        setTimeout(() => {
-                            overlay.remove();
+function fadeInScreen() {
+  // Получаем элемент затемнения
+  const overlay = document.querySelector('.overlay');
 
-                            // Обновляем экран
-                            currentSituationIndex++;
-                            if (currentSituationIndex < situations.length) {
-                                showSituation();
-                            } else {
-                                showResults();
-                            }
-                        }, 1000);
-                    }, 1000);
-                });
-            }, 10);
-        }
-
+  // Плавно меняем прозрачность элемента затемнения от 1 до 0
+  setTimeout(() => {
+    overlay.style.opacity = 0;
+    setTimeout(() => {
+      overlay.remove();
+    }, 1000);
+  }, 1000);
+}
 
 
 
