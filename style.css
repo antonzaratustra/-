@@ -484,6 +484,9 @@ body {
     transform: scale(0);
     transition: transform 200ms ease;
     transform-origin: 8% -10px;
+    color: black;
+  position: sticky;
+  margin: 0 auto;
   }
   
   .hover-target:hover + .hover-popup,
@@ -535,3 +538,12 @@ body {
       transition-delay: 0s !important;
     }
   }
+
+
+  .popup-image {
+    max-width: 80%;
+    border-radius: 10px;
+    display: block;
+    margin: 0 auto;
+}
+
