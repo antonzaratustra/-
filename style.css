@@ -379,7 +379,9 @@ body {
   }
   
 
- 
+ .selected {
+  border: #b5ffaf;
+ }
   
   .answer-option.selected .test-description {
     color: rgba(0, 128, 0, 0.5);
