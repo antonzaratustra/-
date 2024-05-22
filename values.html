@@ -593,9 +593,7 @@
                 overlay.style.opacity = 1;
             }, 10);
 
-            // Скрываем блок с ценностями
-            document.getElementById('value-block').style.display = 'none';
-
+            // Обновляем данные на экране
             const currentSituation = situations[currentSituationIndex];
 
             document.querySelector('.value-description.test-description').textContent = currentSituation["value-description"];
@@ -644,9 +642,19 @@
                 }, 10);
 
                 // Вызываем функцию showSituation через 1 секунду
-                setTimeout(showSituation, 1000);
+                setTimeout(() => {
+                    showSituation();
+                    // Плавно меняем прозрачность элемента затемнения от 1 до 0
+                    setTimeout(() => {
+                        overlay.style.opacity = 0;
+                        setTimeout(() => {
+                            overlay.remove();
+                        }, 1000);
+                    }, 1000);
+                }, 1000);
             });
         });
+
 
 
 
