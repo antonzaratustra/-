@@ -165,10 +165,44 @@
         <!-- Screen 8 -->
         <div class="screen" id="screen8">
 
-            <h2 class="test-title">Твоя иерархия ценностей:</h2>
+            <!-- <h2 class="test-title">Твоя иерархия ценностей:</h2>
 
             <div class="value-results" id="value-results">
+            </div> -->
+
+
+
+            <div class="tabs">
+                <div class="tab-button" data-tab="values">Твоя иерархия ценностей:</div>
+                <div class="tab-button" data-tab="spiral">Спиральная динамика</div>
+                <div class="tab-button" data-tab="archetype">Архетипы Юнга</div>
+                <div class="tab-button" data-tab="motivation">Ключевая мотивация</div>
+                <div class="tab-button" data-tab="category">Категории</div>
             </div>
+
+            <div class="tab-content" id="values">
+                <div class="value-results" id="value-results">
+                </div>
+            </div>
+
+            <div class="tab-content" id="spiral">
+                <!-- Контент для вкладки "Спиральная динамика" -->
+            </div>
+
+            <div class="tab-content" id="archetype">
+                <!-- Контент для вкладки "Архетипы Юнга" -->
+            </div>
+
+            <div class="tab-content" id="motivation">
+                <!-- Контент для вкладки "Ключевая мотивация" -->
+            </div>
+
+            <div class="tab-content" id="category">
+                <!-- Контент для вкладки "Категории" -->
+            </div>
+
+
+
 
 
             <h1 class="test-title">Что дальше?</h1>
@@ -879,6 +913,35 @@
 
 
 
+        const tabButtons = document.querySelectorAll('.tab-button');
+        const tabContents = document.querySelectorAll('.tab-content');
+
+        tabButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                const activeTab = document.querySelector('.tab-content.active');
+                const activeButton = document.querySelector('.tab-button.active');
+
+                if (activeTab) {
+                    activeTab.classList.remove('active');
+                }
+
+                if (activeButton) {
+                    activeButton.classList.remove('active');
+                }
+
+                const tabId = button.dataset.tab;
+                const tab = document.getElementById(tabId);
+
+                if (tab) {
+                    tab.classList.add('active');
+                    button.classList.add('active');
+                }
+            });
+        });
+
+        // Активируем первую вкладку по умолчанию
+        document.querySelector('.tab-button').classList.add('active');
+        document.querySelector('.tab-content').classList.add('active');
 
 
 
