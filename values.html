@@ -525,7 +525,6 @@
 
 
         function showSituation() {
-
             document.getElementById('value-block').style.display = 'none';
 
             const currentSituation = situations[currentSituationIndex];
@@ -543,33 +542,30 @@
 
             answerOptionLeft.addEventListener('click', () => {
                 selectAnswer(currentSituation["answer-option-left"]["values"]);
+                // Добавляем переход с эффектом выцветания
+                document.querySelector('.screen.active').style.transition = "opacity 0.5s ease-in-out";
+                // Скрываем текущий экран
+                document.querySelector('.screen.active').style.opacity = 0;
+                setTimeout(() => {
+                    showSituation();
+                }, 500); // Задержка в 500 миллисекунд (соответствует длительности перехода)
             });
 
             answerOptionRight.addEventListener('click', () => {
                 selectAnswer(currentSituation["answer-option-right"]["values"]);
+                // Добавляем переход с эффектом выцветания
+                document.querySelector('.screen.active').style.transition = "opacity 0.5s ease-in-out";
+                // Скрываем текущий экран
+                document.querySelector('.screen.active').style.opacity = 0;
+                setTimeout(() => {
+                    showSituation();
+                }, 500); // Задержка в 500 миллисекунд (соответствует длительности перехода)
             });
 
-            // Добавляем класс .fade-out к текущему экрану, чтобы затемнить его
-            const currentScreen = document.querySelector('.screen.active');
-            currentScreen.classList.add('fade-out');
-
-            // Ждем, пока анимация затемнения закончится, и удаляем класс .fade-out
-            setTimeout(() => {
-                currentScreen.classList.remove('fade-out');
-            }, 500);
-
-            // Ждем еще немного, и показываем следующую ситуацию
-            setTimeout(() => {
-                currentSituationIndex++;
-                if (currentSituationIndex < situations.length) {
-                    showSituation();
-                } else {
-                    showScreen('screen8');
-                }
-            }, 1000);
-
+            // Показываем текущий экран с эффектом выцветания
+            document.querySelector('.screen.active').style.transition = "opacity 0.5s ease-in-out";
+            document.querySelector('.screen.active').style.opacity = 1;
         }
-
 
 
 
