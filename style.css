@@ -562,3 +562,8 @@ body {
   /* margin: 15px; */
   pointer-events: all;
 }
+
+.selected-option {
+color: #b5ffaf;
+opacity: 0.5;
+}
