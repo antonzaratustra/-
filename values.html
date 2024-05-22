@@ -864,7 +864,9 @@
                     console.log("Архетип: " + showValues[value].archetype);
                     console.log("Мотивация: " + showValues[value].motivation);
                     console.log("Описание: " + showValues[value].description);
-                    console.log("Примеры: " + showValues[value].examples.join(", "));
+                    if (showValues[value].examples) {
+                        console.log("Примеры: " + showValues[value].examples.join(", "));
+                    }
                 }
             }
         });
