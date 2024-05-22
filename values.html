@@ -441,29 +441,27 @@
         let answeredSituations = [];
 
         function showScreen(id) {
-            console.log('Show screen:', id);
-            // Скрываем все экраны
-            var screens = document.getElementsByClassName('screen');
-            for (var i = 0; i < screens.length; i++) {
-                screens[i].classList.remove('active');
-            }
-            // Показываем нужный экран
-            var screen = document.getElementById(id);
+            // Получаем текущий активный экран
+            const currentScreen = document.querySelector('.screen.active');
+
+            // Добавляем анимацию исчезания текущего экрана
+            currentScreen.addEventListener('animationend', function () {
+                currentScreen.classList.remove('active');
+                currentScreen.style.zIndex = '';
+            });
+            currentScreen.style.zIndex = 101;
+            currentScreen.addEventListener('transitionend', function () {
+                currentScreen.animation = 'fadeOut 0.5s ease-in-out both';
+                currentScreen.animation.play();
+            });
+
+            // Показываем новый экран
+            const screen = document.getElementById(id);
             if (screen) {
                 screen.classList.add('active');
             } else {
                 console.log('Screen not found:', id);
             }
-            // Скрываем блок с ценностями, если переходим на экран 2
-            if (id === 'screen2') {
-                document.getElementById('value-block').classList.add('d-none');
-            }
-
-            if (id === 'screen8') {
-                showResults();
-            }
-
-
         }
 
         function selectAnswer(valuesToIncrease) {
