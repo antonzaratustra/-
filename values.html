@@ -599,98 +599,68 @@
 
 
         function selectAnswer(event, valuesToIncrease) {
-  event.currentTarget.classList.add('selected-option'); // добавляем класс selected-option к элементу answer-option, на который был совершен клик
+            event.currentTarget.classList.add('selected-option'); // добавляем класс selected-option к элементу answer-option, на который был совершен клик
 
-  $('.answer-option').addClass('disabled');
+            $('.answer-option').addClass('disabled');
 
-  valuesToIncrease.forEach(value => {
-    if (values[value]) {
-      values[value].value++;
-      // сохраняем все параметры ценности
-      values[value].category = currentSituation[value].category;
-      values[value].spiralDynamics = currentSituation[value].spiralDynamics;
-      values[value].archetype = currentSituation[value].archetype;
-      values[value].motivation = currentSituation[value].motivation;
-      values[value].description = currentSituation[value].description;
-      values[value].examples = currentSituation[value].examples;
-    } else {
-      values[value] = {
-        value: 1,
-        category: currentSituation[value].category,
-        spiralDynamics: currentSituation[value].spiralDynamics,
-        archetype: currentSituation[value].archetype,
-        motivation: currentSituation[value].motivation,
-        description: currentSituation[value].description,
-        examples: currentSituation[value].examples
-      };
-      // сохраняем все параметры ценности
-      values[value].category = currentSituation[value].category;
-      values[value].spiralDynamics = currentSituation[value].spiralDynamics;
-      values[value].archetype = currentSituation[value].archetype;
-      values[value].motivation = currentSituation[value].motivation;
-      values[value].description = currentSituation[value].description;
-      values[value].examples = currentSituation[value].examples;
-    }
-  });
+            valuesToIncrease.forEach(value => {
+                if (values[value]) {
+                    values[value]++;
+                } else {
+                    values[value] = 1;
+                }
+            });
 
-  console.log("Текущий список ценностей с баллами value:");
-  for (let value in values) {
-    console.log(value + ": " + values[value].value);
-  }
+            console.log("Текущий список ценностей с баллами value:");
+            for (let value in values) {
+                console.log(value + ": " + values[value]);
+            }
 
-  const valueBlock = document.getElementById('value-block');
-  valueBlock.style.display = 'flex';
-  valueBlock.innerHTML = '';
+            const valueBlock = document.getElementById('value-block');
+            valueBlock.style.display = 'flex';
+            valueBlock.innerHTML = '';
 
-  // Добавляем заголовок
-  const header = document.createElement('h3');
-  header.textContent = 'Почему ты ответил именно так? Выбери самую важную ценность:';
-  valueBlock.appendChild(header);
+            // Добавляем заголовок
+            const header = document.createElement('h3');
+            header.textContent = 'Почему ты ответил именно так? Выбери самую важную ценность:';
+            valueBlock.appendChild(header);
 
-  valuesToIncrease.forEach(value => {
-    const valueElement = document.createElement('div');
-    valueElement.textContent = value;
-    valueElement.classList.add('value-item');
-    valueElement.addEventListener('click', function () {
-      $('.value-item.selected').removeClass('selected');
-      $(this).addClass('selected');
-      values[value].value++;
-      // сохраняем все параметры ценности
-      values[value].category = currentSituation[value].category;
-      values[value].spiralDynamics = currentSituation[value].spiralDynamics;
-      values[value].archetype = currentSituation[value].archetype;
-      values[value].motivation = currentSituation[value].motivation;
-      values[value].description = currentSituation[value].description;
-      values[value].examples = currentSituation[value].examples;
+            valuesToIncrease.forEach(value => {
+                const valueElement = document.createElement('div');
+                valueElement.textContent = value;
+                valueElement.classList.add('value-item');
+                valueElement.addEventListener('click', function () {
+                    $('.value-item.selected').removeClass('selected');
+                    $(this).addClass('selected');
+                    values[value]++;
+                    $(this).removeClass('value-item');
+                    $('.answer-option').removeClass('disabled');
+                    $('.answer-option').removeClass('selected-option');
+                    $(this).closest('.answer-option').addClass('selected');
 
-      $(this).removeClass('value-item');
-      $('.answer-option').removeClass('disabled');
-      $('.answer-option').removeClass('selected-option');
-      $(this).closest('.answer-option').addClass('selected');
+                    // удаляем класс selected-option у всех элементов value-option
+                    const valueOptions = document.querySelectorAll('.value-option');
+                    valueOptions.forEach(option => {
+                        option.classList.remove('selected-option');
+                    });
 
-      // удаляем класс selected-option у всех элементов value-option
-      const valueOptions = document.querySelectorAll('.value-option');
-      valueOptions.forEach(option => {
-        option.classList.remove('selected-option');
-      });
+                    // добавляем класс selected-option к элементу value-option, соответствующему выбранной ценности
+                    const selectedValueOption = document.querySelector(`[data-value="${value}"]`);
+                    if (selectedValueOption) {
+                        selectedValueOption.classList.add('selected-option');
+                    }
 
-      // добавляем класс selected-option к элементу value-option, соответствующему выбранной ценности
-      const selectedValueOption = document.querySelector(`[data-value="${value}"]`);
-      if (selectedValueOption) {
-        selectedValueOption.classList.add('selected-option');
-      }
-
-      currentSituationIndex++;
-      if (currentSituationIndex < situations.length) {
-        currentSituation = situations[currentSituationIndex];
-        showSituation();
-      } else {
-        showScreen('screen8');
-      }
-    });
-    valueBlock.appendChild(valueElement);
-  });
-}
+                    currentSituationIndex++;
+                    if (currentSituationIndex < situations.length) {
+                        currentSituation = situations[currentSituationIndex];
+                        showSituation();
+                    } else {
+                        showScreen('screen8');
+                    }
+                });
+                valueBlock.appendChild(valueElement);
+            });
+        }
 
 
         function showSituation() {
@@ -888,20 +858,20 @@
 
         // const valueResults = document.querySelector('.value-results');
 
-        valueResults.addEventListener('mouseover', function (event) {
-            if (event.target.tagName === 'DIV') {
-                const value = event.target.textContent;
-                if (values[value]) {
-                    console.log("Ценность: " + value);
-                    console.log("Категория: " + values[value].category);
-                    console.log("Spiral Dynamics: " + values[value].spiralDynamics);
-                    console.log("Архетип: " + values[value].archetype);
-                    console.log("Мотивация: " + values[value].motivation);
-                    console.log("Описание: " + values[value].description);
-                    console.log("Примеры: " + values[value].examples.join(", "));
-                }
-            }
-        });
+        // valueResults.addEventListener('mouseover', function (event) {
+        //     if (event.target.tagName === 'DIV') {
+        //         const value = event.target.textContent;
+        //         if (values[value]) {
+        //             console.log("Ценность: " + value);
+        //             console.log("Категория: " + values[value].category);
+        //             console.log("Spiral Dynamics: " + values[value].spiralDynamics);
+        //             console.log("Архетип: " + values[value].archetype);
+        //             console.log("Мотивация: " + values[value].motivation);
+        //             console.log("Описание: " + values[value].description);
+        //             console.log("Примеры: " + values[value].examples.join(", "));
+        //         }
+        //     }
+        // });
 
 
 
