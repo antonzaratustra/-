@@ -556,6 +556,33 @@
             //         }
             //     }
             // });
+
+
+
+
+
+            ValueResults.addEventListener('mouseover', function (event) {
+                if (event.target.tagName === 'DIV') {
+                    const value = event.target.textContent;
+                    if (showValues[value]) {
+                        console.log("Категория: " + showValues[value].category);
+                        console.log("Spiral Dynamics: " + showValues[value].spiralDynamics);
+                        console.log("Архетип: " + showValues[value].archetype);
+                        console.log("Мотивация: " + showValues[value].motivation);
+                        console.log("Описание: " + showValues[value].description);
+                        if (showValues[value].examples) {
+                            console.log("Примеры: " + showValues[value].examples.join(", "));
+                        }
+                    }
+                }
+            });
+
+
+
+
+
+
+
         }
 
 
@@ -852,24 +879,7 @@
 
 
 
-        showValueResults = document.querySelector('.value-results');
 
-
-        showValueResults.addEventListener('mouseover', function (event) {
-            if (event.target.tagName === 'DIV') {
-                const value = event.target.textContent;
-                if (showValues[value]) {
-                    console.log("Категория: " + showValues[value].category);
-                    console.log("Spiral Dynamics: " + showValues[value].spiralDynamics);
-                    console.log("Архетип: " + showValues[value].archetype);
-                    console.log("Мотивация: " + showValues[value].motivation);
-                    console.log("Описание: " + showValues[value].description);
-                    if (showValues[value].examples) {
-                        console.log("Примеры: " + showValues[value].examples.join(", "));
-                    }
-                }
-            }
-        });
 
 
 
