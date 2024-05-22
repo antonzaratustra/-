@@ -520,10 +520,6 @@
         function selectAnswer(valuesToIncrease) {
             $('.answer-option').addClass('disabled');
 
-            $('.answer-option.selected').removeClass('selected'); // удаляем класс selected у предыдущего выбранного варианта ответа
-            $(this).addClass('selected'); // добавляем класс selected текущему выбранному варианту ответа
-            $('.answer-option.selected .test-description').css('color', 'rgba(0, 128, 0, 0.5)'); // изменяем цвет текста выбранного варианта ответа на зеленый с прозрачностью 0.5
-
             valuesToIncrease.forEach(value => {
                 if (values[value]) {
                     values[value]++;
@@ -554,6 +550,10 @@
                     values[value]++;
                     $(this).removeClass('value-item');
                     $('.answer-option').removeClass('disabled');
+                    // Добавляем зеленый цвет текста выбранного варианта ответа с прозрачностью 0.5
+                    $('.answer-option.selected').removeClass('selected');
+                    $(this).closest('.answer-option').addClass('selected');
+                    $(this).closest('.answer-option').css('color', 'rgba(0, 128, 0, 0.5)');
                     currentSituationIndex++;
                     if (currentSituationIndex < situations.length) {
                         currentSituation = situations[currentSituationIndex];
@@ -565,6 +565,7 @@
                 valueBlock.appendChild(valueElement);
             });
         }
+
 
 
 
