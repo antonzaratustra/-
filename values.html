@@ -565,7 +565,6 @@
                     values[value]++;
                     $(this).removeClass('value-item');
                     $('.answer-option').removeClass('disabled');
-                    $(this).closest('.answer-option').addClass('selected'); // добавляем класс selected к родительскому элементу answer-option
                     currentSituationIndex++;
                     if (currentSituationIndex < situations.length) {
                         currentSituation = situations[currentSituationIndex];
@@ -573,10 +572,13 @@
                     } else {
                         showScreen('screen8');
                     }
+                    // Добавляем зеленый цвет фона с прозрачностью 0.5 для выбранного варианта ответа
+                    $(this).closest('.answer-option').css('background-color', 'rgba(0, 255, 0, 0.5)');
                 });
                 valueBlock.appendChild(valueElement);
             });
         }
+
 
 
 
