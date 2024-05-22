@@ -470,11 +470,11 @@ body {
   }
   
   .hover-popup {
-    position: absolute;
+    position: fixed;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    top: 70%;
+    top: 27%;
     left: 5%;
     width: 50ch;
     margin: min(1rem, 20px);
