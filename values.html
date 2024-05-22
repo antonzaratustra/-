@@ -558,68 +558,82 @@
         }
 
 
-        function selectAnswer(event, valuesToIncrease) {
-            event.currentTarget.classList.add('selected-option'); // добавляем класс selected-option к элементу answer-option, на который был совершен клик
+        function selectAnswer(event) {
+  // Находим выбранный answer-option
+  const selectedOption = event.target.closest('.answer-option');
+  selectedOption.classList.add('selected-option');
 
-            $('.answer-option').addClass('disabled');
+  // Добавляем класс disabled всем answer-option
+  const answerOptions = document.querySelectorAll('.answer-option');
+  answerOptions.forEach(option => option.classList.add('disabled'));
 
-            valuesToIncrease.forEach(value => {
-                if (values[value]) {
-                    values[value]++;
-                } else {
-                    values[value] = 1;
-                }
-            });
+  // Получаем значения ценностей для выбранного answer-option
+  const valuesToIncrease = selectedOption.dataset.values.split(',');
 
-            console.log("Текущий список ценностей с баллами value:");
-            for (let value in values) {
-                console.log(value + ": " + values[value]);
-            }
+  // Увеличиваем значения ценностей
+  valuesToIncrease.forEach(value => {
+    if (values[value]) {
+      values[value]++;
+    } else {
+      values[value] = 1;
+    }
+  });
 
-            const valueBlock = document.getElementById('value-block');
-            valueBlock.style.display = 'flex';
-            valueBlock.innerHTML = '';
+  console.log("Текущий список ценностей с баллами value:");
+  for (let value in values) {
+    console.log(value + ": " + values[value]);
+  }
 
-            // Добавляем заголовок
-            const header = document.createElement('h3');
-            header.textContent = 'Почему ты ответил именно так? Выбери самую важную ценность:';
-            valueBlock.appendChild(header);
+  // Отображаем блок с ценностями
+  const valueBlock = document.getElementById('value-block');
+  valueBlock.style.display = 'flex';
+  valueBlock.innerHTML = '';
 
-            valuesToIncrease.forEach(value => {
-                const valueElement = document.createElement('div');
-                valueElement.textContent = value;
-                valueElement.classList.add('value-item');
-                valueElement.addEventListener('click', function () {
-                    $('.value-item.selected').removeClass('selected');
-                    $(this).addClass('selected');
-                    values[value]++;
-                    $(this).removeClass('value-item');
-                    $('.answer-option').removeClass('disabled');
-                    $(this).closest('.answer-option').addClass('selected');
+  // Добавляем заголовок
+  const header = document.createElement('h3');
+  header.textContent = 'Почему ты ответил именно так? Выбери самую важную ценность:';
+  valueBlock.appendChild(header);
 
-                    // удаляем класс selected-option у всех элементов value-option
-                    const valueOptions = document.querySelectorAll('.value-option');
-                    valueOptions.forEach(option => {
-                        option.classList.remove('selected-option');
-                    });
+  // Добавляем ценности в блок
+  valuesToIncrease.forEach(value => {
+    const valueElement = document.createElement('div');
+    valueElement.textContent = value;
+    valueElement.classList.add('value-item');
+    valueElement.addEventListener('click', function () {
+      // Удаляем класс selected у всех value-item
+      const selectedItems = document.querySelectorAll('.value-item.selected');
+      selectedItems.forEach(item => item.classList.remove('selected'));
 
-                    // добавляем класс selected-option к элементу value-option, соответствующему выбранной ценности
-                    const selectedValueOption = document.querySelector(`[data-value="${value}"]`);
-                    if (selectedValueOption) {
-                        selectedValueOption.classList.add('selected-option');
-                    }
+      // Добавляем класс selected к выбранному value-item
+      this.classList.add('selected');
 
-                    currentSituationIndex++;
-                    if (currentSituationIndex < situations.length) {
-                        currentSituation = situations[currentSituationIndex];
-                        showSituation();
-                    } else {
-                        showScreen('screen8');
-                    }
-                });
-                valueBlock.appendChild(valueElement);
-            });
-        }
+      // Увеличиваем значение ценности
+      values[value]++;
+
+      // Удаляем класс selected-option у всех answer-option
+      const selectedOptions = document.querySelectorAll('.answer-option.selected-option');
+      selectedOptions.forEach(option => option.classList.remove('selected-option'));
+
+      // Удаляем класс disabled у всех answer-option
+      const disabledOptions = document.querySelectorAll('.answer-option.disabled');
+      disabledOptions.forEach(option => option.classList.remove('disabled'));
+
+      // Добавляем класс selected-option к выбранному answer-option
+      selectedOption.classList.add('selected-option');
+
+      // Переходим к следующей ситуации или показываем результаты
+      currentSituationIndex++;
+      if (currentSituationIndex < situations.length) {
+        currentSituation = situations[currentSituationIndex];
+        showSituation();
+      } else {
+        showScreen('screen8');
+      }
+    });
+    valueBlock.appendChild(valueElement);
+  });
+}
+
 
 
 
