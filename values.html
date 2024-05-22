@@ -635,43 +635,53 @@
             overlay.style.transition = 'opacity 1s';
             setTimeout(() => {
                 overlay.style.opacity = 1;
-            }, 10);
 
-            // Скрываем блок с ценностями
-            document.getElementById('value-block').style.display = 'none';
+                // Скрываем блок с ценностями
+                document.getElementById('value-block').style.display = 'none';
 
-            const currentSituation = situations[currentSituationIndex];
+                const currentSituation = situations[currentSituationIndex];
 
-            document.querySelector('.value-description.test-description').textContent = currentSituation["value-description"];
-            document.querySelector('.value-question').textContent = currentSituation["value-question"];
-            document.querySelector('.answer-option.left .test-description').textContent = currentSituation["answer-option-left"]["test-description"];
-            document.querySelector('.answer-option.right .test-description').textContent = currentSituation["answer-option-right"]["test-description"];
+                document.querySelector('.value-description.test-description').textContent = currentSituation["value-description"];
+                document.querySelector('.value-question').textContent = currentSituation["value-question"];
+                document.querySelector('.answer-option.left .test-description').textContent = currentSituation["answer-option-left"]["test-description"];
+                document.querySelector('.answer-option.right .test-description').textContent = currentSituation["answer-option-right"]["test-description"];
 
-            const answerOptionLeft = document.querySelector('.answer-option.left');
-            const answerOptionRight = document.querySelector('.answer-option.right');
+                const answerOptionLeft = document.querySelector('.answer-option.left');
+                const answerOptionRight = document.querySelector('.answer-option.right');
 
-            answerOptionLeft.classList.remove('disabled');
-            answerOptionRight.classList.remove('disabled');
+                answerOptionLeft.classList.remove('disabled');
+                answerOptionRight.classList.remove('disabled');
 
-            answerOptionLeft.addEventListener('click', event => {
-                selectAnswer(event, currentSituation["answer-option-left"]["values"]);
-                $(this).addClass('selected');
-            });
+                answerOptionLeft.addEventListener('click', event => {
+                    selectAnswer(event, currentSituation["answer-option-left"]["values"]);
+                    $(this).addClass('selected');
+                });
 
-            answerOptionRight.addEventListener('click', event => {
-                selectAnswer(event, currentSituation["answer-option-right"]["values"]);
-                $(this).addClass('selected');
-            });
+                answerOptionRight.addEventListener('click', event => {
+                    selectAnswer(event, currentSituation["answer-option-right"]["values"]);
+                    $(this).addClass('selected');
+                });
 
-
-            // Плавно меняем прозрачность элемента затемнения от 1 до 0
-            setTimeout(() => {
-                overlay.style.opacity = 0;
+                // Плавно меняем прозрачность элемента затемнения от 1 до 0
                 setTimeout(() => {
-                    overlay.remove();
+                    overlay.style.opacity = 0;
+                    setTimeout(() => {
+                        overlay.remove();
+                    }, 1000);
                 }, 1000);
-            }, 1000);
+            }, 10);
         }
+
+
+
+
+
+
+
+
+
+
+
 
         // Добавляем обработчик события click для элементов value-item
         document.querySelectorAll('.value-item').forEach(item => {
