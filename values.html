@@ -520,6 +520,38 @@
 
 
 
+        // function showResults() {
+        //     // Получаем все ценности и сортируем их по убыванию значения value
+        //     const valuesArray = Object.entries(values).sort((a, b) => b[1].value - a[1].value);
+
+        //     // Ограничиваем количество ценностей до 10
+        //     const topValues = valuesArray.slice(0, 10);
+
+        //     // Получаем div с классом value-results
+        //     const valueResults = document.querySelector('.value-results');
+
+        //     // Очищаем содержимое value-results
+        //     valueResults.innerHTML = '';
+
+        //     // Выводим каждую ценность в value-results
+        //     topValues.forEach(([value, count]) => {
+        //         const valueElement = document.createElement('div');
+        //         valueElement.textContent = value;
+        //         valueElement.style.opacity = 1 - count.value / 10; // Задаем прозрачность в диапазоне от 1 до 0
+        //         valueElement.addEventListener("mouseover", function () {
+        //             console.log("Ценность: " + value);
+        //             console.log("Категория: " + values[value].category);
+        //             console.log("Spiral Dynamics: " + values[value].spiralDynamics);
+        //             console.log("Архетип: " + values[value].archetype);
+        //             console.log("Мотивация: " + values[value].motivation);
+        //             console.log("Описание: " + values[value].description);
+        //             console.log("Примеры: " + values[value].examples);
+        //         });
+        //         valueResults.appendChild(valueElement);
+        //     });
+        // }
+
+
         function showResults() {
             // Получаем все ценности и сортируем их по убыванию значения value
             const valuesArray = Object.entries(values).sort((a, b) => b[1].value - a[1].value);
@@ -545,7 +577,7 @@
                     console.log("Архетип: " + values[value].archetype);
                     console.log("Мотивация: " + values[value].motivation);
                     console.log("Описание: " + values[value].description);
-                    console.log("Примеры: " + values[value].examples);
+                    console.log("Примеры: " + values[value].examples.join(", ")); // преобразуем массив примеров в строку
                 });
                 valueResults.appendChild(valueElement);
             });
