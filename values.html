@@ -623,72 +623,72 @@
         }
 
 
-
         function showSituation() {
-  // Затемняем экран
-  fadeOutScreen(() => {
-    // Скрываем блок с ценностями
-    document.getElementById('value-block').style.display = 'none';
+            // Затемняем экран
+            fadeOutScreen();
 
-    const currentSituation = situations[currentSituationIndex];
+            // Добавляем задержку на 1 секунду
+            setTimeout(() => {
+                // Скрываем блок с ценностями
+                document.getElementById('value-block').style.display = 'none';
 
-    document.querySelector('.value-description.test-description').textContent = currentSituation["value-description"];
-    document.querySelector('.value-question').textContent = currentSituation["value-question"];
-    document.querySelector('.answer-option.left .test-description').textContent = currentSituation["answer-option-left"]["test-description"];
-    document.querySelector('.answer-option.right .test-description').textContent = currentSituation["answer-option-right"]["test-description"];
+                const currentSituation = situations[currentSituationIndex];
 
-    const answerOptionLeft = document.querySelector('.answer-option.left');
-    const answerOptionRight = document.querySelector('.answer-option.right');
+                document.querySelector('.value-description.test-description').textContent = currentSituation["value-description"];
+                document.querySelector('.value-question').textContent = currentSituation["value-question"];
+                document.querySelector('.answer-option.left .test-description').textContent = currentSituation["answer-option-left"]["test-description"];
+                document.querySelector('.answer-option.right .test-description').textContent = currentSituation["answer-option-right"]["test-description"];
 
-    answerOptionLeft.classList.remove('disabled');
-    answerOptionRight.classList.remove('disabled');
+                const answerOptionLeft = document.querySelector('.answer-option.left');
+                const answerOptionRight = document.querySelector('.answer-option.right');
 
-    answerOptionLeft.addEventListener('click', event => {
-        selectAnswer(event, currentSituation["answer-option-left"]["values"]);
-        $(this).addClass('selected');
-    });
+                answerOptionLeft.classList.remove('disabled');
+                answerOptionRight.classList.remove('disabled');
 
-    answerOptionRight.addEventListener('click', event => {
-        selectAnswer(event, currentSituation["answer-option-right"]["values"]);
-        $(this).addClass('selected');
-    });
+                answerOptionLeft.addEventListener('click', event => {
+                    selectAnswer(event, currentSituation["answer-option-left"]["values"]);
+                    $(this).addClass('selected-option');
+                });
 
-    // Выцветаем экран обратно
-    fadeInScreen();
-  });
-}
+                answerOptionRight.addEventListener('click', event => {
+                    selectAnswer(event, currentSituation["answer-option-right"]["values"]);
+                    $(this).addClass('selected-option');
+                });
 
-function fadeOutScreen(callback) {
-  // Создаем элемент затемнения
-  const overlay = document.createElement('div');
-  overlay.classList.add('overlay');
-  document.body.appendChild(overlay);
+                // Возвращаем экран в нормальное состояние
+                fadeInScreen();
+            }, 1000);
+        }
 
-  // Плавно меняем прозрачность элемента затемнения от 0 до 1
-  overlay.style.opacity = 0;
-  overlay.style.transition = 'opacity 1s';
-  setTimeout(() => {
-    overlay.style.opacity = 1;
+        function fadeOutScreen() {
+            // Создаем элемент затемнения
+            const overlay = document.createElement('div');
+            overlay.classList.add('overlay');
+            document.body.appendChild(overlay);
 
-    // Вызываем коллбэк, когда экран полностью затемнен
-    if (callback) {
-      callback();
-    }
-  }, 10);
-}
+            // Плавно меняем прозрачность элемента затемнения от 0 до 1
+            overlay.style.opacity = 0;
+            overlay.style.transition = 'opacity 1s';
+            setTimeout(() => {
+                overlay.style.opacity = 1;
+            }, 10);
+        }
 
-function fadeInScreen() {
-  // Получаем элемент затемнения
-  const overlay = document.querySelector('.overlay');
+        function fadeInScreen() {
+            // Получаем элемент затемнения
+            const overlay = document.querySelector('.overlay');
 
-  // Плавно меняем прозрачность элемента затемнения от 1 до 0
-  setTimeout(() => {
-    overlay.style.opacity = 0;
-    setTimeout(() => {
-      overlay.remove();
-    }, 1000);
-  }, 1000);
-}
+            // Плавно меняем прозрачность элемента затемнения от 1 до 0
+            overlay.style.opacity = 1;
+            overlay.style.transition = 'opacity 1s';
+            setTimeout(() => {
+                overlay.style.opacity = 0;
+                setTimeout(() => {
+                    overlay.remove();
+                }, 1000);
+            }, 1000);
+        }
+
 
 
 
