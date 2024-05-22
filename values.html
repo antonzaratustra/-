@@ -547,13 +547,11 @@
                 valueElement.textContent = value;
                 valueElement.classList.add('value-item');
                 valueElement.addEventListener('click', function () {
+                    $('.value-item.selected').removeClass('selected');
+                    $(this).addClass('selected');
                     values[value]++;
                     $(this).removeClass('value-item');
                     $('.answer-option').removeClass('disabled');
-                    // Добавляем зеленый цвет текста выбранного варианта ответа с прозрачностью 0.5
-                    $('.answer-option.selected').removeClass('selected');
-                    $(this).closest('.answer-option').addClass('selected');
-                    $(this).closest('.answer-option').css('color', 'rgba(0, 128, 0, 0.5)');
                     currentSituationIndex++;
                     if (currentSituationIndex < situations.length) {
                         currentSituation = situations[currentSituationIndex];
@@ -565,8 +563,6 @@
                 valueBlock.appendChild(valueElement);
             });
         }
-
-
 
 
         function showSituation() {
