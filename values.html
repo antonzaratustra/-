@@ -530,20 +530,16 @@
         }
 
 
-        let selectedValue = null; // добавляем переменную для хранения выбранной ценности
-
         function selectAnswer(valuesToIncrease) {
             $('.answer-option').addClass('disabled');
 
-            if (!selectedValue) { // добавляем проверку перед присвоением +1 балла
-                valuesToIncrease.forEach(value => {
-                    if (values[value]) {
-                        values[value]++;
-                    } else {
-                        values[value] = 1;
-                    }
-                });
-            }
+            valuesToIncrease.forEach(value => {
+                if (values[value]) {
+                    values[value]++;
+                } else {
+                    values[value] = 1;
+                }
+            });
 
             console.log("Текущий список ценностей с баллами value:");
             for (let value in values) {
@@ -551,7 +547,7 @@
             }
 
             const valueBlock = document.getElementById('value-block');
-            valueBlock.style.display = 'flex';
+            valueBlock.style.display = 'flex'; // добавляем свойство display: flex
             valueBlock.innerHTML = '';
 
             // Добавляем заголовок
@@ -566,11 +562,10 @@
                 valueElement.addEventListener('click', function () {
                     $('.value-item.selected').removeClass('selected');
                     $(this).addClass('selected');
-                    selectedValue = value; // сохраняем выбранную ценность
                     values[value]++;
                     $(this).removeClass('value-item');
                     $('.answer-option').removeClass('disabled');
-                    $(this).closest('.answer-option').addClass('selected');
+                    $(this).closest('.answer-option').addClass('selected'); // добавляем класс selected к родительскому элементу answer-option
                     currentSituationIndex++;
                     if (currentSituationIndex < situations.length) {
                         currentSituation = situations[currentSituationIndex];
@@ -578,15 +573,10 @@
                     } else {
                         showScreen('screen8');
                     }
-                    console.log("Текущий список ценностей с баллами value после нажатия на value-item:"); // добавляем вывод в консоль
-                    for (let value in values) {
-                        console.log(value + ": " + values[value]);
-                    }
                 });
                 valueBlock.appendChild(valueElement);
             });
         }
-
 
 
 
