@@ -522,7 +522,7 @@
 
             valuesToIncrease.forEach(value => {
                 if (values[value]) {
-                    values[value].count++;
+                    values[value]++;
                 } else {
                     values[value] = {
                         count: 1,
@@ -549,10 +549,7 @@
                 const valueElement = document.createElement('div');
                 valueElement.textContent = value;
                 valueElement.classList.add('value-item');
-
-                // Добавляем атрибут title с описанием ценности
-                valueElement.setAttribute('title', values[value].description);
-
+                valueElement.setAttribute('data-description', values[value].description);
                 valueElement.addEventListener('click', function () {
                     $('.value-item.selected').removeClass('selected');
                     $(this).addClass('selected');
@@ -567,28 +564,24 @@
                         showScreen('screen8');
                     }
                 });
+                valueBlock.appendChild(valueElement);
+            });
 
-                // Добавляем обработчик события mouseenter для показа pop-up
-                valueElement.addEventListener('mouseenter', function (event) {
-                    // Создаем элемент pop-up
+            // Добавляем обработчик события mouseover для отображения popup
+            valueBlock.addEventListener('mouseover', function (event) {
+                const target = event.target;
+                if (target.classList.contains('value-item')) {
+                    const description = target.getAttribute('data-description');
                     const popup = document.createElement('div');
-                    popup.classList.add('value-popup');
-                    popup.textContent = values[value].description;
-
-                    // Позиционируем pop-up относительно курсора
-                    popup.style.left = event.pageX + 10 + 'px';
-                    popup.style.top = event.pageY + 10 + 'px';
-
-                    // Добавляем pop-up в тело документа
+                    popup.classList.add('popup');
+                    popup.textContent = description;
+                    popup.style.left = event.pageX + 'px';
+                    popup.style.top = event.pageY + 'px';
                     document.body.appendChild(popup);
-
-                    // Удаляем pop-up через небольшую задержку, чтобы он успел отобразиться
                     setTimeout(() => {
                         document.body.removeChild(popup);
-                    }, 50);
-                });
-
-                valueBlock.appendChild(valueElement);
+                    }, 1000);
+                }
             });
         }
 
