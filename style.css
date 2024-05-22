@@ -275,9 +275,10 @@ body {
 }
 
 .answer-block {
-    margin-left: 20px;
-    margin-right: 20px;
+  width: 70%;
+  margin: 0 auto;
 }
+
 
 
 .test-title {
@@ -431,3 +432,7 @@ body {
     opacity: 1;
   }
   
+
+  #value-results {
+    font-size: 30px;
+  }
