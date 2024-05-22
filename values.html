@@ -245,6 +245,7 @@
 
     <script>
 
+        let showValueResults = document.querySelector('.value-results');
 
 
         $(document).ready(function () {
@@ -851,9 +852,8 @@
 
 
 
+        showValueResults = document.querySelector('.value-results');
 
-
-        const showValueResults = document.querySelector('.value-results');
 
         showValueResults.addEventListener('mouseover', function (event) {
             if (event.target.tagName === 'DIV') {
