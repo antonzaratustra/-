@@ -72,6 +72,17 @@
 
                 <button class="btn btn-light start-test-btn mx-auto d-block" onclick="showScreen('screen2')">Начать
                     тест</button>
+                <div class="popup-instruction" data-popup-text="Инструкция по использованию теста:
+
+                    Нажмите на кнопку 'Начать тест', чтобы перейти к первой ситуации.
+                    Прочитайте описание ситуации и вопрос, который вам задают.
+                    Выберите один из двух вариантов ответа, который, по вашему мнению, лучше всего подходит.
+                    После выбора варианта ответа, появится список ценностей, которые связаны с этим ответом. Выберите одну ценность, которая, по вашему мнению, является самой важной.
+                    После выбора ценности, вы перейдете к следующей ситуации.
+                    Продолжайте выбирать варианты ответов и ценности, пока не закончатся все ситуации.
+                    После завершения всех ситуаций, вы увидите результаты теста, которые покажут, какие ценности для вас наиболее важны.
+                    Наведите курсор на ценности в результатах, чтобы увидеть более подробное описание каждой ценности.
+                " data-popup-image="Img/instruction">Как это работает?</div>
             </div>
         </div>
 
@@ -768,6 +779,38 @@
                 valueBlock.removeChild(popup); // удаляем popup из valueBlock
             }
         });
+
+
+
+
+
+
+
+
+
+        document.querySelectorAll('.popup-instruction').forEach(function (el) {
+            // Создаем элемент popup
+            const popup = document.createElement('div');
+            popup.className = 'popup';
+
+            // Добавляем изображение, если оно есть
+            if (el.dataset.popupImage) {
+                const img = document.createElement('img');
+                img.src = el.dataset.popupImage;
+                popup.appendChild(img);
+            }
+
+            // Добавляем текст
+            if (el.dataset.popupText) {
+                const text = document.createElement('p');
+                text.textContent = el.dataset.popupText;
+                popup.appendChild(text);
+            }
+
+            // Добавляем popup в элемент
+            el.appendChild(popup);
+        });
+
 
 
 
