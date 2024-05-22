@@ -451,10 +451,16 @@
             // Показываем нужный экран
             var screen = document.getElementById(id);
             if (screen) {
-                screen.style.opacity = 1;
+                screen.style.opacity = 0;
                 screen.classList.add('active');
                 // Добавляем переход с эффектом выцветания
-                screen.style.transition = "opacity 0.5s ease-in-out";
+                screen.style.transition = "opacity 0.5s ease-in-out 0.5s";
+                // Добавляем анимацию fadeOut перед сменой экрана
+                var currentScreen = document.querySelector('.screen.active');
+                currentScreen.style.animation = "fadeOut 0.5s ease-in-out both";
+                currentScreen.addEventListener('animationend', function () {
+                    currentScreen.classList.remove('active');
+                }, false);
             } else {
                 console.log('Screen not found:', id);
             }
@@ -467,6 +473,7 @@
                 showResults();
             }
         }
+
 
 
         function selectAnswer(valuesToIncrease) {
@@ -542,17 +549,27 @@
                 selectAnswer(currentSituation["answer-option-right"]["values"]);
             });
 
-            // let timeLeft = 60;
-            // const timerInterval = setInterval(() => {
-            //     timeLeft--;
-            //     document.getElementById('timer').textContent = timeLeft;
+            // Добавляем класс .fade-out к текущему экрану, чтобы затемнить его
+            const currentScreen = document.querySelector('.screen.active');
+            currentScreen.classList.add('fade-out');
 
-            //     if (timeLeft <= 0) {
-            //         clearInterval(timerInterval);
-            //         selectAnswer(currentSituation["answer-option-left"]["values"]); // выбираем левый вариант ответа, если время истекло
-            //     }
-            // }, 1000);
+            // Ждем, пока анимация затемнения закончится, и удаляем класс .fade-out
+            setTimeout(() => {
+                currentScreen.classList.remove('fade-out');
+            }, 500);
+
+            // Ждем еще немного, и показываем следующую ситуацию
+            setTimeout(() => {
+                currentSituationIndex++;
+                if (currentSituationIndex < situations.length) {
+                    showSituation();
+                } else {
+                    showScreen('screen8');
+                }
+            }, 1000);
+
         }
+
 
 
 

@@ -340,7 +340,7 @@ body {
     height: 100%;
     left: 0;
     top: 0;
-    background-color: #fff;
+    /* background-color: #fff; */
     opacity: 0;
     transition: opacity 0.5s ease-in-out;
   }
@@ -351,6 +351,10 @@ body {
     animation: fadeIn 0.5s ease-in-out both;
   }
   
+  .screen.fade-out {
+    animation: fadeOut 0.5s ease-in-out both;
+  }
+  
   @keyframes fadeIn {
     0% {
       opacity: 0;
@@ -358,17 +362,18 @@ body {
     }
     100% {
       opacity: 1;
-      background-color: #fff;
+      /* background-color: #fff; */
     }
   }
   
   @keyframes fadeOut {
     0% {
       opacity: 1;
-      background-color: #fff;
+      /* background-color: #fff; */
     }
     100% {
       opacity: 0;
       background-color: #000;
     }
   }
+  
