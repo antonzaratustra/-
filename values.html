@@ -651,26 +651,54 @@
 
                 answerOptionLeft.addEventListener('click', event => {
                     selectAnswer(event, currentSituation["answer-option-left"]["values"]);
-                    $(this).addClass('selected');
+                    $(this).addClass('selected-option');
+
+                    // Скрываем блок с ценностями
+                    document.getElementById('value-block').style.display = 'none';
+
+                    // Плавно меняем прозрачность элемента затемнения от 1 до 0
+                    setTimeout(() => {
+                        overlay.style.opacity = 0;
+                        setTimeout(() => {
+                            overlay.remove();
+
+                            // Обновляем экран
+                            currentSituationIndex++;
+                            if (currentSituationIndex < situations.length) {
+                                showSituation();
+                            } else {
+                                showResults();
+                            }
+                        }, 1000);
+                    }, 1000);
                 });
 
                 answerOptionRight.addEventListener('click', event => {
                     selectAnswer(event, currentSituation["answer-option-right"]["values"]);
-                    $(this).addClass('selected');
-                });
+                    $(this).addClass('selected-option');
 
-                // Скрываем блок с ценностями
-                document.getElementById('value-block').style.display = 'none';
+                    // Скрываем блок с ценностями
+                    document.getElementById('value-block').style.display = 'none';
 
-                // Плавно меняем прозрачность элемента затемнения от 1 до 0
-                setTimeout(() => {
-                    overlay.style.opacity = 0;
+                    // Плавно меняем прозрачность элемента затемнения от 1 до 0
                     setTimeout(() => {
-                        overlay.remove();
+                        overlay.style.opacity = 0;
+                        setTimeout(() => {
+                            overlay.remove();
+
+                            // Обновляем экран
+                            currentSituationIndex++;
+                            if (currentSituationIndex < situations.length) {
+                                showSituation();
+                            } else {
+                                showResults();
+                            }
+                        }, 1000);
                     }, 1000);
-                }, 1000);
+                });
             }, 10);
         }
+
 
 
 
