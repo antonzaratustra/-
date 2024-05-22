@@ -451,16 +451,10 @@
             // Показываем нужный экран
             var screen = document.getElementById(id);
             if (screen) {
-                screen.style.opacity = 0;
+                screen.style.opacity = 1;
                 screen.classList.add('active');
                 // Добавляем переход с эффектом выцветания
-                screen.style.transition = "opacity 0.5s ease-in-out 0.5s";
-                // Добавляем анимацию fadeOut перед сменой экрана
-                var currentScreen = document.querySelector('.screen.active');
-                currentScreen.style.animation = "fadeOut 0.5s ease-in-out both";
-                currentScreen.addEventListener('animationend', function () {
-                    currentScreen.classList.remove('active');
-                }, false);
+                screen.style.transition = "opacity 0.5s ease-in-out";
             } else {
                 console.log('Screen not found:', id);
             }
@@ -473,7 +467,6 @@
                 showResults();
             }
         }
-
 
 
         function selectAnswer(valuesToIncrease) {
@@ -525,6 +518,7 @@
 
 
         function showSituation() {
+
             document.getElementById('value-block').style.display = 'none';
 
             const currentSituation = situations[currentSituationIndex];
@@ -542,29 +536,22 @@
 
             answerOptionLeft.addEventListener('click', () => {
                 selectAnswer(currentSituation["answer-option-left"]["values"]);
-                // Добавляем переход с эффектом выцветания
-                document.querySelector('.screen.active').style.transition = "opacity 0.5s ease-in-out";
-                // Скрываем текущий экран
-                document.querySelector('.screen.active').style.opacity = 0;
-                setTimeout(() => {
-                    showSituation();
-                }, 500); // Задержка в 500 миллисекунд (соответствует длительности перехода)
             });
 
             answerOptionRight.addEventListener('click', () => {
                 selectAnswer(currentSituation["answer-option-right"]["values"]);
-                // Добавляем переход с эффектом выцветания
-                document.querySelector('.screen.active').style.transition = "opacity 0.5s ease-in-out";
-                // Скрываем текущий экран
-                document.querySelector('.screen.active').style.opacity = 0;
-                setTimeout(() => {
-                    showSituation();
-                }, 500); // Задержка в 500 миллисекунд (соответствует длительности перехода)
             });
 
-            // Показываем текущий экран с эффектом выцветания
-            document.querySelector('.screen.active').style.transition = "opacity 0.5s ease-in-out";
-            document.querySelector('.screen.active').style.opacity = 1;
+            // let timeLeft = 60;
+            // const timerInterval = setInterval(() => {
+            //     timeLeft--;
+            //     document.getElementById('timer').textContent = timeLeft;
+
+            //     if (timeLeft <= 0) {
+            //         clearInterval(timerInterval);
+            //         selectAnswer(currentSituation["answer-option-left"]["values"]); // выбираем левый вариант ответа, если время истекло
+            //     }
+            // }, 1000);
         }
 
 
