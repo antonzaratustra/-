@@ -648,7 +648,7 @@
             levels.forEach((level, index) => {
                 // Вычисляем сумму значений value для ценностей, относящихся к текущему уровню спиральной динамики
                 const levelValue = valuesArray.reduce((sum, [value, count]) => {
-                    if (showValues[value] && showValues[value].hasOwnProperty('spiralDynamics') && showValues[value].spiralDynamics === level) {
+                    if (values[value] && values[value].hasOwnProperty('spiralDynamics') && values[value].spiralDynamics === level) {
                         return sum + count.value;
                     }
                     return sum;
@@ -667,6 +667,7 @@
                 spiralResults.appendChild(valueElement);
             });
         }
+
 
 
 
