@@ -580,7 +580,10 @@ opacity: 0.5;
 .tabs {
   display: flex;
   justify-content: space-between;
-  margin-bottom: 20px;
+  margin-bottom: 50px;
+  margin: 20px 10%;
+  font-size: 2.5rem;
+  font-weight: bold;
 }
 
 .tab-button {
@@ -599,4 +602,8 @@ opacity: 0.5;
 
 .tab-content.active {
   display: block;
+}
+
+.tab-button.active {
+  opacity: 1;
 }
