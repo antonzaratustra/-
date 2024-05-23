@@ -557,7 +557,7 @@
 
         let valueResults; // объявляем переменную valueResults вне функции
 
-        // let spiralResults;
+        let spiralResults;
 
         function showResults() {
             // Получаем все ценности и сортируем их по убыванию значения value
@@ -607,51 +607,51 @@
         }
 
 
-        // function showSpiralResults() {
-        //     // Получаем все ценности и сортируем их по убыванию значения value
-        //     const valuesArray = Object.entries(values).sort((a, b) => b[1].value - a[1].value);
+        function showSpiralResults() {
+            // Получаем все ценности и сортируем их по убыванию значения value
+            const valuesArray = Object.entries(values).sort((a, b) => b[1].value - a[1].value);
 
-        //     // Получаем div с классом spiral-results и присваиваем его переменной spiralResults
-        //     const spiralResults = document.querySelector('.spiral-results');
+            // Получаем div с классом spiral-results и присваиваем его переменной spiralResults
+            const spiralResults = document.querySelector('.spiral-results');
 
-        //     // Очищаем содержимое spiral-results
-        //     spiralResults.innerHTML = '';
+            // Очищаем содержимое spiral-results
+            spiralResults.innerHTML = '';
 
-        //     // Определяем массив с уровнями спиральной динамики
-        //     const levels = [
-        //         "Выживание",
-        //         "Племенное сознание",
-        //         "Воинственное сознание",
-        //         "Орденовое сознание",
-        //         "Эгалитарное сознание",
-        //         "Индивидуалистическое сознание",
-        //         "Интегральное сознание",
-        //         "Космическое сознание"
-        //     ];
+            // Определяем массив с уровнями спиральной динамики
+            const levels = [
+                "Выживание",
+                "Племенное сознание",
+                "Воинственное сознание",
+                "Орденовое сознание",
+                "Эгалитарное сознание",
+                "Индивидуалистическое сознание",
+                "Интегральное сознание",
+                "Космическое сознание"
+            ];
 
-        //     // Выводим каждый уровень спиральной динамики в spiral-results
-        //     levels.forEach((level, index) => {
-        //         // Вычисляем сумму значений value для ценностей, относящихся к текущему уровню спиральной динамики
-        //         const levelValue = valuesArray.reduce((sum, [value, count]) => {
-        //             if (showValues[value].spiralDynamics === level) {
-        //                 return sum + count.value;
-        //             }
-        //             return sum;
-        //         }, 0);
+            // Выводим каждый уровень спиральной динамики в spiral-results
+            levels.forEach((level, index) => {
+                // Вычисляем сумму значений value для ценностей, относящихся к текущему уровню спиральной динамики
+                const levelValue = valuesArray.reduce((sum, [value, count]) => {
+                    if (showValues[value].spiralDynamics === level) {
+                        return sum + count.value;
+                    }
+                    return sum;
+                }, 0);
 
-        //         // Создаем заголовок для текущего уровня спиральной динамики
-        //         const levelElement = document.createElement('h2');
-        //         levelElement.textContent = level;
-        //         levelElement.style.opacity = 1 - index / levels.length; // Задаем прозрачность в диапазоне от 1 до 0
-        //         spiralResults.appendChild(levelElement);
+                // Создаем заголовок для текущего уровня спиральной динамики
+                const levelElement = document.createElement('h2');
+                levelElement.textContent = level;
+                levelElement.style.opacity = 1 - index / levels.length; // Задаем прозрачность в диапазоне от 1 до 0
+                spiralResults.appendChild(levelElement);
 
-        //         // Создаем элемент для суммы значений value для текущего уровня спиральной динамики
-        //         const valueElement = document.createElement('div');
-        //         valueElement.textContent = levelValue;
-        //         valueElement.style.opacity = 1 - index / levels.length; // Задаем прозрачность в диапазоне от 1 до 0
-        //         spiralResults.appendChild(valueElement);
-        //     });
-        // }
+                // Создаем элемент для суммы значений value для текущего уровня спиральной динамики
+                const valueElement = document.createElement('div');
+                valueElement.textContent = levelValue;
+                valueElement.style.opacity = 1 - index / levels.length; // Задаем прозрачность в диапазоне от 1 до 0
+                spiralResults.appendChild(valueElement);
+            });
+        }
 
 
 
@@ -684,8 +684,8 @@
             }
 
             if (id === 'screen8') {
-                showResults();
-                // showSpiralResults();
+                // showResults();
+                showSpiralResults();
 
                 // Добавляем код для вкладок
                 const tabButtons = document.querySelectorAll('.tab-button');
