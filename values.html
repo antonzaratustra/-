@@ -564,8 +564,48 @@
             // Ограничиваем количество ценностей до 10
             const topValues = valuesArray.slice(0, 10);
 
+            // Получаем div с классом spiral-results и присваиваем его переменной spiralResults
+            const spiralResults = document.querySelector('.spiral-results');
+
+            // Очищаем содержимое spiral-results
+            spiralResults.innerHTML = '';
+
+            // Создаем заголовки h2 для каждого уровня спиральной динамики
+            const levels = [
+                'Выживание',
+                'Племенное сознание',
+                'Воинственное сознание',
+                'Орденовое сознание',
+                'Эгалитарное сознание',
+                'Индивидуалистическое сознание',
+                'Интегральное сознание',
+                'Космическое сознание'
+            ];
+
+            // Выводим каждый уровень спиральной динамики в spiral-results
+            levels.forEach((level, index) => {
+                const levelElement = document.createElement('h2');
+                levelElement.textContent = level;
+                levelElement.style.opacity = 1 - index / (levels.length - 1); // Задаем прозрачность в диапазоне от 1 до 0
+                spiralResults.appendChild(levelElement);
+
+                // Вычисляем сумму значений value для ценностей, соответствующих текущему уровню спиральной динамики
+                const levelValue = valuesArray.reduce((acc, [value, count]) => {
+                    if (showValues[value].spiralDynamics === level) {
+                        return acc + count.value;
+                    }
+                    return acc;
+                }, 0);
+
+                // Выводим сумму значений value для ценностей, соответствующих текущему уровню спиральной динамики
+                const valueElement = document.createElement('div');
+                valueElement.textContent = levelValue;
+                valueElement.style.opacity = 1 - index / (levels.length - 1); // Задаем прозрачность в диапазоне от 1 до 0
+                spiralResults.appendChild(valueElement);
+            });
+
             // Получаем div с классом value-results и присваиваем его переменной valueResults
-            valueResults = document.querySelector('.value-results');
+            const valueResults = document.querySelector('.value-results');
 
             // Очищаем содержимое value-results
             valueResults.innerHTML = '';
@@ -577,42 +617,46 @@
                 valueElement.style.opacity = 1 - count.value / 10; // Задаем прозрачность в диапазоне от 1 до 0
                 valueResults.appendChild(valueElement);
             });
-
-            // // Добавляем обработчик события mouseover к valueResults
-            // valueResults.addEventListener('mouseover', function (event) {
-            //     if (event.target.tagName === 'DIV') {
-            //         const value = event.target.textContent;
-            //         if (values[value]) {
-            //             console.log("Ценность: " + value);
-            //             console.log("Категория: " + values[value].category);
-            //             console.log("Spiral Dynamics: " + values[value].spiralDynamics);
-            //             console.log("Архетип: " + values[value].archetype);
-            //             console.log("Мотивация: " + values[value].motivation);
-            //             console.log("Описание: " + values[value].description);
-            //             console.log("Примеры: " + values[value].examples.join(", "));
-            //         }
-            //     }
-            // });
+        }
 
 
 
 
+        // // Добавляем обработчик события mouseover к valueResults
+        // valueResults.addEventListener('mouseover', function (event) {
+        //     if (event.target.tagName === 'DIV') {
+        //         const value = event.target.textContent;
+        //         if (values[value]) {
+        //             console.log("Ценность: " + value);
+        //             console.log("Категория: " + values[value].category);
+        //             console.log("Spiral Dynamics: " + values[value].spiralDynamics);
+        //             console.log("Архетип: " + values[value].archetype);
+        //             console.log("Мотивация: " + values[value].motivation);
+        //             console.log("Описание: " + values[value].description);
+        //             console.log("Примеры: " + values[value].examples.join(", "));
+        //         }
+        //     }
+        // });
 
-            valueResults.addEventListener('mouseover', function (event) {
-                if (event.target.tagName === 'DIV') {
-                    const value = event.target.textContent;
-                    if (showValues[value]) {
-                        console.log("Категория: " + showValues[value].category);
-                        console.log("Spiral Dynamics: " + showValues[value].spiralDynamics);
-                        console.log("Архетип: " + showValues[value].archetype);
-                        console.log("Мотивация: " + showValues[value].motivation);
-                        console.log("Описание: " + showValues[value].description);
-                        if (showValues[value].examples) {
-                            console.log("Примеры: " + showValues[value].examples.join(", "));
-                        }
+
+
+
+
+        valueResults.addEventListener('mouseover', function (event) {
+            if (event.target.tagName === 'DIV') {
+                const value = event.target.textContent;
+                if (showValues[value]) {
+                    console.log("Категория: " + showValues[value].category);
+                    console.log("Spiral Dynamics: " + showValues[value].spiralDynamics);
+                    console.log("Архетип: " + showValues[value].archetype);
+                    console.log("Мотивация: " + showValues[value].motivation);
+                    console.log("Описание: " + showValues[value].description);
+                    if (showValues[value].examples) {
+                        console.log("Примеры: " + showValues[value].examples.join(", "));
                     }
                 }
-            });
+            }
+        });
 
 
 
