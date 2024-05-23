@@ -559,7 +559,6 @@
 
         let spiralResults;
 
-
         function showResults() {
             // Получаем все ценности и сортируем их по убыванию значения value
             const valuesArray = Object.entries(values).sort((a, b) => b[1].value - a[1].value);
@@ -567,45 +566,8 @@
             // Ограничиваем количество ценностей до 10
             const topValues = valuesArray.slice(0, 10);
 
-            // Получаем div с классом spiral-results и присваиваем его переменной spiralResults
-            const spiralResults = document.querySelector('.spiral-results');
-
-            // Очищаем содержимое spiral-results
-            spiralResults.innerHTML = '';
-
-            // Выводим заголовки спиральной динамики в spiral-results
-            const spiralDynamicsLevels = [
-                'Выживание',
-                'Племенное сознание',
-                'Воинственное сознание',
-                'Орденовое сознание',
-                'Эгалитарное сознание',
-                'Индивидуалистическое сознание',
-                'Интегральное сознание',
-                'Космическое сознание'
-            ];
-
-            spiralDynamicsLevels.forEach((level, index) => {
-                const levelElement = document.createElement('h2');
-                levelElement.textContent = level;
-                levelElement.style.opacity = 1 - index / (spiralDynamicsLevels.length - 1); // Задаем прозрачность в диапазоне от 1 до 0
-                spiralResults.appendChild(levelElement);
-
-                const levelValue = valuesArray.reduce((sum, [value, count]) => {
-                    if (showValues[value].spiralDynamics === level) {
-                        return sum + count.value;
-                    }
-                    return sum;
-                }, 0);
-
-                const valueElement = document.createElement('div');
-                valueElement.textContent = levelValue;
-                valueElement.style.opacity = 1 - index / (spiralDynamicsLevels.length - 1); // Задаем прозрачность в диапазоне от 1 до 0
-                spiralResults.appendChild(valueElement);
-            });
-
             // Получаем div с классом value-results и присваиваем его переменной valueResults
-            const valueResults = document.querySelector('.value-results');
+            valueResults = document.querySelector('.value-results');
 
             // Очищаем содержимое value-results
             valueResults.innerHTML = '';
@@ -618,7 +580,14 @@
                 valueResults.appendChild(valueElement);
             });
 
-            // Добавляем обработчик события mouseover на value-results
+
+
+
+
+
+
+
+
             valueResults.addEventListener('mouseover', function (event) {
                 if (event.target.tagName === 'DIV') {
                     const value = event.target.textContent;
@@ -635,38 +604,60 @@
                 }
             });
 
-            // Получаем все вкладки и присваиваем их переменной tabButtons
-            const tabButtons = document.querySelectorAll('.tab-button');
 
-            // Добавляем обработчик события click на каждую вкладку
-            tabButtons.forEach(button => {
-                button.addEventListener('click', () => {
-                    // Удаляем класс active у всех вкладок
-                    tabButtons.forEach(btn => btn.classList.remove('active'));
 
-                    // Добавляем класс active к текущей вкладке
-                    button.classList.add('active');
 
-                    // Получаем id текущей вкладки
-                    const tabId = button.dataset.tab;
 
-                    // Получаем все вкладки с содержимым и присваиваем их переменной tabContents
-                    const tabContents = document.querySelectorAll('.tab-content');
 
-                    // Скрываем все вкладки с содержимым
-                    tabContents.forEach(tab => tab.classList.remove('active'));
 
-                    // Показываем текущую вкладку с содержимым
-                    document.querySelector(`#${tabId}`).classList.add('active');
-                });
-            });
-
-            // Активируем первую вкладку по умолчанию
-            document.querySelector('.tab-button').classList.add('active');
-            document.querySelector('.tab-content').classList.add('active');
         }
 
 
+        function showSpiralResults() {
+            // Получаем все ценности и сортируем их по убыванию значения value
+            const valuesArray = Object.entries(values).sort((a, b) => b[1].value - a[1].value);
+
+            // Получаем div с классом spiral-results и присваиваем его переменной spiralResults
+            const spiralResults = document.querySelector('.spiral-results');
+
+            // Очищаем содержимое spiral-results
+            spiralResults.innerHTML = '';
+
+            // Определяем массив с уровнями спиральной динамики
+            const levels = [
+                "Выживание",
+                "Племенное сознание",
+                "Воинственное сознание",
+                "Орденовое сознание",
+                "Эгалитарное сознание",
+                "Индивидуалистическое сознание",
+                "Интегральное сознание",
+                "Космическое сознание"
+            ];
+
+            // Выводим каждый уровень спиральной динамики в spiral-results
+            levels.forEach((level, index) => {
+                // Вычисляем сумму значений value для ценностей, относящихся к текущему уровню спиральной динамики
+                const levelValue = valuesArray.reduce((sum, [value, count]) => {
+                    if (showValues[value].spiralDynamics === level) {
+                        return sum + count.value;
+                    }
+                    return sum;
+                }, 0);
+
+                // Создаем заголовок для текущего уровня спиральной динамики
+                const levelElement = document.createElement('h2');
+                levelElement.textContent = level;
+                levelElement.style.opacity = 1 - index / levels.length; // Задаем прозрачность в диапазоне от 1 до 0
+                spiralResults.appendChild(levelElement);
+
+                // Создаем элемент для суммы значений value для текущего уровня спиральной динамики
+                const valueElement = document.createElement('div');
+                valueElement.textContent = levelValue;
+                valueElement.style.opacity = 1 - index / levels.length; // Задаем прозрачность в диапазоне от 1 до 0
+                spiralResults.appendChild(valueElement);
+            });
+        }
 
 
 
@@ -700,6 +691,7 @@
 
             if (id === 'screen8') {
                 showResults();
+                showSpiralResults();
 
                 // Добавляем код для вкладок
                 const tabButtons = document.querySelectorAll('.tab-button');
