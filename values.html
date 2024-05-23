@@ -645,28 +645,27 @@
             ];
 
             // Выводим каждый уровень спиральной динамики в spiral-results
-            levels.forEach((level, index) => {
-                // Вычисляем сумму значений value для ценностей, относящихся к текущему уровню спиральной динамики
-                const levelValue = valuesArray.reduce((sum, [value, count]) => {
-                    if (values[value] && values[value].hasOwnProperty('spiralDynamics') && values[value].spiralDynamics === level) {
-                        return sum + values[value] * count; // умножаем значение value на количество count и прибавляем к сумме
-                    }
-                    return sum;
-                }, 0);
+            const levelValue = valuesArray.reduce((sum, [value, count]) => {
+                console.log('sum:', sum, 'value:', value, 'count:', count, 'level:', level); // выводим в консоль значения sum, value, count и level
+                if (values[value] && values[value].hasOwnProperty('spiralDynamics') && values[value].spiralDynamics === level) {
+                    return sum + values[value];
+                }
+                return sum;
+            }, 0);
 
 
-                // Создаем заголовок для текущего уровня спиральной динамики
-                const levelElement = document.createElement('h2');
-                levelElement.textContent = level;
-                levelElement.style.opacity = 1 - index / levels.length; // Задаем прозрачность в диапазоне от 1 до 0
-                spiralResults.appendChild(levelElement);
+            // Создаем заголовок для текущего уровня спиральной динамики
+            const levelElement = document.createElement('h2');
+            levelElement.textContent = level;
+            levelElement.style.opacity = 1 - index / levels.length; // Задаем прозрачность в диапазоне от 1 до 0
+            spiralResults.appendChild(levelElement);
 
-                // Создаем элемент для суммы значений value для текущего уровня спиральной динамики
-                const valueElement = document.createElement('div');
-                valueElement.textContent = levelValue;
-                valueElement.style.opacity = 1 - index / levels.length; // Задаем прозрачность в диапазоне от 1 до 0
-                spiralResults.appendChild(valueElement);
-            });
+            // Создаем элемент для суммы значений value для текущего уровня спиральной динамики
+            const valueElement = document.createElement('div');
+            valueElement.textContent = levelValue;
+            valueElement.style.opacity = 1 - index / levels.length; // Задаем прозрачность в диапазоне от 1 до 0
+            spiralResults.appendChild(valueElement);
+        });
         }
 
 
