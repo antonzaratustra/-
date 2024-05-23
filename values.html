@@ -633,7 +633,6 @@
         let answeredSituations = [];
 
         function showScreen(id) {
-            console.log('Show screen:', id);
             // Скрываем все экраны
             var screens = document.getElementsByClassName('screen');
             for (var i = 0; i < screens.length; i++) {
@@ -657,8 +656,40 @@
 
             if (id === 'screen8') {
                 showResults();
+
+                // Добавляем код для вкладок
+                const tabButtons = document.querySelectorAll('.tab-button');
+                const tabContents = document.querySelectorAll('.tab-content');
+
+                tabButtons.forEach(button => {
+                    button.addEventListener('click', () => {
+                        const activeTab = document.querySelector('.tab-content.active');
+                        const activeButton = document.querySelector('.tab-button.active');
+
+                        if (activeTab) {
+                            activeTab.classList.remove('active');
+                        }
+
+                        if (activeButton) {
+                            activeButton.classList.remove('active');
+                        }
+
+                        const tabId = button.dataset.tab;
+                        const tab = document.getElementById(tabId);
+
+                        if (tab) {
+                            tab.classList.add('active');
+                            button.classList.add('active');
+                        }
+                    });
+                });
+
+                // Активируем первую вкладку по умолчанию
+                document.querySelector('.tab-button').classList.add('active');
+                document.querySelector('.tab-content').classList.add('active');
             }
         }
+
 
 
         function selectAnswer(event, valuesToIncrease) {
@@ -917,35 +948,35 @@
 
 
 
-        const tabButtons = document.querySelectorAll('.tab-button');
-        const tabContents = document.querySelectorAll('.tab-content');
+        // const tabButtons = document.querySelectorAll('.tab-button');
+        // const tabContents = document.querySelectorAll('.tab-content');
 
-        tabButtons.forEach(button => {
-            button.addEventListener('click', () => {
-                const activeTab = document.querySelector('.tab-content.active');
-                const activeButton = document.querySelector('.tab-button.active');
+        // tabButtons.forEach(button => {
+        //     button.addEventListener('click', () => {
+        //         const activeTab = document.querySelector('.tab-content.active');
+        //         const activeButton = document.querySelector('.tab-button.active');
 
-                if (activeTab) {
-                    activeTab.classList.remove('active');
-                }
+        //         if (activeTab) {
+        //             activeTab.classList.remove('active');
+        //         }
 
-                if (activeButton) {
-                    activeButton.classList.remove('active');
-                }
+        //         if (activeButton) {
+        //             activeButton.classList.remove('active');
+        //         }
 
-                const tabId = button.dataset.tab;
-                const tab = document.getElementById(tabId);
+        //         const tabId = button.dataset.tab;
+        //         const tab = document.getElementById(tabId);
 
-                if (tab) {
-                    tab.classList.add('active');
-                    button.classList.add('active');
-                }
-            });
-        });
+        //         if (tab) {
+        //             tab.classList.add('active');
+        //             button.classList.add('active');
+        //         }
+        //     });
+        // });
 
-        // Активируем первую вкладку по умолчанию
-        document.querySelector('.tab-button').classList.add('active');
-        document.querySelector('.tab-content').classList.add('active');
+        // // Активируем первую вкладку по умолчанию
+        // document.querySelector('.tab-button').classList.add('active');
+        // document.querySelector('.tab-content').classList.add('active');
 
 
 
