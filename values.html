@@ -188,16 +188,6 @@
         <!-- Screen 8 -->
         <div class="screen" id="screen8">
 
-
-
-            <!-- <div class="image-container">
-                <img class="image" src="Img/values.png" alt="Image 1">
-                <img class="image" src="Img/spiral.png" alt="Image 2">
-                <img class="image" src="Img/archetype.png" alt="Image 3">
-                <img class="image" src="Img/motivation.png" alt="Image 4">
-                <img class="image" src="Img/category.png" alt="Image 5">
-            </div> -->
-
             <div class="tabs">
                 <div class="tab-button" data-tab="values">Твоя иерархия ценностей</div>
                 <div class="tab-button" data-tab="spiral">Спиральная динамика</div>
@@ -209,44 +199,30 @@
             <div class="tab-content" id="values">
                 <div class="image-container">
                     <img class="image" src="Img/values.png" alt="Image 1">
-                  
-                </div>
                 <div class="value-results" id="value-results"></div>
             </div>
 
             <div class="tab-content" id="spiral">
-                <div class="image-container">
-                    <img class="image" src="Img/spiral.png" alt="Image 2">
-                  
-                </div>
+                <img class="image" src="Img/spiral.png" alt="Image 2">
                 <!-- Контент для вкладки "Спиральная динамика" -->
                 <div class="spiral-results" id="spiral-results"></div>
             </div>
 
             <div class="tab-content" id="archetype">
-                <div class="image-container">
-                    <img class="image" src="Img/archetype.png" alt="Image 3">
-                  
-                </div>
+                <img class="image" src="Img/archetype.png" alt="Image 3">
                 <!-- Контент для вкладки "Архетипы Юнга" -->
                 <div class="archetype-results" id="archetype-results"></div>
 
             </div>
 
             <div class="tab-content" id="motivation">
-                <div class="image-container">
-                    <img class="image" src="Img/motivation.png" alt="Image 4">
-                  
-                </div>
+                <img class="image" src="Img/motivation.png" alt="Image 1">
                 <!-- Контент для вкладки "Ключевая мотивация" -->
                 <div class="motivation-results" id="motivation-results"></div>
             </div>
 
             <div class="tab-content" id="category">
-                <div class="image-container">
-                    <img class="image" src="Img/category.png" alt="Image 5">
-                  
-                </div>
+                <img class="image" src="Img/category.png" alt="Image 1">
                 <!-- Контент для вкладки "Категории" -->
                 <div class="category-results" id="category-results"></div>
             </div>
@@ -1080,19 +1056,6 @@
                         if (tab) {
                             tab.classList.add('active');
                             button.classList.add('active');
-
-                            // сначала скрываем все изображения
-                            imageContainer.querySelectorAll('.image').forEach((image) => {
-                                image.classList.add('hide');
-                                image.classList.remove('show');
-                            });
-
-                            // затем показываем нужное изображение
-                            const imageToShow = imageContainer.querySelector(`img[src="${tabId}.png"]`);
-                            if (imageToShow) {
-                                imageToShow.classList.add('show');
-                                imageToShow.classList.remove('hide');
-                            }
                         }
                     });
                 });
@@ -1100,15 +1063,7 @@
                 // Активируем первую вкладку по умолчанию
                 document.querySelector('.tab-button').classList.add('active');
                 document.querySelector('.tab-content').classList.add('active');
-
-                // показываем первое изображение по умолчанию
-                const firstImage = imageContainer.querySelector('.image');
-                if (firstImage) {
-                    firstImage.classList.add('show');
-                    firstImage.classList.remove('hide');
-                }
             }
-
         }
 
 
@@ -1376,25 +1331,6 @@
 
 
 
-        const imageContainer = document.querySelector('.image-container');
-        const tabButtons = document.querySelectorAll('.tab-button');
-
-        tabButtons.forEach((tabButton, index) => {
-            tabButton.addEventListener('click', () => {
-                // сначала скрываем все изображения
-                imageContainer.querySelectorAll('.image').forEach((image) => {
-                    image.classList.add('hide');
-                    image.classList.remove('show');
-                });
-
-                // затем показываем нужное изображение
-                const imageToShow = imageContainer.querySelector(`img[src="${tabButton.dataset.tab}.png"]`);
-                if (imageToShow) {
-                    imageToShow.classList.add('show');
-                    imageToShow.classList.remove('hide');
-                }
-            });
-        });
 
 
 
