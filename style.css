@@ -219,6 +219,10 @@ body {
   }
 
 
+  text {
+    cursor: default;
+  }
+
   .answer-block { display: flex; justify-content: space-between; margin-top: 20px; } 
   .answer-option { width: 48%; padding: 20px; box-sizing: border-box; border: 1px solid #000; text-align: center; } 
   .left { float: left; } 
