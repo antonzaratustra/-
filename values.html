@@ -124,8 +124,12 @@
         <div class="screen" id="screen2">
 
             <img src="Img/left-pill-small.png" alt="Left image" class="bottom-left-image left-to-center">
-            <img src="Img/right-pill-small.png" alt="Right image" class="bottom-right-image right-to-center">
+            <img src="Img/right-pill small.png" alt="Right image" class="bottom-right-image right-to-center">
 
+
+            <div class="progress-bar">
+                <div class="progress"></div>
+            </div>
 
 
             <h2>Ситуация</h2>
@@ -707,6 +711,7 @@
             if (id === 'screen8') {
                 showResults();
                 showSpiralResults();
+                document.querySelector('.progress-bar').style.display = 'none';
 
                 // Добавляем код для вкладок
                 const tabButtons = document.querySelectorAll('.tab-button');
@@ -838,7 +843,7 @@
                     $(this).addClass('selected-option');
                 });
 
-          
+
                 answerOptionRight.addEventListener('click', event => {
                     selectAnswer(event, currentSituation["answer-option-right"]["values"]);
                     $(this).addClass('selected-option');
@@ -847,6 +852,10 @@
                 // Возвращаем экран в нормальное состояние
                 fadeInScreen();
             }, 1000);
+
+            document.querySelector('.progress-bar').style.display = 'block';
+            updateProgress();
+
         }
 
         function fadeOutScreen() {
@@ -1003,35 +1012,21 @@
 
 
 
-        // const tabButtons = document.querySelectorAll('.tab-button');
-        // const tabContents = document.querySelectorAll('.tab-content');
+        let currentProgress = 0;
 
-        // tabButtons.forEach(button => {
-        //     button.addEventListener('click', () => {
-        //         const activeTab = document.querySelector('.tab-content.active');
-        //         const activeButton = document.querySelector('.tab-button.active');
+        function updateProgress() {
+            // Вычисляем текущий прогресс в процентах
+            currentProgress = (currentSituationIndex + 1) / situations.length * 100;
 
-        //         if (activeTab) {
-        //             activeTab.classList.remove('active');
-        //         }
+            // Обновляем ширину прогресса
+            const progress = document.querySelector('.progress-bar .progress');
+            progress.style.width = `${currentProgress}%`;
 
-        //         if (activeButton) {
-        //             activeButton.classList.remove('active');
-        //         }
-
-        //         const tabId = button.dataset.tab;
-        //         const tab = document.getElementById(tabId);
-
-        //         if (tab) {
-        //             tab.classList.add('active');
-        //             button.classList.add('active');
-        //         }
-        //     });
-        // });
-
-        // // Активируем первую вкладку по умолчанию
-        // document.querySelector('.tab-button').classList.add('active');
-        // document.querySelector('.tab-content').classList.add('active');
+            // Если все ситуации отвечены, меняем цвет кружка в правой части прогресс-бара
+            if (currentProgress === 100) {
+                document.querySelector('.progress-bar::after').style.backgroundColor = '#007bff';
+            }
+        }
 
 
 
