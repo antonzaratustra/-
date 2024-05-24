@@ -637,11 +637,12 @@ opacity: 0.5;
   transform: translate(-50%, -50%);
 }
 progress {
-  width: 100%;
+  width: 90%;
   height: 20px;
   border-radius: 50px;
   background-color: #ddd;
   transition: width 300ms ease;
+  margin: 20px;
 }
 progress[value]::-webkit-progress-bar {
   width: 100%;
