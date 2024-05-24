@@ -747,6 +747,7 @@
         }
 
 
+
         function selectAnswer(event, valuesToIncrease) {
             event.currentTarget.classList.add('selected-option'); // добавляем класс selected-option к элементу answer-option, на который был совершен клик
 
@@ -799,22 +800,17 @@
                         selectedValueOption.classList.add('selected-option');
                     }
 
-                    // Увеличиваем индекс текущей ситуации
                     currentSituationIndex++;
-
-                    // Проверяем, все ли ситуации отвечены
                     if (currentSituationIndex < situations.length) {
-                        // Показываем следующую ситуацию
+                        currentSituation = situations[currentSituationIndex];
                         showSituation();
                     } else {
-                        // Показываем экран с ценностями
-                        showValues();
+                        showScreen('screen8');
                     }
                 });
                 valueBlock.appendChild(valueElement);
             });
         }
-
 
 
         function showSituation() {
