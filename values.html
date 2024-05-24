@@ -711,7 +711,6 @@
             if (id === 'screen8') {
                 showResults();
                 showSpiralResults();
-                document.querySelector('.progress-bar').style.display = 'none';
 
                 // Добавляем код для вкладок
                 const tabButtons = document.querySelectorAll('.tab-button');
@@ -848,16 +847,10 @@
                     selectAnswer(event, currentSituation["answer-option-right"]["values"]);
                     $(this).addClass('selected-option');
                 });
-                // Обновляем прогресс-бар
-                updateProgress();
 
                 // Возвращаем экран в нормальное состояние
                 fadeInScreen();
             }, 1000);
-
-            document.querySelector('.progress-bar').style.display = 'block';
-
-
         }
 
         function fadeOutScreen() {
@@ -1016,19 +1009,19 @@
 
         let currentProgress = 0;
 
-        function updateProgress() {
-            // Вычисляем текущий прогресс в процентах
-            currentProgress = (currentSituationIndex + 1) / situations.length * 100;
+function updateProgress() {
+  // Вычисляем текущий прогресс в процентах
+  currentProgress = (currentSituationIndex + 1) / situations.length * 100;
 
-            // Обновляем ширину прогресса
-            const progress = document.querySelector('.progress-bar .progress');
-            progress.style.width = `${currentProgress}%`;
+  // Обновляем ширину прогресса
+  const progress = document.querySelector('.progress-bar .progress');
+  progress.style.width = `${currentProgress}%`;
 
-            // Если все ситуации отвечены, меняем цвет кружка в правой части прогресс-бара
-            if (currentProgress === 100) {
-                document.querySelector('.progress-bar::after').style.backgroundColor = '#007bff';
-            }
-        }
+  // Если все ситуации отвечены, меняем цвет кружка в правой части прогресс-бара
+  if (currentProgress === 100) {
+    document.querySelector('.progress-bar::after').style.backgroundColor = '#007bff';
+  }
+}
 
 
 
