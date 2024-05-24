@@ -850,12 +850,31 @@
                 "Другие"
             ];
 
+            // Сортируем массив с категориями по убыванию суммы значений value для ценностей, относящихся к каждой категории
+            categories.sort((a, b) => {
+                const aValue = valuesArray.reduce((sum, [value, count]) => {
+                    if (showValues[value] && showValues[value].hasOwnProperty('category') && showValues[value].category === a) {
+                        return sum + count;
+                    }
+                    return sum;
+                }, 0);
+
+                const bValue = valuesArray.reduce((sum, [value, count]) => {
+                    if (showValues[value] && showValues[value].hasOwnProperty('category') && showValues[value].category === b) {
+                        return sum + count;
+                    }
+                    return sum;
+                }, 0);
+
+                return bValue - aValue;
+            });
+
             // Выводим каждую категорию в category-results
             categories.forEach((category, index) => {
                 // Вычисляем сумму значений value для ценностей, относящихся к текущей категории
                 const categoryValue = valuesArray.reduce((sum, [value, count]) => {
                     if (showValues[value] && showValues[value].hasOwnProperty('category') && showValues[value].category === category) {
-                        return sum + count; // вместо values[value] используем count
+                        return sum + count;
                     }
                     return sum;
                 }, 0);
@@ -863,13 +882,13 @@
                 // Создаем заголовок для текущей категории
                 const categoryElement = document.createElement('h2');
                 categoryElement.textContent = category;
-                categoryElement.style.opacity = 1 - index / categories.length; // Задаем прозрачность в диапазоне от 1 до 0
+                categoryElement.style.opacity = 1 - index / categories.length;
                 categoryResults.appendChild(categoryElement);
 
                 // Создаем элемент для суммы значений value для текущей категории
                 const valueElement = document.createElement('div');
                 valueElement.textContent = categoryValue;
-                valueElement.style.opacity = 1 - index / categories.length; // Задаем прозрачность в диапазоне от 1 до 0
+                valueElement.style.opacity = 1 - index / categories.length;
                 categoryResults.appendChild(valueElement);
             });
         }
@@ -891,6 +910,25 @@
                 "ресурсоемкость",
                 "сексуальная успешность"
             ];
+
+            // Сортируем массив motivations по убыванию суммы значений value для каждой мотивации
+            motivations.sort((a, b) => {
+                const sumA = valuesArray.reduce((sum, [value, count]) => {
+                    if (showValues[value] && showValues[value].hasOwnProperty('motivation') && showValues[value].motivation === a) {
+                        return sum + count;
+                    }
+                    return sum;
+                }, 0);
+
+                const sumB = valuesArray.reduce((sum, [value, count]) => {
+                    if (showValues[value] && showValues[value].hasOwnProperty('motivation') && showValues[value].motivation === b) {
+                        return sum + count;
+                    }
+                    return sum;
+                }, 0);
+
+                return sumB - sumA;
+            });
 
             // Выводим каждую мотивацию в motivation-results
             motivations.forEach((motivation, index) => {
