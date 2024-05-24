@@ -812,6 +812,9 @@
             // Затемняем экран
             fadeOutScreen();
 
+
+
+
             // Добавляем задержку на 1 секунду
             setTimeout(() => {
                 // Скрываем блок с ценностями
@@ -835,31 +838,16 @@
                     $(this).addClass('selected-option');
                 });
 
+          
                 answerOptionRight.addEventListener('click', event => {
                     selectAnswer(event, currentSituation["answer-option-right"]["values"]);
                     $(this).addClass('selected-option');
-                });
-
-                // Запускаем анимацию для левого изображения
-                const leftImage = document.querySelector('.left-to-center');
-                leftImage.classList.add('animate');
-
-                // Запускаем анимацию для правого изображения
-                const rightImage = document.querySelector('.right-to-center');
-                rightImage.classList.add('animate');
-
-                // Сбрасываем анимацию после ее завершения
-                document.querySelectorAll('.left-to-center, .right-to-center').forEach(el => {
-                    el.addEventListener('transitionend', () => {
-                        el.classList.remove('animate');
-                    });
                 });
 
                 // Возвращаем экран в нормальное состояние
                 fadeInScreen();
             }, 1000);
         }
-
 
         function fadeOutScreen() {
             // Создаем элемент затемнения
