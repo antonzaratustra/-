@@ -553,7 +553,7 @@ body {
 
 
   .popup-image {
-    max-width: 80%;
+    max-width: 50%;
     border-radius: 10px;
     display: block;
     margin: 0 auto;
