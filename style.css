@@ -581,38 +581,6 @@ opacity: 0.5;
 
 
 
-.tabs {
-  display: flex;
-  justify-content: space-between;
-  margin-bottom: 50px;
-  margin: 20px 10%;
-  font-size: 1 rem;
-  font-weight: bold;
-  margin-bottom: 80px;
-}
-
-.tab-button {
-  cursor: pointer;
-  opacity: 0.5;
-  transition: opacity 0.3s;
-}
-
-.tab-button:hover {
-  opacity: 1;
-}
-
-.tab-content {
-  display: none;
-}
-
-.tab-content.active {
-  display: block;
-}
-
-.tab-button.active {
-  opacity: 1;
-}
-
 
 
 
@@ -663,6 +631,39 @@ progress[value]::-webkit-progress-value {
 
 
 
+
+.tabs {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 50px;
+  margin: 20px 10%;
+  font-size: 1 rem;
+  font-weight: bold;
+  margin-bottom: 80px;
+}
+
+.tab-button {
+  cursor: pointer;
+  opacity: 0.5;
+  transition: opacity 0.3s;
+}
+
+.tab-button:hover {
+  opacity: 1;
+}
+
+.tab-content {
+  display: none;
+}
+
+.tab-content.tab-active {
+  display: block;
+}
+
+.tab-button.tab-active {
+  opacity: 1;
+}
+
 .image-container {
   position: absolute;
   left: 20px;
@@ -681,10 +682,10 @@ progress[value]::-webkit-progress-value {
   transition: transform 0.5s; /* это задает плавность поворота */
 }
 
-.image-container .image.show {
+.image-container .image.image-active {
   transform: rotateY(0deg); /* это показывает изображение */
 }
 
-.image-container .image.hide {
+.image-container .image.image-hide {
   transform: rotateY(180deg); /* это скрывает изображение */
 }
