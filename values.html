@@ -199,7 +199,6 @@
 
             <div class="tab-content" id="archetype">
                 <!-- Контент для вкладки "Архетипы Юнга" -->
-                <p>Архетипы Юнга</p>
                 <div class="archetype-results" id="archetype-results"></div>
 
             </div>
@@ -211,7 +210,7 @@
 
             <div class="tab-content" id="category">
                 <!-- Контент для вкладки "Категории" -->
-                <p>Категории</p>
+                <div class="category-results" id="category-results"></div>
             </div>
 
 
@@ -679,6 +678,9 @@
 
         let archetypeResults;
 
+        let categoryResults;
+
+
         function showResults() {
             // Получаем все ценности и сортируем их по убыванию значения value
             const valuesArray = Object.entries(values).sort((a, b) => b[1].value - a[1].value);
@@ -821,6 +823,55 @@
 
 
 
+        function showCategoryResults() {
+            // Получаем все ценности и сортируем их по убыванию значения value
+            const valuesArray = Object.entries(values).sort((a, b) => b[1].value - a[1].value);
+
+            // Получаем div с классом category-results и присваиваем его переменной categoryResults
+            const categoryResults = document.querySelector('.category-results');
+
+            // Очищаем содержимое category-results
+            categoryResults.innerHTML = '';
+
+            // Определяем массив с категориями
+            const categories = [
+                "Личные качества и настроения",
+                "Отношения с другими людьми",
+                "Мораль и этика",
+                "Духовность и религия",
+                "Общество и культура",
+                "Творчество и инновации",
+                "Материальное благополучие и успех",
+                "Природа и окружающая среда",
+                "Здоровье и физическая форма",
+                "Другие"
+            ];
+
+            // Выводим каждую категорию в category-results
+            categories.forEach((category, index) => {
+                // Вычисляем сумму значений value для ценностей, относящихся к текущей категории
+                const categoryValue = valuesArray.reduce((sum, [value, count]) => {
+                    if (showValues[value] && showValues[value].hasOwnProperty('category') && showValues[value].category === category) {
+                        return sum + count; // вместо values[value] используем count
+                    }
+                    return sum;
+                }, 0);
+
+                // Создаем заголовок для текущей категории
+                const categoryElement = document.createElement('h2');
+                categoryElement.textContent = category;
+                categoryElement.style.opacity = 1 - index / categories.length; // Задаем прозрачность в диапазоне от 1 до 0
+                categoryResults.appendChild(categoryElement);
+
+                // Создаем элемент для суммы значений value для текущей категории
+                const valueElement = document.createElement('div');
+                valueElement.textContent = categoryValue;
+                valueElement.style.opacity = 1 - index / categories.length; // Задаем прозрачность в диапазоне от 1 до 0
+                categoryResults.appendChild(valueElement);
+            });
+        }
+
+
 
         let currentSituationIndex = 0;
         let currentSituation = situations[currentSituationIndex];
@@ -852,6 +903,7 @@
                 showResults();
                 showSpiralResults();
                 showArchetypeResults();
+                showCategoryResults();
 
                 // Добавляем код для вкладок
                 const tabButtons = document.querySelectorAll('.tab-button');
