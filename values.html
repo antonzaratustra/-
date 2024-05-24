@@ -747,7 +747,6 @@
         }
 
 
-
         function selectAnswer(event, valuesToIncrease) {
             event.currentTarget.classList.add('selected-option'); // добавляем класс selected-option к элементу answer-option, на который был совершен клик
 
@@ -800,17 +799,22 @@
                         selectedValueOption.classList.add('selected-option');
                     }
 
+                    // Увеличиваем индекс текущей ситуации
                     currentSituationIndex++;
+
+                    // Проверяем, все ли ситуации отвечены
                     if (currentSituationIndex < situations.length) {
-                        currentSituation = situations[currentSituationIndex];
+                        // Показываем следующую ситуацию
                         showSituation();
                     } else {
-                        showScreen('screen8');
+                        // Показываем экран с ценностями
+                        showValues();
                     }
                 });
                 valueBlock.appendChild(valueElement);
             });
         }
+
 
 
         function showSituation() {
@@ -848,13 +852,15 @@
                     selectAnswer(event, currentSituation["answer-option-right"]["values"]);
                     $(this).addClass('selected-option');
                 });
+                // Обновляем прогресс-бар
+                updateProgress();
 
                 // Возвращаем экран в нормальное состояние
                 fadeInScreen();
             }, 1000);
 
             document.querySelector('.progress-bar').style.display = 'block';
-            updateProgress();
+
 
         }
 
