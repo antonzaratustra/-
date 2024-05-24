@@ -643,3 +643,56 @@ opacity: 0.5;
   /* Показываем изображение */
   opacity: 1;
 }
+
+
+
+
+
+
+
+/* Общие стили для прогресс-бара */
+.progress-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 20px;
+  background-color: #f2f2f2;
+  z-index: 1000; /* Задаем высокий z-index, чтобы прогресс-бар был поверх других элементов */
+}
+
+/* Стили для самого прогресса */
+.progress-bar .progress {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  background-color: #007bff;
+  transition: width 0.5s ease-in-out; /* Задаем плавную анимацию при изменении ширины */
+}
+
+/* Стили для кружка в левой части прогресс-бара */
+.progress-bar::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 20px;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: #007bff;
+  transform: translateY(-50%);
+}
+
+/* Стили для кружка в правой части прогресс-бара */
+.progress-bar::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  right: 20px;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: #f2f2f2;
+  transform: translateY(-50%);
+}
