@@ -126,11 +126,6 @@
             <img src="Img/left-pill-small.png" alt="Left image" class="bottom-left-image">
             <img src="Img/right-pill small.png" alt="Right image" class="bottom-right-image">
 
-            <div class="progress-bar">
-                <div class="progress"></div>
-            </div>
-
-
 
             <h2>Ситуация</h2>
             <p class=" question-description value-description test-description"></p>
@@ -711,7 +706,6 @@
             if (id === 'screen8') {
                 showResults();
                 showSpiralResults();
-                document.querySelector('.progress-bar').style.display = 'none';a
 
                 // Добавляем код для вкладок
                 const tabButtons = document.querySelectorAll('.tab-button');
@@ -812,11 +806,10 @@
             });
         }
 
+
         function showSituation() {
             // Затемняем экран
             fadeOutScreen();
-
-            document.querySelector('.progress-bar').style.display = 'block';
 
             // Добавляем задержку на 1 секунду
             setTimeout(() => {
@@ -846,19 +839,10 @@
                     $(this).addClass('selected-option');
                 });
 
-                // Запускаем анимацию для левого изображения
-                const leftImage = document.querySelector('.left-to-center');
-                leftImage.classList.add('animate');
-
-                // Запускаем анимацию для правого изображения
-                const rightImage = document.querySelector('.right-to-center');
-                rightImage.classList.add('animate');
-
                 // Возвращаем экран в нормальное состояние
                 fadeInScreen();
-            }, 500);
+            }, 1000);
         }
-
 
         function fadeOutScreen() {
             // Создаем элемент затемнения
@@ -885,8 +869,8 @@
                 overlay.style.opacity = 0;
                 setTimeout(() => {
                     overlay.remove();
-                }, 500);
-            }, 500);
+                }, 1000);
+            }, 1000);
         }
 
 
@@ -1045,24 +1029,6 @@
         // document.querySelector('.tab-content').classList.add('active');
 
 
-
-
-
-        let currentProgress = 0;
-
-        function updateProgress() {
-            // Вычисляем текущий прогресс в процентах
-            currentProgress = (currentSituationIndex + 1) / situations.length * 100;
-
-            // Обновляем ширину прогресса
-            const progress = document.querySelector('.progress-bar .progress');
-            progress.style.width = `${currentProgress}%`;
-
-            // Если все ситуации отвечены, меняем цвет кружка в правой части прогресс-бара
-            if (currentProgress === 100) {
-                document.querySelector('.progress-bar::after').style.backgroundColor = '#007bff';
-            }
-        }
 
 
 
