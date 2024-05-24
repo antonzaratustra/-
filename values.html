@@ -812,19 +812,19 @@
             fadeOutScreen();
 
 
-            const leftImage = document.querySelector('.left-to-center');
-            leftImage.classList.add('animate');
+            // const leftImage = document.querySelector('.left-to-center');
+            // leftImage.classList.add('animate');
 
-            // Запускаем анимацию для правого изображения
-            const rightImage = document.querySelector('.right-to-center');
-            rightImage.classList.add('animate');
+            // // Запускаем анимацию для правого изображения
+            // const rightImage = document.querySelector('.right-to-center');
+            // rightImage.classList.add('animate');
 
-            // Сбрасываем анимацию после ее завершения
-            document.querySelectorAll('.left-to-center, .right-to-center').forEach(el => {
-                el.addEventListener('transitionend', () => {
-                    el.classList.remove('animate');
-                });
-            });
+            // // Сбрасываем анимацию после ее завершения
+            // document.querySelectorAll('.left-to-center, .right-to-center').forEach(el => {
+            //     el.addEventListener('transitionend', () => {
+            //         el.classList.remove('animate');
+            //     });
+            // });
 
 
             // Добавляем задержку на 1 секунду
