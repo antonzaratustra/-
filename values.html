@@ -196,15 +196,15 @@
                 <div class="tab-button" data-tab="archetype">Архетипы Юнга</div>
                 <div class="tab-button" data-tab="motivation">Ключевая мотивация</div>
                 <div class="tab-button" data-tab="category">Категории</div>
-              </div>
-              
-              <div class="image-container">
+            </div>
+
+            <div class="image-container">
                 <img class="image image-active" src="Img/values.png" alt="Image 1">
                 <img class="image image-hide" src="Img/spiral.png" alt="Image 2">
                 <img class="image image-hide" src="Img/archetype.png" alt="Image 3">
                 <img class="image image-hide" src="Img/motivation.png" alt="Image 4">
                 <img class="image image-hide" src="Img/category.png" alt="Image 5">
-              </div>              
+            </div>
 
             <div class="tab-content" id="values">
                 <div class="value-results" id="value-results"></div>
@@ -1043,52 +1043,51 @@
 
                 tabButtons.forEach(button => {
                     button.addEventListener('click', () => {
-                        const activeTab = document.querySelector('.tab-content.active');
-                        const activeButton = document.querySelector('.tab-button.active');
+                        const activeTab = document.querySelector('.tab-content.tab-active');
+                        const activeButton = document.querySelector('.tab-button.tab-active');
 
                         if (activeTab) {
-                            activeTab.classList.remove('active');
+                            activeTab.classList.remove('tab-active');
                         }
 
                         if (activeButton) {
-                            activeButton.classList.remove('active');
+                            activeButton.classList.remove('tab-active');
                         }
 
                         const tabId = button.dataset.tab;
                         const tab = document.getElementById(tabId);
 
                         if (tab) {
-                            tab.classList.add('active');
-                            button.classList.add('active');
+                            tab.classList.add('tab-active');
+                            button.classList.add('tab-active');
 
                             // сначала скрываем все изображения
                             imageContainer.querySelectorAll('.image').forEach((image) => {
-                                image.classList.add('hide');
-                                image.classList.remove('show');
+                                image.classList.add('image-hide');
+                                image.classList.remove('image-active');
                             });
 
                             // затем показываем нужное изображение
                             const imageToShow = imageContainer.querySelector(`img[src="${tabId}.png"]`);
                             if (imageToShow) {
-                                imageToShow.classList.add('show');
-                                imageToShow.classList.remove('hide');
+                                imageToShow.classList.add('image-active');
+                                imageToShow.classList.remove('image-hide');
                             }
                         }
                     });
                 });
 
                 // Активируем первую вкладку по умолчанию
-                document.querySelector('.tab-button').classList.add('active');
-                document.querySelector('.tab-content').classList.add('active');
+                document.querySelector('.tab-button').classList.add('tab-active');
+                document.querySelector('.tab-content').classList.add('tab-active');
 
                 // показываем первое изображение по умолчанию
                 const firstImage = imageContainer.querySelector('.image');
                 if (firstImage) {
-                    firstImage.classList.add('show');
-                    firstImage.classList.remove('hide');
+                    firstImage.classList.add('image-active');
+                    firstImage.classList.remove('image-hide');
                 }
             }
-
         }
 
 
