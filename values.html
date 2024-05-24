@@ -648,15 +648,24 @@
                 "Космическое сознание"
             ];
 
+            // Создаем пустой массив для хранения сумм значений value для каждого уровня спиральной динамики
+            const levelValues = [];
+
             // Выводим каждый уровень спиральной динамики в spiral-results
             levels.forEach((level, index) => {
                 // Вычисляем сумму значений value для ценностей, относящихся к текущему уровню спиральной динамики
-                const levelValue = valuesArray.reduce((sum, [value, count]) => {
+                const levelValuesArray = valuesArray.filter(([value, count]) => {
                     if (count[1] && count[1].hasOwnProperty('spiralDynamics') && count[1].spiralDynamics === level) {
-                        return sum + count[0]; // вместо values[value] используем count[0]
+                        return true;
                     }
-                    return sum;
+                    return false;
+                });
+
+                const levelValue = levelValuesArray.reduce((sum, [value, count]) => {
+                    return sum + count[0];
                 }, 0);
+
+                levelValues.push(levelValue);
 
                 // Создаем заголовок для текущего уровня спиральной динамики
                 const levelElement = document.createElement('h2');
@@ -670,7 +679,11 @@
                 valueElement.style.opacity = 1 - index / levels.length; // Задаем прозрачность в диапазоне от 1 до 0
                 spiralResults.appendChild(valueElement);
             });
+
+            // Выводим массив levelValues в консоль или на экран
+            console.log(levelValues);
         }
+
 
 
 
