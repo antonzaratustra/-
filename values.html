@@ -858,7 +858,7 @@
 
                 // Возвращаем экран в нормальное состояние
                 fadeInScreen();
-            }, 1000);
+            }, 500);
         }
 
 
@@ -887,8 +887,8 @@
                 overlay.style.opacity = 0;
                 setTimeout(() => {
                     overlay.remove();
-                }, 1000);
-            }, 1000);
+                }, 500);
+            }, 500);
         }
 
 
@@ -909,13 +909,13 @@
 
                 // Плавно меняем прозрачность элемента затемнения от 0 до 1
                 overlay.style.opacity = 0;
-                overlay.style.transition = 'opacity 1s';
+                overlay.style.transition = 'opacity 0.5s';
                 setTimeout(() => {
                     overlay.style.opacity = 1;
                 }, 10);
 
                 // Вызываем функцию showSituation через 1 секунду
-                setTimeout(showSituation, 1000);
+                setTimeout(showSituation, 500);
             });
         });
 
