@@ -480,9 +480,9 @@ body {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    top: 27%;
-    left: 5%;
-    width: 50ch;
+    top: 20%;
+    left: -15%;
+    width: 60%;
     margin: min(1rem, 20px);
     font-size: .8rem;
     background-color: #1d1d1d;
