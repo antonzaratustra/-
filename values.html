@@ -597,30 +597,33 @@
             valueResults.innerHTML = '';
 
             // Выводим каждую ценность в value-results
-            topValues.forEach(([value, count]) => {
+            topValues.forEach(([value, count], index) => {
                 const valueElement = document.createElement('div');
                 valueElement.textContent = value;
-                valueElement.style.opacity = 1 - count.value / 10; // Задаем прозрачность в диапазоне от 1 до 0
+                // Задаем прозрачность в диапазоне от 1 до 0
+                valueElement.style.opacity = 1 - index / 9;
                 valueResults.appendChild(valueElement);
             });
+        }
 
 
 
-            valueResults.addEventListener('mouseover', function (event) {
-                if (event.target.tagName === 'DIV') {
-                    const value = event.target.textContent;
-                    if (showValues[value]) {
-                        console.log("Категория: " + showValues[value].category);
-                        console.log("Spiral Dynamics: " + showValues[value].spiralDynamics);
-                        console.log("Архетип: " + showValues[value].archetype);
-                        console.log("Мотивация: " + showValues[value].motivation);
-                        console.log("Описание: " + showValues[value].description);
-                        if (showValues[value].examples) {
-                            console.log("Примеры: " + showValues[value].examples.join(", "));
-                        }
+
+        valueResults.addEventListener('mouseover', function (event) {
+            if (event.target.tagName === 'DIV') {
+                const value = event.target.textContent;
+                if (showValues[value]) {
+                    console.log("Категория: " + showValues[value].category);
+                    console.log("Spiral Dynamics: " + showValues[value].spiralDynamics);
+                    console.log("Архетип: " + showValues[value].archetype);
+                    console.log("Мотивация: " + showValues[value].motivation);
+                    console.log("Описание: " + showValues[value].description);
+                    if (showValues[value].examples) {
+                        console.log("Примеры: " + showValues[value].examples.join(", "));
                     }
                 }
-            });
+            }
+        });
 
 
 
