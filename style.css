@@ -669,7 +669,7 @@ progress[value]::-webkit-progress-value {
   left: 20px;
   top: 25%;
   width: 400px; /* задайте нужную ширину */
-  height: 400px; /* задайте нужную высоту */
+  height: 800px; /* задайте нужную высоту */
   perspective: 1000px; /* это нужно для эффекта поворота */
 }
 
