@@ -127,9 +127,7 @@
             <img src="Img/right-pill small.png" alt="Right image" class="bottom-right-image right-to-center">
 
 
-            <div class="progress-bar">
-                <div class="progress"></div>
-            </div>
+          
 
 
             <h2>Ситуация</h2>
@@ -1007,22 +1005,7 @@
 
 
 
-        let currentProgress = 0;
-
-function updateProgress() {
-  // Вычисляем текущий прогресс в процентах
-  currentProgress = (currentSituationIndex + 1) / situations.length * 100;
-
-  // Обновляем ширину прогресса
-  const progress = document.querySelector('.progress-bar .progress');
-  progress.style.width = `${currentProgress}%`;
-
-  // Если все ситуации отвечены, меняем цвет кружка в правой части прогресс-бара
-  if (currentProgress === 100) {
-    document.querySelector('.progress-bar::after').style.backgroundColor = '#007bff';
-  }
-}
-
+   
 
 
 
