@@ -626,7 +626,6 @@
 
 
 
-
         function showSpiralResults() {
             // Получаем все ценности и сортируем их по убыванию значения value
             const valuesArray = Object.entries(values).sort((a, b) => b[1].value - a[1].value);
@@ -653,13 +652,11 @@
             levels.forEach((level, index) => {
                 // Вычисляем сумму значений value для ценностей, относящихся к текущему уровню спиральной динамики
                 const levelValue = valuesArray.reduce((sum, [value, count]) => {
-                    if (values[value] && values[value].hasOwnProperty('spiralDynamics') && values[value].spiralDynamics === level) {
-                        return sum + count; 
+                    if (count[1] && count[1].hasOwnProperty('spiralDynamics') && count[1].spiralDynamics === level) {
+                        return sum + count[0]; // вместо values[value] используем count[0]
                     }
                     return sum;
                 }, 0);
-
-
 
                 // Создаем заголовок для текущего уровня спиральной динамики
                 const levelElement = document.createElement('h2');
@@ -674,6 +671,7 @@
                 spiralResults.appendChild(valueElement);
             });
         }
+
 
 
 
