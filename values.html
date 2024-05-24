@@ -123,8 +123,9 @@
         <!-- Screen 2 -->
         <div class="screen" id="screen2">
 
-            <img src="Img/left-pill-small.png" alt="Left image" class="bottom-left-image">
-            <img src="Img/right-pill small.png" alt="Right image" class="bottom-right-image">
+            <img src="Img/left-pill-small.png" alt="Left image" class="bottom-left-image left-to-center">
+            <img src="Img/right-pill-small.png" alt="Right image" class="bottom-right-image right-to-center">
+
 
 
             <h2>Ситуация</h2>
@@ -811,22 +812,6 @@
             // Затемняем экран
             fadeOutScreen();
 
-
-            // const leftImage = document.querySelector('.left-to-center');
-            // leftImage.classList.add('animate');
-
-            // // Запускаем анимацию для правого изображения
-            // const rightImage = document.querySelector('.right-to-center');
-            // rightImage.classList.add('animate');
-
-            // // Сбрасываем анимацию после ее завершения
-            // document.querySelectorAll('.left-to-center, .right-to-center').forEach(el => {
-            //     el.addEventListener('transitionend', () => {
-            //         el.classList.remove('animate');
-            //     });
-            // });
-
-
             // Добавляем задержку на 1 секунду
             setTimeout(() => {
                 // Скрываем блок с ценностями
@@ -855,10 +840,26 @@
                     $(this).addClass('selected-option');
                 });
 
+                // Запускаем анимацию для левого изображения
+                const leftImage = document.querySelector('.left-to-center');
+                leftImage.classList.add('animate');
+
+                // Запускаем анимацию для правого изображения
+                const rightImage = document.querySelector('.right-to-center');
+                rightImage.classList.add('animate');
+
+                // Сбрасываем анимацию после ее завершения
+                document.querySelectorAll('.left-to-center, .right-to-center').forEach(el => {
+                    el.addEventListener('transitionend', () => {
+                        el.classList.remove('animate');
+                    });
+                });
+
                 // Возвращаем экран в нормальное состояние
                 fadeInScreen();
             }, 1000);
         }
+
 
         function fadeOutScreen() {
             // Создаем элемент затемнения
