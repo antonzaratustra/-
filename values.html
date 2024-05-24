@@ -126,8 +126,11 @@
             <img src="Img/left-pill-small.png" alt="Left image" class="bottom-left-image left-to-center">
             <img src="Img/right-pill small.png" alt="Right image" class="bottom-right-image right-to-center">
 
+            <div class="progress-bar__wrapper">
+                <label class="progress-bar__value" htmlFor="progress-bar"> </label>
+                <progress id="progress-bar" value="0" max="100"></progress>
+            </div>
 
-          
 
 
             <h2>Ситуация</h2>
@@ -286,6 +289,9 @@
 
 
     <script>
+
+        let currentProgress = 0;
+
 
         let showValueResults = document.querySelector('.value-results');
 
@@ -814,9 +820,6 @@
             // Затемняем экран
             fadeOutScreen();
 
-
-
-
             // Добавляем задержку на 1 секунду
             setTimeout(() => {
                 // Скрываем блок с ценностями
@@ -829,6 +832,14 @@
                 document.querySelector('.answer-option.left .test-description').textContent = currentSituation["answer-option-left"]["test-description"];
                 document.querySelector('.answer-option.right .test-description').textContent = currentSituation["answer-option-right"]["test-description"];
 
+                // Вычисляем значение прогресс-бара для текущей ситуации
+                const progressValue = (currentSituationIndex + 1) / situations.length * 100;
+
+                // Обновляем значение атрибута value элемента progress и актуализируем значение currentProgress
+                const progressBar = document.getElementById('progress-bar');
+                progressBar.value = progressValue;
+                currentProgress = progressValue;
+
                 const answerOptionLeft = document.querySelector('.answer-option.left');
                 const answerOptionRight = document.querySelector('.answer-option.right');
 
@@ -840,7 +851,6 @@
                     $(this).addClass('selected-option');
                 });
 
-
                 answerOptionRight.addEventListener('click', event => {
                     selectAnswer(event, currentSituation["answer-option-right"]["values"]);
                     $(this).addClass('selected-option');
@@ -850,6 +860,7 @@
                 fadeInScreen();
             }, 1000);
         }
+
 
         function fadeOutScreen() {
             // Создаем элемент затемнения
@@ -1005,7 +1016,7 @@
 
 
 
-   
+
 
 
 
