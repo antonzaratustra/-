@@ -597,14 +597,13 @@
             valueResults.innerHTML = '';
 
             // Выводим каждую ценность в value-results
-            topValues.forEach(([value, count]) => {
+            topValues.forEach(([value, count], index) => {
                 const valueElement = document.createElement('div');
                 valueElement.textContent = value;
-                valueElement.style.opacity = 1 - count.value / 10; // Задаем прозрачность в диапазоне от 1 до 0
+                // Задаем прозрачность в диапазоне от 1 до 0
+                valueElement.style.opacity = 1 - index / 9;
                 valueResults.appendChild(valueElement);
             });
-
-
 
             valueResults.addEventListener('mouseover', function (event) {
                 if (event.target.tagName === 'DIV') {
