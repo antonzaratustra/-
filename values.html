@@ -806,61 +806,51 @@
             });
         }
 
-
         function showSituation() {
             // Затемняем экран
+            fadeOutScreen();
 
+            // Добавляем задержку на 1 секунду
+            setTimeout(() => {
+                // Скрываем блок с ценностями
+                document.getElementById('value-block').style.display = 'none';
 
-            // Запускаем анимацию для левого изображения
-            const leftImage = document.querySelector('.left-to-center');
-            leftImage.classList.add('animate');
+                const currentSituation = situations[currentSituationIndex];
 
-            // Запускаем анимацию для правого изображения
-            const rightImage = document.querySelector('.right-to-center');
-            rightImage.classList.add('animate');
+                document.querySelector('.value-description.test-description').textContent = currentSituation["value-description"];
+                document.querySelector('.value-question').textContent = currentSituation["value-question"];
+                document.querySelector('.answer-option.left .test-description').textContent = currentSituation["answer-option-left"]["test-description"];
+                document.querySelector('.answer-option.right .test-description').textContent = currentSituation["answer-option-right"]["test-description"];
+
+                const answerOptionLeft = document.querySelector('.answer-option.left');
+                const answerOptionRight = document.querySelector('.answer-option.right');
+
+                answerOptionLeft.classList.remove('disabled');
+                answerOptionRight.classList.remove('disabled');
+
+                answerOptionLeft.addEventListener('click', event => {
+                    selectAnswer(event, currentSituation["answer-option-left"]["values"]);
+                    $(this).addClass('selected-option');
+                });
+
+                answerOptionRight.addEventListener('click', event => {
+                    selectAnswer(event, currentSituation["answer-option-right"]["values"]);
+                    $(this).addClass('selected-option');
+                });
+
+                // Запускаем анимацию для левого изображения
+                const leftImage = document.querySelector('.left-to-center');
+                leftImage.classList.add('animate');
+
+                // Запускаем анимацию для правого изображения
+                const rightImage = document.querySelector('.right-to-center');
+                rightImage.classList.add('animate');
+
+                // Возвращаем экран в нормальное состояние
+                fadeInScreen();
+            }, 500);
         }
 
-        // Сбрасываем анимацию после ее завершения
-        document.querySelectorAll('.left-to-center, .right-to-center').forEach(el => {
-            el.addEventListener('transitionend', () => {
-                el.classList.remove('animate');
-            });
-        });
-
-        fadeOutScreen();
-
-        // Добавляем задержку на 1 секунду
-        setTimeout(() => {
-            // Скрываем блок с ценностями
-            document.getElementById('value-block').style.display = 'none';
-
-            const currentSituation = situations[currentSituationIndex];
-
-            document.querySelector('.value-description.test-description').textContent = currentSituation["value-description"];
-            document.querySelector('.value-question').textContent = currentSituation["value-question"];
-            document.querySelector('.answer-option.left .test-description').textContent = currentSituation["answer-option-left"]["test-description"];
-            document.querySelector('.answer-option.right .test-description').textContent = currentSituation["answer-option-right"]["test-description"];
-
-            const answerOptionLeft = document.querySelector('.answer-option.left');
-            const answerOptionRight = document.querySelector('.answer-option.right');
-
-            answerOptionLeft.classList.remove('disabled');
-            answerOptionRight.classList.remove('disabled');
-
-            answerOptionLeft.addEventListener('click', event => {
-                selectAnswer(event, currentSituation["answer-option-left"]["values"]);
-                $(this).addClass('selected-option');
-            });
-
-            answerOptionRight.addEventListener('click', event => {
-                selectAnswer(event, currentSituation["answer-option-right"]["values"]);
-                $(this).addClass('selected-option');
-            });
-
-            // Возвращаем экран в нормальное состояние
-            fadeInScreen();
-        }, 1000);
-        }
 
         function fadeOutScreen() {
             // Создаем элемент затемнения
