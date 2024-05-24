@@ -617,34 +617,6 @@ opacity: 0.5;
 
 
 
-/* Общие стили для анимации */
-.left-to-center,
-.right-to-center {
-  /* Скрываем изображения изначально */
-  opacity: 0;
-  /* Задаем длительность анимации */
-  transition-duration: 1s;
-  /* Задаем функцию изменения параметров для плавности */
-  transition-timing-function: ease-in-out;
-}
-
-/* Стили для анимации левого изображения */
-.left-to-center.animate {
-  /* Выезжаем слева направо */
-  transform: translateX(50%);
-  /* Показываем изображение */
-  opacity: 1;
-}
-
-/* Стили для анимации правого изображения */
-.right-to-center.animate {
-  /* Выезжаем справа налево */
-  transform: translateX(-50%);
-  /* Показываем изображение */
-  opacity: 1;
-}
-
-
 
 
 
