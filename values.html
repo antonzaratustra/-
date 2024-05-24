@@ -205,7 +205,7 @@
 
             <div class="tab-content" id="motivation">
                 <!-- Контент для вкладки "Ключевая мотивация" -->
-                <p>Ключевая мотивация</p>
+                <div class="motivation-results" id="motivation-results"></div>
             </div>
 
             <div class="tab-content" id="category">
@@ -595,7 +595,7 @@
                 category: "Личные качества и настроения",
                 spiralDynamics: "Эгалитарное сознание",
                 archetype: "Правитель",
-                motivation: "личное развитие",
+                motivation: "социальная доминантность",
                 description: "Достоинство - это осознание своей ценности и значимости как человека, а также уважение к себе и другим людям. Это качество характера проявляется в самоуважении, самоуважении, самосовершенствовании, мудрости, справедливости и способности принимать ответственность за свои действия.",
                 examples: [
                     "Защитить свои права или достоинство",
@@ -679,6 +679,9 @@
         let archetypeResults;
 
         let categoryResults;
+
+        let motivationResults;
+
 
 
         function showResults() {
@@ -872,6 +875,59 @@
         }
 
 
+        function showMotivationResults() {
+            // Получаем все ценности и сортируем их по убыванию значения value
+            const valuesArray = Object.entries(values).sort((a, b) => b[1].value - a[1].value);
+
+            // Получаем div с классом motivation-results и присваиваем его переменной motivationResults
+            const motivationResults = document.querySelector('.motivation-results');
+
+            // Очищаем содержимое motivation-results
+            motivationResults.innerHTML = '';
+
+            // Определяем массив с типами мотивации
+            const motivations = [
+                "социальная доминантность",
+                "ресурсоемкость",
+                "сексуальная успешность"
+            ];
+
+            // Выводим каждую мотивацию в motivation-results
+            motivations.forEach((motivation, index) => {
+                // Вычисляем сумму значений value для ценностей, относящихся к текущей мотивации
+                const motivationValue = valuesArray.reduce((sum, [value, count]) => {
+                    if (showValues[value] && showValues[value].hasOwnProperty('motivation') && showValues[value].motivation === motivation) {
+                        return sum + count; // вместо values[value] используем count
+                    }
+                    return sum;
+                }, 0);
+
+                // Создаем заголовок для текущей мотивации
+                const motivationElement = document.createElement('h2');
+                motivationElement.textContent = motivation;
+                motivationElement.style.opacity = 1 - index / motivations.length; // Задаем прозрачность в диапазоне от 1 до 0
+                motivationResults.appendChild(motivationElement);
+
+                // Создаем элемент для суммы значений value для текущей мотивации
+                const valueElement = document.createElement('div');
+                valueElement.textContent = motivationValue;
+                valueElement.style.opacity = 1 - index / motivations.length; // Задаем прозрачность в диапазоне от 1 до 0
+                motivationResults.appendChild(valueElement);
+            });
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
 
         let currentSituationIndex = 0;
         let currentSituation = situations[currentSituationIndex];
@@ -904,6 +960,7 @@
                 showSpiralResults();
                 showArchetypeResults();
                 showCategoryResults();
+                showMotivationResults();
 
                 // Добавляем код для вкладок
                 const tabButtons = document.querySelectorAll('.tab-button');
