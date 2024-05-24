@@ -1060,6 +1060,19 @@
                         if (tab) {
                             tab.classList.add('active');
                             button.classList.add('active');
+
+                            // сначала скрываем все изображения
+                            imageContainer.querySelectorAll('.image').forEach((image) => {
+                                image.classList.add('hide');
+                                image.classList.remove('show');
+                            });
+
+                            // затем показываем нужное изображение
+                            const imageToShow = imageContainer.querySelector(`img[src="${tabId}.png"]`);
+                            if (imageToShow) {
+                                imageToShow.classList.add('show');
+                                imageToShow.classList.remove('hide');
+                            }
                         }
                     });
                 });
@@ -1067,7 +1080,15 @@
                 // Активируем первую вкладку по умолчанию
                 document.querySelector('.tab-button').classList.add('active');
                 document.querySelector('.tab-content').classList.add('active');
+
+                // показываем первое изображение по умолчанию
+                const firstImage = imageContainer.querySelector('.image');
+                if (firstImage) {
+                    firstImage.classList.add('show');
+                    firstImage.classList.remove('hide');
+                }
             }
+
         }
 
 
