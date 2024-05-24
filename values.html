@@ -622,11 +622,6 @@
             });
 
 
-
-
-
-
-
         }
 
 
@@ -659,7 +654,7 @@
                 // Вычисляем сумму значений value для ценностей, относящихся к текущему уровню спиральной динамики
                 const levelValue = valuesArray.reduce((sum, [value, count]) => {
                     if (values[value] && values[value].hasOwnProperty('spiralDynamics') && values[value].spiralDynamics === level) {
-                        return sum + count; // вместо values[value] используем count
+                        return sum + count; 
                     }
                     return sum;
                 }, 0);
