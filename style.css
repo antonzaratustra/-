@@ -658,3 +658,13 @@ progress[value]::-webkit-progress-value {
   background-color: maroon;
   transition: width 300ms ease;
 }
+
+
+.resultimage {
+  border-radius: 20px;
+  position: absolute;
+  left: 40px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 300px;
+}
