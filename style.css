@@ -290,13 +290,7 @@ body {
 
 
 
-.test-title {
-    /* стили по умолчанию */
-  }
-  
-  .test-title:hover {
-    /* стили при наведении курсора */
-  }
+
 
 
   #tag-cloud .tag-cloud-item {
